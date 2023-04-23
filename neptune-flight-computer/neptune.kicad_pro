@@ -239,7 +239,7 @@
     "pinned_symbol_libs": []
   },
   "meta": {
-    "filename": "haste.kicad_pro",
+    "filename": "neptune.kicad_pro",
     "version": 1
   },
   "net_settings": {
@@ -327,7 +327,15 @@
     ],
     [
       "b694d9b6-8e2a-4217-a81b-e156ec88b46a",
-      "RF"
+      "Data management"
+    ],
+    [
+      "708c8a34-f258-4554-8b50-7818f1e46fec",
+      "STM32"
+    ],
+    [
+      "fd0daead-056b-49b0-b136-e76d44737a4c",
+      "Sensors"
     ]
   ],
   "text_variables": {}
