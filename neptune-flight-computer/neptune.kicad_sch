@@ -5,6 +5,35 @@
   (paper "A4")
 
   (lib_symbols
+    (symbol "Mechanical:MountingHole" (pin_names (offset 1.016)) (in_bom yes) (on_board yes)
+      (property "Reference" "H" (at 0 5.08 0)
+        (effects (font (size 1.27 1.27)))
+      )
+      (property "Value" "MountingHole" (at 0 3.175 0)
+        (effects (font (size 1.27 1.27)))
+      )
+      (property "Footprint" "" (at 0 0 0)
+        (effects (font (size 1.27 1.27)) hide)
+      )
+      (property "Datasheet" "~" (at 0 0 0)
+        (effects (font (size 1.27 1.27)) hide)
+      )
+      (property "ki_keywords" "mounting hole" (at 0 0 0)
+        (effects (font (size 1.27 1.27)) hide)
+      )
+      (property "ki_description" "Mounting Hole without connection" (at 0 0 0)
+        (effects (font (size 1.27 1.27)) hide)
+      )
+      (property "ki_fp_filters" "MountingHole*" (at 0 0 0)
+        (effects (font (size 1.27 1.27)) hide)
+      )
+      (symbol "MountingHole_0_1"
+        (circle (center 0 0) (radius 1.27)
+          (stroke (width 1.27) (type default))
+          (fill (type none))
+        )
+      )
+    )
   )
 
 
@@ -264,6 +293,122 @@
   (label "CE_GYR" (at 243.84 27.94 0) (fields_autoplaced)
     (effects (font (size 1.27 1.27)) (justify left bottom))
     (uuid f7549f70-0c0c-44dd-a5e4-d77918dd7b24)
+  )
+
+  (symbol (lib_id "Mechanical:MountingHole") (at 27.94 175.26 0) (unit 1)
+    (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
+    (uuid 301500b2-5e16-47d5-abcd-db33e8f650ba)
+    (property "Reference" "H4" (at 31.242 173.9899 0)
+      (effects (font (size 1.27 1.27)) (justify left))
+    )
+    (property "Value" "MountingHole" (at 31.242 176.5299 0)
+      (effects (font (size 1.27 1.27)) (justify left))
+    )
+    (property "Footprint" "MountingHole:MountingHole_3.2mm_M3" (at 27.94 175.26 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Datasheet" "~" (at 27.94 175.26 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (instances
+      (project "Liaka_V3"
+        (path "/9186fd02-f30d-4e17-aa38-378ab73e3908"
+          (reference "H4") (unit 1)
+        )
+      )
+      (project "neptune"
+        (path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55"
+          (reference "H2") (unit 1)
+        )
+      )
+    )
+  )
+
+  (symbol (lib_id "Mechanical:MountingHole") (at 27.94 180.34 0) (unit 1)
+    (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
+    (uuid 3ddd8cbd-96b3-4b65-b211-62e936a6de46)
+    (property "Reference" "H4" (at 31.242 179.0699 0)
+      (effects (font (size 1.27 1.27)) (justify left))
+    )
+    (property "Value" "MountingHole" (at 31.242 181.6099 0)
+      (effects (font (size 1.27 1.27)) (justify left))
+    )
+    (property "Footprint" "MountingHole:MountingHole_3.2mm_M3" (at 27.94 180.34 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Datasheet" "~" (at 27.94 180.34 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (instances
+      (project "Liaka_V3"
+        (path "/9186fd02-f30d-4e17-aa38-378ab73e3908"
+          (reference "H4") (unit 1)
+        )
+      )
+      (project "neptune"
+        (path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55"
+          (reference "H3") (unit 1)
+        )
+      )
+    )
+  )
+
+  (symbol (lib_id "Mechanical:MountingHole") (at 27.94 170.18 0) (unit 1)
+    (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
+    (uuid 4d216bb8-b94d-4ae1-9c84-4d4f74d073fd)
+    (property "Reference" "H4" (at 31.242 168.9099 0)
+      (effects (font (size 1.27 1.27)) (justify left))
+    )
+    (property "Value" "MountingHole" (at 31.242 171.4499 0)
+      (effects (font (size 1.27 1.27)) (justify left))
+    )
+    (property "Footprint" "MountingHole:MountingHole_3.2mm_M3" (at 27.94 170.18 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Datasheet" "~" (at 27.94 170.18 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (instances
+      (project "Liaka_V3"
+        (path "/9186fd02-f30d-4e17-aa38-378ab73e3908"
+          (reference "H4") (unit 1)
+        )
+      )
+      (project "neptune"
+        (path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55"
+          (reference "H1") (unit 1)
+        )
+      )
+    )
+  )
+
+  (symbol (lib_id "Mechanical:MountingHole") (at 27.94 185.42 0) (unit 1)
+    (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
+    (uuid 5c2e804e-56a2-4b4b-b3f7-796b57ad15a7)
+    (property "Reference" "H4" (at 31.242 184.1499 0)
+      (effects (font (size 1.27 1.27)) (justify left))
+    )
+    (property "Value" "MountingHole" (at 31.242 186.6899 0)
+      (effects (font (size 1.27 1.27)) (justify left))
+    )
+    (property "Footprint" "MountingHole:MountingHole_3.2mm_M3" (at 27.94 185.42 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Datasheet" "~" (at 27.94 185.42 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (instances
+      (project "Liaka_V3"
+        (path "/9186fd02-f30d-4e17-aa38-378ab73e3908"
+          (reference "H4") (unit 1)
+        )
+      )
+      (project "neptune"
+        (path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55"
+          (reference "H4") (unit 1)
+        )
+      )
+    )
   )
 
   (sheet (at 25.4 88.9) (size 63.5 50.8) (fields_autoplaced)
