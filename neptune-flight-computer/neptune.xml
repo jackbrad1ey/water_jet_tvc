@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <export version="E">
   <design>
-    <source>/Users/jb/University/MEC2402/water_jet_tvc/neptune-flight-computer/neptune.kicad_sch</source>
-    <date>Wednesday, 26 April 2023 at 06:42:18 PM</date>
-    <tool>Eeschema (7.0.0-0)</tool>
+    <source>C:\Users\Jack\University\MEC2402\water_jet_tvc\neptune-flight-computer\neptune.kicad_sch</source>
+    <date>27/04/2023 1:22:28 PM</date>
+    <tool>Eeschema 7.0.2</tool>
     <sheet number="1" name="/" tstamps="/">
       <title_block>
         <title/>
@@ -918,19 +918,15 @@
     </comp>
     <comp ref="Y2">
       <value>12MHz</value>
-      <footprint>Crystal:Crystal_SMD_5032-2Pin_5.0x3.2mm</footprint>
-      <datasheet>https://jlcpcb.com/partdetail/247391-6I12000F20UCG/C251588</datasheet>
-      <fields>
-        <field name="LCSC">C251588</field>
-      </fields>
-      <libsource lib="Device" part="Crystal" description="Two pin crystal"/>
-      <property name="LCSC" value="C251588"/>
+      <footprint>Crystal:Crystal_SMD_5032-4Pin_5.0x3.2mm</footprint>
+      <datasheet>https://www.digikey.com.au/en/products/detail/ecs-inc/ECS-120-20-30B-TR/813205</datasheet>
+      <libsource lib="Device" part="Crystal_GND24" description="Four pin crystal, GND on pins 2 and 4"/>
       <property name="Sheetname" value="STM32"/>
       <property name="Sheetfile" value="STM32.kicad_sch"/>
-      <property name="ki_description" value="Two pin crystal"/>
+      <property name="ki_description" value="Four pin crystal, GND on pins 2 and 4"/>
       <property name="ki_keywords" value="quartz ceramic resonator oscillator"/>
       <sheetpath names="/STM32/" tstamps="/708c8a34-f258-4554-8b50-7818f1e46fec/"/>
-      <tstamps>16719f82-68bb-4f6d-a5e9-cdc1fab5beb3</tstamps>
+      <tstamps>2dce1004-d075-4e19-bed3-6e674a083246</tstamps>
     </comp>
     <comp ref="C24">
       <value>100nF</value>
@@ -1157,6 +1153,24 @@
       <pins>
         <pin num="1" name="1" type="passive"/>
         <pin num="2" name="2" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Device" part="Crystal_GND24">
+      <description>Four pin crystal, GND on pins 2 and 4</description>
+      <docs>~</docs>
+      <footprints>
+        <fp>Crystal*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">Y</field>
+        <field name="Value">Crystal_GND24</field>
+        <field name="Datasheet">~</field>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+        <pin num="2" name="2" type="passive"/>
+        <pin num="3" name="3" type="passive"/>
+        <pin num="4" name="4" type="passive"/>
       </pins>
     </libpart>
     <libpart lib="Device" part="D_Schottky_Small">
@@ -1489,40 +1503,40 @@
   </libparts>
   <libraries>
     <library logical="BMX055">
-      <uri>/Users/jb/University/MEC2402/water_jet_tvc/neptune-flight-computer/Local Library/BMX055.kicad_sym</uri>
+      <uri>C:\Users\Jack\University\MEC2402\water_jet_tvc\neptune-flight-computer/Local Library/BMX055.kicad_sym</uri>
     </library>
     <library logical="Comparator">
-      <uri>/Applications/KiCad/KiCad.app/Contents/SharedSupport/symbols//Comparator.kicad_sym</uri>
+      <uri>C:\Program Files\KiCad\7.0\share\kicad\symbols\/Comparator.kicad_sym</uri>
     </library>
     <library logical="Connector">
-      <uri>/Applications/KiCad/KiCad.app/Contents/SharedSupport/symbols//Connector.kicad_sym</uri>
+      <uri>C:\Program Files\KiCad\7.0\share\kicad\symbols\/Connector.kicad_sym</uri>
     </library>
     <library logical="Connector_Generic">
-      <uri>/Applications/KiCad/KiCad.app/Contents/SharedSupport/symbols//Connector_Generic.kicad_sym</uri>
+      <uri>C:\Program Files\KiCad\7.0\share\kicad\symbols\/Connector_Generic.kicad_sym</uri>
     </library>
     <library logical="Device">
-      <uri>/Applications/KiCad/KiCad.app/Contents/SharedSupport/symbols//Device.kicad_sym</uri>
+      <uri>C:\Program Files\KiCad\7.0\share\kicad\symbols\/Device.kicad_sym</uri>
     </library>
     <library logical="MCU_ST_STM32F4">
-      <uri>/Applications/KiCad/KiCad.app/Contents/SharedSupport/symbols//MCU_ST_STM32F4.kicad_sym</uri>
+      <uri>C:\Program Files\KiCad\7.0\share\kicad\symbols\/MCU_ST_STM32F4.kicad_sym</uri>
     </library>
     <library logical="Mechanical">
-      <uri>/Applications/KiCad/KiCad.app/Contents/SharedSupport/symbols//Mechanical.kicad_sym</uri>
+      <uri>C:\Program Files\KiCad\7.0\share\kicad\symbols\/Mechanical.kicad_sym</uri>
     </library>
     <library logical="Power_Protection">
-      <uri>/Applications/KiCad/KiCad.app/Contents/SharedSupport/symbols//Power_Protection.kicad_sym</uri>
+      <uri>C:\Program Files\KiCad\7.0\share\kicad\symbols\/Power_Protection.kicad_sym</uri>
     </library>
     <library logical="RF_Module">
-      <uri>/Applications/KiCad/KiCad.app/Contents/SharedSupport/symbols//RF_Module.kicad_sym</uri>
+      <uri>C:\Program Files\KiCad\7.0\share\kicad\symbols\/RF_Module.kicad_sym</uri>
     </library>
     <library logical="Reference_Voltage">
-      <uri>/Applications/KiCad/KiCad.app/Contents/SharedSupport/symbols//Reference_Voltage.kicad_sym</uri>
+      <uri>C:\Program Files\KiCad\7.0\share\kicad\symbols\/Reference_Voltage.kicad_sym</uri>
     </library>
     <library logical="Switch">
-      <uri>/Applications/KiCad/KiCad.app/Contents/SharedSupport/symbols//Switch.kicad_sym</uri>
+      <uri>C:\Program Files\KiCad\7.0\share\kicad\symbols\/Switch.kicad_sym</uri>
     </library>
     <library logical="Transistor_FET">
-      <uri>/Applications/KiCad/KiCad.app/Contents/SharedSupport/symbols//Transistor_FET.kicad_sym</uri>
+      <uri>C:\Program Files\KiCad\7.0\share\kicad\symbols\/Transistor_FET.kicad_sym</uri>
     </library>
   </libraries>
   <nets>
@@ -1659,7 +1673,7 @@
     <net code="25" name="/STM32/OSC_OUT">
       <node ref="C3" pin="1" pintype="passive"/>
       <node ref="U7" pin="6" pinfunction="PH1" pintype="input"/>
-      <node ref="Y2" pin="2" pinfunction="2" pintype="passive"/>
+      <node ref="Y2" pin="3" pinfunction="3" pintype="passive"/>
     </net>
     <net code="26" name="/STM32/S1_control">
       <node ref="J6" pin="1" pinfunction="Pin_1" pintype="passive"/>
@@ -1761,6 +1775,8 @@
       <node ref="U8" pin="4" pinfunction="GNDA" pintype="bidirectional"/>
       <node ref="U8" pin="6" pinfunction="GNDIO" pintype="bidirectional"/>
       <node ref="U8" pin="7" pinfunction="PS" pintype="bidirectional"/>
+      <node ref="Y2" pin="2" pinfunction="2" pintype="passive"/>
+      <node ref="Y2" pin="4" pinfunction="4" pintype="passive"/>
     </net>
     <net code="37" name="Net-(C17-Pad1)">
       <node ref="C17" pin="1" pintype="passive"/>
