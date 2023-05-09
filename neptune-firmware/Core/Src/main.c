@@ -104,8 +104,10 @@ int main(void)
   MX_TIM3_Init();
   MX_USB_DEVICE_Init();
   /* USER CODE BEGIN 2 */
-  HAL_TIM_PWM_START(&htim3, TIM_CHANNEL_1);
-  HAL_TIM_PWM_START(&htim3, TIM_CHANNEL_2);
+  HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_1);
+  HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_2);
+  float duty_cycle = 4;
+  int reverse = 0;
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -119,8 +121,23 @@ int main(void)
 	// 5% duty cycle minimum, 10% maximum
 	// 16 bit, 65536 increments
 
+	// arr = 200, duty cycle = ccr / arr * 100
+	htim3.Instance->CCR1 = duty_cycle * 200 / 100;
+	htim3.Instance->CCR2 = duty_cycle * 200 / 100;
 
+	if (reverse) {
+		duty_cycle -= 3.5;
+	} else {
+		duty_cycle += 3.5;
+	}
 
+	if (duty_cycle > 11) {
+		reverse = 1;
+	} else if (duty_cycle < 4) {
+		reverse = 0;
+	}
+
+	HAL_Delay(300);
   }
   /* USER CODE END 3 */
 }
