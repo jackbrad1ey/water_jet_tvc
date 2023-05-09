@@ -104,7 +104,8 @@ int main(void)
   MX_TIM3_Init();
   MX_USB_DEVICE_Init();
   /* USER CODE BEGIN 2 */
-
+  HAL_TIM_PWM_START(&htim3, TIM_CHANNEL_1);
+  HAL_TIM_PWM_START(&htim3, TIM_CHANNEL_2);
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -114,6 +115,12 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
+
+	// 5% duty cycle minimum, 10% maximum
+	// 16 bit, 65536 increments
+
+
+
   }
   /* USER CODE END 3 */
 }
