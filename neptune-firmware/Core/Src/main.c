@@ -22,7 +22,8 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+#include "usbd_cdc_if.h"
+#include "string.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -108,6 +109,7 @@ int main(void)
   HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_2);
   float duty_cycle = 4;
   int reverse = 0;
+  char str_buff[20];
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -122,6 +124,17 @@ int main(void)
 	// 16 bit, 65536 increments
 
 	// arr = 200, duty cycle = ccr / arr * 100
+	if (duty_cycle > 11) {
+		reverse = 1;
+		duty_cycle = 11-3.5;
+	} else if (duty_cycle < 4) {
+		reverse = 0;
+		duty_cycle = 4+3.5;
+	}
+
+	sprintf(str_buff, "Cycle: %.1f%%\r\n", duty_cycle);
+	CDC_Transmit_FS(str_buff, strlen(str_buff));
+
 	htim3.Instance->CCR1 = duty_cycle * 200 / 100;
 	htim3.Instance->CCR2 = duty_cycle * 200 / 100;
 
@@ -131,11 +144,6 @@ int main(void)
 		duty_cycle += 3.5;
 	}
 
-	if (duty_cycle > 11) {
-		reverse = 1;
-	} else if (duty_cycle < 4) {
-		reverse = 0;
-	}
 
 	HAL_Delay(300);
   }
