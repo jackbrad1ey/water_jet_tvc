@@ -101,7 +101,9 @@ void Error_Handler(void);
 #define S2_CTRL_GPIO_Port GPIOB
 
 /* USER CODE BEGIN Private defines */
-
+#define Accel_Sensor 1
+#define Gyro_Sensor 2
+#define Mag_Sensor 4
 /* USER CODE END Private defines */
 
 #ifdef __cplusplus
