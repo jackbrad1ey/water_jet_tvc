@@ -1,0 +1,4 @@
+../Core/Src/BMX0055.c:8:9:imu_read8	48	static
+../Core/Src/BMX0055.c:42:9:imu_read_sub16	64	static
+../Core/Src/BMX0055.c:73:9:get_ang_rate	136	static
+../Core/Src/BMX0055.c:97:9:get_roll_and_pitch	128	static

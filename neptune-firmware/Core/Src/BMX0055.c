@@ -116,3 +116,5 @@ uint8_t get_roll_and_pitch(SPI_HandleTypeDef hspi, float *roll, float *pitch) {
 
     return 0;
 }
+
+// uint8_t BMX055_init()
