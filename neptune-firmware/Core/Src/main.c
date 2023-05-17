@@ -26,6 +26,7 @@
 #include "string.h"
 #include "BMX055.h"
 #include "Sensors.h"
+#include "utils.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -149,7 +150,14 @@ int main(void)
   	float accel_data[3];
 	  BMX055_readAccel(&bmx055, accel_data);
     
+    float roll;
+    float pitch;
 
+    get_roll_and_pitch(accel_data, &roll, &pitch);
+
+    char str_buff[50];
+    sprintf(str_buff, "Roll: %.2f\tPitch: %.2f\r\n", roll, pitch);
+   	CDC_Transmit_FS(str_buff, strlen(str_buff));
 	// 5% duty cycle minimum, 10% maximum
 	// 16 bit, 65536 increments
 
@@ -162,8 +170,8 @@ int main(void)
 	// 	duty_cycle = 4+3.5;
 	// }
 
-	// sprintf(str_buff, "Cycle: %.1f%%\r\n", duty_cycle);
-	// CDC_Transmit_FS(str_buff, strlen(str_buff));
+//	 sprintf(str_buff, "Cycle: %.1f%%\r\n", duty_cycle);
+//	 CDC_Transmit_FS(str_buff, strlen(str_buff));
 
 	// htim3.Instance->CCR1 = duty_cycle * 200 / 100;
 	// htim3.Instance->CCR2 = duty_cycle * 200 / 100;
@@ -177,7 +185,7 @@ int main(void)
   
 
 
-	HAL_Delay(300);
+	HAL_Delay(50);
   }
   /* USER CODE END 3 */
 }

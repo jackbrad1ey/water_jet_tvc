@@ -1,5 +1,6 @@
 {
     "files.associations": {
-        "sensors.h": "c"
+        "sensors.h": "c",
+        "complex": "c"
     }
 }
