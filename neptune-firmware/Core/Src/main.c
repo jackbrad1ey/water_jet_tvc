@@ -25,6 +25,7 @@
 #include "usbd_cdc_if.h"
 #include "string.h"
 #include "BMX055.h"
+#include "Sensors.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -34,6 +35,8 @@
 
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
+float32_t hard_iron_offset_data[3] = { 46.5, 74.0, -44.0 };
+float32_t soft_iron_offset_data[9] = { 1, 0, 0, 0, 1, 0, 0, 0, 1 };
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
@@ -63,7 +66,8 @@ static void MX_SPI3_Init(void);
 static void MX_ADC1_Init(void);
 static void MX_TIM3_Init(void);
 /* USER CODE BEGIN PFP */
-
+BMX055_Handle bmx055;
+BMX055_Data_Handle bmx055_data;
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
@@ -110,23 +114,29 @@ int main(void)
   HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_2);
 
   /* BMX055 configurations */
-	bmx055.hspi = &hspi2;
+	bmx055.hspi = &hspi1;
 	// Accelerometer parameters
-	bmx055.acc_CS_port = GPIOB;
-	bmx055.acc_CS_pin = ACCEL_CS_Pin;
+	bmx055.acc_CS_port = ACC_CE_GPIO_Port;
+	bmx055.acc_CS_pin = ACC_CE_Pin;
 	bmx055.acc_range = BMX055_ACC_RANGE_4;
 	bmx055.acc_bandwidth = BMX055_ACC_PMU_BW_7_81;
 
 	// Gyroscope parameters
-	bmx055.gyro_CS_port = GPIOA;
-	bmx055.gyro_CS_pin = GYRO_CS_Pin;
+	bmx055.gyro_CS_port = GYR_CE_GPIO_Port;
+	bmx055.gyro_CS_pin = GYR_CE_Pin;
 	bmx055.gyro_range = BMX055_GYRO_RANGE_65_6;		// 500 deg/s
 	bmx055.gyro_bandwidth = BMX055_GYRO_BW_64;
 
 	// Magnetometer parameters
-	bmx055.mag_CS_port = GPIOB;
-	bmx055.mag_CS_pin = MAG_CS_Pin;
+	bmx055.mag_CS_port = MAG_CE_GPIO_Port;
+	bmx055.mag_CS_pin = MAG_CE_Pin;
 	bmx055.mag_data_rate = BMX055_MAG_DATA_RATE_30;
+
+  while (!BMX055_init(&bmx055)) {
+    continue;
+  }
+
+
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -136,30 +146,35 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
+  	float accel_data[3];
+	  BMX055_readAccel(&bmx055, accel_data);
+    
 
 	// 5% duty cycle minimum, 10% maximum
 	// 16 bit, 65536 increments
 
 	// arr = 200, duty cycle = ccr / arr * 100
-	if (duty_cycle > 11) {
-		reverse = 1;
-		duty_cycle = 11-3.5;
-	} else if (duty_cycle < 4) {
-		reverse = 0;
-		duty_cycle = 4+3.5;
-	}
+	// if (duty_cycle > 11) {
+	// 	reverse = 1;
+	// 	duty_cycle = 11-3.5;
+	// } else if (duty_cycle < 4) {
+	// 	reverse = 0;
+	// 	duty_cycle = 4+3.5;
+	// }
 
-	sprintf(str_buff, "Cycle: %.1f%%\r\n", duty_cycle);
-	CDC_Transmit_FS(str_buff, strlen(str_buff));
+	// sprintf(str_buff, "Cycle: %.1f%%\r\n", duty_cycle);
+	// CDC_Transmit_FS(str_buff, strlen(str_buff));
 
-	htim3.Instance->CCR1 = duty_cycle * 200 / 100;
-	htim3.Instance->CCR2 = duty_cycle * 200 / 100;
+	// htim3.Instance->CCR1 = duty_cycle * 200 / 100;
+	// htim3.Instance->CCR2 = duty_cycle * 200 / 100;
 
-	if (reverse) {
-		duty_cycle -= 3.5;
-	} else {
-		duty_cycle += 3.5;
-	}
+	// if (reverse) {
+	// 	duty_cycle -= 3.5;
+	// } else {
+	// 	duty_cycle += 3.5;
+	// }
+
+  
 
 
 	HAL_Delay(300);
@@ -173,117 +188,6 @@ int main(void)
  * @param argument: Not used
  * @retval None
  */
-/* USER CODE END Header_Start_Sample_Sensors_Task */
-void Start_Sample_Sensors_Task(void *argument) {
-	/* USER CODE BEGIN Start_Sample_Sensors_Task */
-	// Init BMX055
-	if (!BMX055_init(&bmx055)) {
-		printf("[main] BMX055 failed to start\r\n");
-	}
-	BMX055_setInterrupts(&bmx055);
-
-	uint8_t data;
-
-	/* GPS config */
-//  gps_init_tpv(&tpv);
-//	GNSS_Init(&GNSS_Handle, GPS_UART);
-//	GNSS_LoadConfig(&GNSS_Handle);
-	/* EXTI interrupt init*/
-  // HAL_NVIC_SetPriority(EXTI4_IRQn, 5, 0);
-	// HAL_NVIC_EnableIRQ(EXTI4_IRQn);
-
-  // HAL_NVIC_SetPriority(EXTI9_5_IRQn, 5, 0);
-	// HAL_NVIC_EnableIRQ(EXTI9_5_IRQn);
-
-  // HAL_NVIC_SetPriority(EXTI15_10_IRQn, 5, 0);
-	// HAL_NVIC_EnableIRQ(EXTI15_10_IRQn);
-
-	// Sensor type that is ready when task is released
-	uint32_t sensor_type;
-
-	/* Infinite loop */
-	for (;;) {
-		// Wait for sensors to be ready before running task
-		xTaskNotifyWait(0, 0, &sensor_type, (TickType_t) portMAX_DELAY);
-
-		/* Check each sensor each loop for new data */
-		switch (sensor_type) {
-		case Accel_Sensor:
-			// Clear bits corresponding to this case
-			ulTaskNotifyValueClear(Sample_Sensors_Handle, Accel_Sensor);
-			float accel_data[3];
-			BMX055_readAccel(&bmx055, accel_data);
-			BMX055_exp_filter(bmx055_data.accel, accel_data, bmx055_data.accel, sizeof(accel_data) / sizeof(int),
-			ACCEL_ALPHA);
-			break;
-
-		case Gyro_Sensor:
-			// Clear bits corresponding to this case
-			ulTaskNotifyValueClear(Sample_Sensors_Handle, Gyro_Sensor);
-			float gyro_data[3];
-			BMX055_readGyro(&bmx055, gyro_data);
-			BMX055_exp_filter(bmx055_data.gyro, gyro_data, bmx055_data.gyro, sizeof(gyro_data) / sizeof(int),
-			GYRO_ALPHA);
-			break;
-
-		case Mag_Sensor:
-			// Clear bits corresponding to this case
-			ulTaskNotifyValueClear(Sample_Sensors_Handle, Mag_Sensor);
-			BMX055_readCompensatedMag(&bmx055, bmx055_data.mag);
-			break;
-
-		case Accel_Sensor | Gyro_Sensor:
-			// Clear bits corresponding to this case
-			ulTaskNotifyValueClear(Sample_Sensors_Handle,
-			Accel_Sensor | Gyro_Sensor);
-			BMX055_readAccel(&bmx055, accel_data);
-			BMX055_exp_filter(bmx055_data.accel, accel_data, bmx055_data.accel, sizeof(accel_data) / sizeof(int),
-			ACCEL_ALPHA);
-			BMX055_readGyro(&bmx055, gyro_data);
-			BMX055_exp_filter(bmx055_data.gyro, gyro_data, bmx055_data.gyro, sizeof(gyro_data) / sizeof(int),
-			GYRO_ALPHA);
-
-			break;
-
-		case Accel_Sensor | Mag_Sensor:
-			// Clear bits corresponding to this case
-			ulTaskNotifyValueClear(Sample_Sensors_Handle,
-			Accel_Sensor | Mag_Sensor);
-			BMX055_readAccel(&bmx055, accel_data);
-			BMX055_exp_filter(bmx055_data.accel, accel_data, bmx055_data.accel, sizeof(accel_data) / sizeof(int),
-			ACCEL_ALPHA);
-			BMX055_readCompensatedMag(&bmx055, bmx055_data.mag);
-			break;
-
-		case Gyro_Sensor | Mag_Sensor:
-			// Clear bits corresponding to this case
-			ulTaskNotifyValueClear(Sample_Sensors_Handle,
-			Gyro_Sensor | Mag_Sensor);
-			BMX055_readGyro(&bmx055, gyro_data);
-			BMX055_exp_filter(bmx055_data.gyro, gyro_data, bmx055_data.gyro, sizeof(gyro_data) / sizeof(int),
-			GYRO_ALPHA);
-			BMX055_readCompensatedMag(&bmx055, bmx055_data.mag);
-			break;
-
-		case Accel_Sensor | Gyro_Sensor | Mag_Sensor:
-			// Clear bits corresponding to this case
-			ulTaskNotifyValueClear(Sample_Sensors_Handle,
-			Accel_Sensor | Gyro_Sensor | Mag_Sensor);
-			BMX055_readAccel(&bmx055, accel_data);
-			BMX055_exp_filter(bmx055_data.accel, accel_data, bmx055_data.accel, sizeof(accel_data) / sizeof(int),
-			ACCEL_ALPHA);
-			BMX055_readGyro(&bmx055, gyro_data);
-			BMX055_exp_filter(bmx055_data.gyro, gyro_data, bmx055_data.gyro, sizeof(gyro_data) / sizeof(int),
-			GYRO_ALPHA);
-			BMX055_readCompensatedMag(&bmx055, bmx055_data.mag);
-			break;
-
-		default:
-			break;
-		}
-	}
-	/* USER CODE END Start_Sample_Sensors_Task */
-}
 
 /**
   * @brief System Clock Configuration
