@@ -32,7 +32,7 @@ extern "C" {
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "BMX055.h"
-#include "Sensors.h"
+#include "servos.h"
 /* USER CODE END Includes */
 
 /* Exported types ------------------------------------------------------------*/

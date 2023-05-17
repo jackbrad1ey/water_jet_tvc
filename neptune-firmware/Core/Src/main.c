@@ -18,6 +18,7 @@
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
+#include "cmsis_os.h"
 #include "usb_device.h"
 
 /* Private includes ----------------------------------------------------------*/
@@ -54,6 +55,34 @@ SPI_HandleTypeDef hspi3;
 
 TIM_HandleTypeDef htim3;
 
+/* Definitions for SensorRead */
+osThreadId_t SensorReadHandle;
+const osThreadAttr_t SensorRead_attributes = {
+  .name = "SensorRead",
+  .stack_size = 512 * 4,
+  .priority = (osPriority_t) osPriorityRealtime,
+};
+/* Definitions for LoRa */
+osThreadId_t LoRaHandle;
+const osThreadAttr_t LoRa_attributes = {
+  .name = "LoRa",
+  .stack_size = 512 * 4,
+  .priority = (osPriority_t) osPriorityLow7,
+};
+/* Definitions for ServoActuate */
+osThreadId_t ServoActuateHandle;
+const osThreadAttr_t ServoActuate_attributes = {
+  .name = "ServoActuate",
+  .stack_size = 128 * 4,
+  .priority = (osPriority_t) osPriorityRealtime,
+};
+/* Definitions for KalmanFilter */
+osThreadId_t KalmanFilterHandle;
+const osThreadAttr_t KalmanFilter_attributes = {
+  .name = "KalmanFilter",
+  .stack_size = 1024 * 4,
+  .priority = (osPriority_t) osPriorityRealtime,
+};
 /* USER CODE BEGIN PV */
 
 /* USER CODE END PV */
@@ -66,6 +95,11 @@ static void MX_SPI2_Init(void);
 static void MX_SPI3_Init(void);
 static void MX_ADC1_Init(void);
 static void MX_TIM3_Init(void);
+void start_sensor_reading(void *argument);
+void start_LoRa_task(void *argument);
+void start_servo_control(void *argument);
+void start_kalman_filter(void *argument);
+
 /* USER CODE BEGIN PFP */
 BMX055_Handle bmx055;
 BMX055_Data_Handle bmx055_data;
@@ -109,10 +143,33 @@ int main(void)
   MX_SPI3_Init();
   MX_ADC1_Init();
   MX_TIM3_Init();
-  MX_USB_DEVICE_Init();
   /* USER CODE BEGIN 2 */
   HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_1);
   HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_2);
+
+  /* LoRa configurations */
+	LoRa_Handle = newLoRa();
+	LoRa_Handle.hSPIx = &hspi2;
+	LoRa_Handle.CS_port = RF_CE_GPIO_Port;
+	LoRa_Handle.CS_pin = RF_CE_Pin;
+	LoRa_Handle.reset_port = RF_RESET_GPIO_Port;
+	LoRa_Handle.reset_pin = RF_RESET_Pin;
+	LoRa_Handle.DIO0_port = RF_10O_GPIO_Port;
+	LoRa_Handle.DIO0_pin = RF_10O_Pin;
+
+	LoRa_Handle.frequency = 915;
+	LoRa_Handle.spredingFactor = SF_7;						// default = SF_7
+	LoRa_Handle.bandWidth = BW_125KHz;				  	// default = BW_125KHz
+	LoRa_Handle.crcRate = CR_4_5;						// default = CR_4_5
+	LoRa_Handle.power = POWER_20db;					// default = 20db
+	LoRa_Handle.overCurrentProtection = 120; 				// default = 100 mA
+	LoRa_Handle.preamble = 8;		  					// default = 8;
+
+	HAL_GPIO_WritePin(RF_CE_GPIO_Port, RF_CE_Pin, GPIO_PIN_SET);
+
+  /* Assign magnetometer calibration constants */
+	arm_mat_init_f32(&bmx055.mag_hard_iron_offsets, 3, 1, hard_iron_offset_data);
+	arm_mat_init_f32(&bmx055.mag_soft_iron_offsets, 3, 3, soft_iron_offset_data);
 
   /* BMX055 configurations */
 	bmx055.hspi = &hspi1;
@@ -133,13 +190,39 @@ int main(void)
 	bmx055.mag_CS_pin = MAG_CE_Pin;
 	bmx055.mag_data_rate = BMX055_MAG_DATA_RATE_30;
 
-  while (!BMX055_init(&bmx055)) {
-    continue;
-  }
-
-
   /* USER CODE END 2 */
 
+  /* Init scheduler */
+  osKernelInitialize();
+/* USER CODE BEGIN Header */
+/**
+  ******************************************************************************
+  * @file           : main.c
+  * @brief          : Main program body
+  ******************************************************************************
+  * @attention
+  *
+  * Copyright (c) 2023 STMicroelectronics.
+  * All rights reserved.
+  *
+  * This software is licensed under terms that can be found in the LICENSE file
+  * in the root directory of this software component.
+  * If no LICENSE file comes with this software, it is provided AS-IS.
+  *
+  ******************************************************************************
+  */
+/* USER CODE END Header */
+/**
+* @}
+*/
+/**
+* @}
+*/
+
+  /* Start scheduler */
+  osKernelStart();
+
+  /* We should never get here as control is now taken by the scheduler */
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
@@ -147,17 +230,22 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-  	float accel_data[3];
-	  BMX055_readAccel(&bmx055, accel_data);
-    
-    float roll;
-    float pitch;
 
-    get_roll_and_pitch(accel_data, &roll, &pitch);
 
-    char str_buff[50];
-    sprintf(str_buff, "Roll: %.2f\tPitch: %.2f\r\n", roll, pitch);
-   	CDC_Transmit_FS(str_buff, strlen(str_buff));
+//  	float accel_data[3];
+//	  BMX055_readAccel(&bmx055, accel_data);
+//
+//    float roll;
+//    float pitch;
+//
+//    get_roll_and_pitch(accel_data, &roll, &pitch);
+//
+//    char str_buff[50];
+//    sprintf(str_buff, "Roll: %.2f\tPitch: %.2f\r\n", roll, pitch);
+//   	CDC_Transmit_FS(str_buff, strlen(str_buff));
+//
+
+
 	// 5% duty cycle minimum, 10% maximum
 	// 16 bit, 65536 increments
 
@@ -182,20 +270,13 @@ int main(void)
 	// 	duty_cycle += 3.5;
 	// }
 
-  
+
 
 
 	HAL_Delay(50);
   }
   /* USER CODE END 3 */
 }
-
-/* USER CODE BEGIN Header_Start_Sample_Sensors_Task */
-/**
- * @brief Function implementing the Sample_Sensors_ thread.
- * @param argument: Not used
- * @retval None
- */
 
 /**
   * @brief System Clock Configuration
@@ -517,6 +598,247 @@ static void MX_GPIO_Init(void)
 /* USER CODE BEGIN 4 */
 
 /* USER CODE END 4 */
+
+/* USER CODE BEGIN Header_start_sensor_reading */
+/**
+  * @brief  Function implementing the SensorRead thread.
+  * @param  argument: Not used
+  * @retval None
+  */
+/* USER CODE END Header_start_sensor_reading */
+void start_sensor_reading(void *argument)
+{
+  /* init code for USB_DEVICE */
+  MX_USB_DEVICE_Init();
+  /* USER CODE BEGIN 5 */
+	// Init BMX055
+	if (!BMX055_init(&bmx055)) {
+		printf("[main] BMX055 failed to start\r\n");
+	}
+	BMX055_setInterrupts(&bmx055);
+
+	uint8_t data;
+
+	/* GPS config */
+//  gps_init_tpv(&tpv);
+//	GNSS_Init(&GNSS_Handle, GPS_UART);
+//	GNSS_LoadConfig(&GNSS_Handle);
+	/* EXTI interrupt init*/
+//	HAL_NVIC_SetPriority(EXTI4_IRQn, 5, 0);
+	HAL_NVIC_EnableIRQ(EXTI4_IRQn);
+
+//	HAL_NVIC_SetPriority(EXTI9_5_IRQn, 5, 0);
+	HAL_NVIC_EnableIRQ(EXTI9_5_IRQn);
+
+//	HAL_NVIC_SetPriority(EXTI15_10_IRQn, 5, 0);
+	HAL_NVIC_EnableIRQ(EXTI15_10_IRQn);
+
+	// Sensor type that is ready when task is released
+	uint32_t sensor_type;
+
+	/* Infinite loop */
+	for (;;) {
+		// Wait for sensors to be ready before running task
+		xTaskNotifyWait(0, 0, &sensor_type, (TickType_t) portMAX_DELAY);
+
+		/* Check each sensor each loop for new data */
+		switch (sensor_type) {
+		case Accel_Sensor:
+			// Clear bits corresponding to this case
+			ulTaskNotifyValueClear(Sample_Sensors_Handle, Accel_Sensor);
+			float accel_data[3];
+			BMX055_readAccel(&bmx055, accel_data);
+			BMX055_exp_filter(bmx055_data.accel, accel_data, bmx055_data.accel, sizeof(accel_data) / sizeof(int),
+			ACCEL_ALPHA);
+			break;
+
+		case Gyro_Sensor:
+			// Clear bits corresponding to this case
+			ulTaskNotifyValueClear(Sample_Sensors_Handle, Gyro_Sensor);
+			float gyro_data[3];
+			BMX055_readGyro(&bmx055, gyro_data);
+			BMX055_exp_filter(bmx055_data.gyro, gyro_data, bmx055_data.gyro, sizeof(gyro_data) / sizeof(int),
+			GYRO_ALPHA);
+			break;
+
+		case Mag_Sensor:
+			// Clear bits corresponding to this case
+			ulTaskNotifyValueClear(Sample_Sensors_Handle, Mag_Sensor);
+			BMX055_readCompensatedMag(&bmx055, bmx055_data.mag);
+			break;
+
+		case Accel_Sensor | Gyro_Sensor:
+			// Clear bits corresponding to this case
+			ulTaskNotifyValueClear(Sample_Sensors_Handle,
+			Accel_Sensor | Gyro_Sensor);
+			BMX055_readAccel(&bmx055, accel_data);
+			BMX055_exp_filter(bmx055_data.accel, accel_data, bmx055_data.accel, sizeof(accel_data) / sizeof(int),
+			ACCEL_ALPHA);
+			BMX055_readGyro(&bmx055, gyro_data);
+			BMX055_exp_filter(bmx055_data.gyro, gyro_data, bmx055_data.gyro, sizeof(gyro_data) / sizeof(int),
+			GYRO_ALPHA);
+
+			break;
+
+		case Accel_Sensor | Mag_Sensor:
+			// Clear bits corresponding to this case
+			ulTaskNotifyValueClear(Sample_Sensors_Handle,
+			Accel_Sensor | Mag_Sensor);
+			BMX055_readAccel(&bmx055, accel_data);
+			BMX055_exp_filter(bmx055_data.accel, accel_data, bmx055_data.accel, sizeof(accel_data) / sizeof(int),
+			ACCEL_ALPHA);
+			BMX055_readCompensatedMag(&bmx055, bmx055_data.mag);
+			break;
+
+		case Gyro_Sensor | Mag_Sensor:
+			// Clear bits corresponding to this case
+			ulTaskNotifyValueClear(Sample_Sensors_Handle,
+			Gyro_Sensor | Mag_Sensor);
+			BMX055_readGyro(&bmx055, gyro_data);
+			BMX055_exp_filter(bmx055_data.gyro, gyro_data, bmx055_data.gyro, sizeof(gyro_data) / sizeof(int),
+			GYRO_ALPHA);
+			BMX055_readCompensatedMag(&bmx055, bmx055_data.mag);
+			break;
+
+		case Accel_Sensor | Gyro_Sensor | Mag_Sensor:
+			// Clear bits corresponding to this case
+			ulTaskNotifyValueClear(Sample_Sensors_Handle,
+			Accel_Sensor | Gyro_Sensor | Mag_Sensor);
+			BMX055_readAccel(&bmx055, accel_data);
+			BMX055_exp_filter(bmx055_data.accel, accel_data, bmx055_data.accel, sizeof(accel_data) / sizeof(int),
+			ACCEL_ALPHA);
+			BMX055_readGyro(&bmx055, gyro_data);
+			BMX055_exp_filter(bmx055_data.gyro, gyro_data, bmx055_data.gyro, sizeof(gyro_data) / sizeof(int),
+			GYRO_ALPHA);
+			BMX055_readCompensatedMag(&bmx055, bmx055_data.mag);
+			break;
+
+		default:
+			break;
+		}
+	}
+  /* USER CODE END 5 */
+}
+
+/* USER CODE BEGIN Header_start_LoRa_task */
+/**
+* @brief Function implementing the LoRa thread.
+* @param argument: Not used
+* @retval None
+*/
+/* USER CODE END Header_start_LoRa_task */
+void start_LoRa_task(void *argument)
+{
+  /* USER CODE BEGIN start_LoRa_task */
+  LoRa_reset(&LoRa_Handle);
+	LoRa_setModulation(&LoRa_Handle, LORA_MODULATION);
+	if (LoRa_init(&LoRa_Handle) != LORA_OK) {
+      CDC_Transmit_FS("LoRa connection failed\r\n", strlen("LoRa connection failed\r\n"));
+	}
+
+	LoRa_startReceiving(&LoRa_Handle);
+  /* Infinite loop */
+  for(;;)
+  {
+    // Wait for LoRa to be ready before running task
+		xTaskNotifyWait(0, 0, NULL, (TickType_t) portMAX_DELAY);
+
+		// Read bytes in FIFO buffer
+		uint8_t read_data[255];
+		size_t bytes_read = LoRa_receive(&LoRa_Handle, read_data, sizeof(read_data));
+
+    
+  }
+  /* USER CODE END start_LoRa_task */
+}
+
+/* USER CODE BEGIN Header_start_servo_control */
+/**
+* @brief Function implementing the ServoActuate thread.
+* @param argument: Not used
+* @retval None
+*/
+/* USER CODE END Header_start_servo_control */
+void start_servo_control(void *argument)
+{
+  /* USER CODE BEGIN start_servo_control */
+  /* Infinite loop */
+  for(;;)
+  {
+    osDelay(1);
+  }
+  /* USER CODE END start_servo_control */
+}
+
+/* USER CODE BEGIN Header_start_kalman_filter */
+/**
+* @brief Function implementing the KalmanFilter thread.
+* @param argument: Not used
+* @retval None
+*/
+/* USER CODE END Header_start_kalman_filter */
+void start_kalman_filter(void *argument)
+{
+  /* USER CODE BEGIN start_kalman_filter */
+	uint32_t currentSampleTime = 0;
+	uint32_t lastSampleTime = 0;
+	int correct_freq = 1;
+	int idx = 0;
+	EKF_Init(&ekf, qu, EKF_K, EKF_P, EKF_Q, EKF_R, 0.0);
+	float fake_acc_dat[10][3] = { { 0, 0, -9.81 }, { 1.703, 0, 9.66 }, { 3.355, 0, 9.218 }, { 4.905, 0, 8.496 }, { 6.306, 0, 7.515 }, { 7.515, 0, 6.306 }, { 8.496, 0, 4.905 }, { 9.218, 0, 3.355 }, { 9.66, 0, 1.703 }, { -9.81, 0, 0 } };
+	float fake_gyr_dat[10][3] = { { 0, 0.175, 0 }, { 0, 0.175, 0 }, { 0, 0.175, 0 }, { 0, 0.175, 0 }, { 0, 0.175, 0 }, { 0, 0.175, 0 }, { 0, 0.175, 0 }, { 0, 0.175, 0 }, { 0, 0.175, 0 }, { 0, 0.175, 0 } };
+//	osDelay(3000);
+
+	/* Infinite loop */
+	for (;;) {
+		trace_counter++;
+		currentSampleTime = micros(Micros_Timer);
+		float dt = (currentSampleTime - lastSampleTime) / 1E6;
+		lastSampleTime = currentSampleTime;
+
+		float p = (float) (bmx055_data.gyro[0]);
+		float q = (float) (bmx055_data.gyro[1]);
+		float r = (float) (bmx055_data.gyro[2]);
+		EKF_Predict(&ekf, p, q, r, dt);
+		if (idx % correct_freq == 0) {
+			EKF_Update(&ekf, (float) bmx055_data.accel[0] / 100, (float) bmx055_data.accel[1] / 100, (float) bmx055_data.accel[2] / 100, 1.5, 0, 0);
+			idx = 0;
+		}
+		idx++;
+		float euler_result[3];
+		EP2Euler321(ekf.qu_data, euler_result);
+		char printData[256];
+		size_t sz;
+		// Print pqr rates in rad/s
+//		sz = snprintf(printData, sizeof(printData), "%0.6f, %0.6f, %0.6f, %0.6f\r\n", p, q, r, dt);
+//		debug_print(printData, sz);
+		// Print Euler angles
+//		sz = snprintf(printData, sizeof(printData), "roll:%0.2f pitch:%0.2f yaw:%0.2f\r\n",
+//				euler_result[0] * 57.2958, euler_result[1] * 57.2958,
+//				euler_result[2] * 57.2958);
+//		debug_print(printData, sz);
+		// Print quaternions
+//	sz = snprintf(printData, sizeof(printData), "%0.10f, %0.10f, %0.10f, %0.10f, %0.10f, %0.10f, %0.10f, %0.10f, %0.10f, %0.10f, %0.10f\r\n", p, q, r, dt, ekf.qu_data[0],
+//				ekf.qu_data[1], ekf.qu_data[2], ekf.qu_data[3], euler_result[0], euler_result[1], euler_result[2]);
+//		debug_print(printData, sz);
+//		sz = snprintf(printData, sizeof(printData), "Orientation: %0.4f, %0.4f, %0.4f\r\n", euler_result[0] * 57.2958, euler_result[1] * 57.2958, euler_result[2] * 57.2958);
+//		debug_print(printData, sz, dbg=DBG);
+		osDelay(10);
+//		for (int idx = 0; idx < 10; idx++) {
+//			EKF_Predict(&ekf, fake_gyr_dat[idx][0], fake_gyr_dat[idx][1], fake_gyr_dat[idx][2], 1.0);
+//			EKF_Update(&ekf, fake_acc_dat[idx][0], fake_acc_dat[idx][1], fake_acc_dat[idx][2], 1.5, 0, 0);
+//
+//			float euler_result[3];
+//			EP2Euler123(ekf.qu_data, euler_result);
+//			char printData[128];
+//			size_t sz = snprintf(printData, sizeof(printData), "%0.2f, %0.2f, %0.2f\r\n", euler_result[0] * 57.2958,
+//					euler_result[1] * 57.2958, euler_result[2] * 57.2958);
+//			debug_print(printData, sz);
+//			osDelay(1000);
+//		}
+	}
+  /* USER CODE END start_kalman_filter */
+}
 
 /**
   * @brief  This function is executed in case of error occurrence.
