@@ -753,10 +753,25 @@ void start_LoRa_task(void *argument)
 
     switch (read_data[0]) {
       case SET_ANGLES:
+        float x = read_data[1] << 24;
+        x = ((unsigned long) x) | (read_data[2] << 16);
+        x = ((unsigned long) x) | (read_data[3] << 8);
+        x = ((unsigned long) x) | read_data[4];
+
+        float y = read_data[5] << 24;
+        y = ((unsigned long) y) | (read_data[6] << 16);
+        y = ((unsigned long) y) | (read_data[7] << 8);
+        y = ((unsigned long) y) | read_data[8];
+
+        set_motor(1, x, htim3);
+        set_motor(2, y, htim3);
         break;
       case GIMBLE_MOTORS:
         gimble_test(htim3);
         break;
+      case PONG:
+        uint8_t resp = 1;
+        LoRa_transmit(&LoRa_Handle, &resp, 1, portMAX_DELAY);
       default:
         break;
     }
