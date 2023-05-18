@@ -28,6 +28,7 @@
 #include "BMX055.h"
 #include "Sensors.h"
 #include "utils.h"
+#include "packets.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -84,7 +85,7 @@ const osThreadAttr_t KalmanFilter_attributes = {
   .priority = (osPriority_t) osPriorityRealtime,
 };
 /* USER CODE BEGIN PV */
-
+int SERVO_ENABLED = 0;  // disabled by default
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -103,6 +104,7 @@ void start_kalman_filter(void *argument);
 /* USER CODE BEGIN PFP */
 BMX055_Handle bmx055;
 BMX055_Data_Handle bmx055_data;
+Motors motors;
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
@@ -189,6 +191,8 @@ int main(void)
 	bmx055.mag_CS_port = MAG_CE_GPIO_Port;
 	bmx055.mag_CS_pin = MAG_CE_Pin;
 	bmx055.mag_data_rate = BMX055_MAG_DATA_RATE_30;
+
+  /* Servo configurations */
 
   /* USER CODE END 2 */
 
@@ -729,8 +733,8 @@ void start_sensor_reading(void *argument)
 /* USER CODE END Header_start_LoRa_task */
 void start_LoRa_task(void *argument)
 {
-  /* USER CODE BEGIN start_LoRa_task */
-  LoRa_reset(&LoRa_Handle);
+    /* USER CODE BEGIN start_LoRa_task */
+    LoRa_reset(&LoRa_Handle);
 	LoRa_setModulation(&LoRa_Handle, LORA_MODULATION);
 	if (LoRa_init(&LoRa_Handle) != LORA_OK) {
       CDC_Transmit_FS("LoRa connection failed\r\n", strlen("LoRa connection failed\r\n"));
@@ -741,13 +745,21 @@ void start_LoRa_task(void *argument)
   for(;;)
   {
     // Wait for LoRa to be ready before running task
-		xTaskNotifyWait(0, 0, NULL, (TickType_t) portMAX_DELAY);
+    xTaskNotifyWait(0, 0, NULL, (TickType_t) portMAX_DELAY);
 
-		// Read bytes in FIFO buffer
-		uint8_t read_data[255];
-		size_t bytes_read = LoRa_receive(&LoRa_Handle, read_data, sizeof(read_data));
+    // Read bytes in FIFO buffer
+    uint8_t read_data[255];
+    size_t bytes_read = LoRa_receive(&LoRa_Handle, read_data, sizeof(read_data));
 
-    
+    switch (read_data[0]) {
+      case SET_ANGLES:
+        break;
+      case GIMBLE_MOTORS:
+        gimble_test(htim3);
+        break;
+      default:
+        break;
+    }
   }
   /* USER CODE END start_LoRa_task */
 }
@@ -765,7 +777,10 @@ void start_servo_control(void *argument)
   /* Infinite loop */
   for(;;)
   {
-    osDelay(1);
+    if (SERVO_ENABLED) {
+        set_motor(1, motors->m1_angle, htim3);
+        set_motor(2, motors->m2_angle, htim3);
+    }
   }
   /* USER CODE END start_servo_control */
 }

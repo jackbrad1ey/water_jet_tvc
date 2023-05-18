@@ -20,7 +20,7 @@ float _degrees_to_duty_cycle(float degrees) {
 	return duty_cycle;
 }
 
-float set_motor(int motor_id, float degrees, TIM_HandleTypeDef htim) {
+void set_motor(int motor_id, float degrees, TIM_HandleTypeDef htim) {
 	float duty_cycle = _degrees_to_duty_cycle(degrees);
 
 	// duty cycle = ccr / arr * 100
@@ -38,4 +38,24 @@ float set_motor(int motor_id, float degrees, TIM_HandleTypeDef htim) {
 	}
 }
 
+void gimble_test(TIM_HandleTypeDef htim) {
+	set_motor(1, 0, htim);
+	HAL_Delay(1000);
+	set_motor(1, 180, htim);
+	HAL_Delay(1000);
+	set_motor(1, 90, htim);
+	HAL_Delay(1000);
+	set_motor(2, 0, htim);
+	HAL_Delay(1000);
+	set_motor(2, 180, htim);
+	HAL_Delay(1000);
+	set_motor(2, 90, htim);
+	HAL_Delay(1000);
+
+	for (int angle=0; angle < 180; angle++) {
+		set_motor(1, angle, htim);
+		set_motor(2, angle, htim);
+		HAL_Delay(10);
+	}
+}
 // we have our min, max, and need to normalise that to 0 to 180
