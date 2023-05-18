@@ -121,24 +121,37 @@ int main(void)
 
     /* USER CODE BEGIN 3 */
 
-	// 5% duty cycle minimum, 10% maximum
-	// 16 bit, 65536 increments
+		// 5% duty cycle minimum, 10% maximum
+		// 16 bit, 65536 increments
 
-	// arr = 200, duty cycle = ccr / arr * 100
-  float roll;
-  float pitch;
-  uint8_t data;
+		// arr = 200, duty cycle = ccr / arr * 100
+		if (duty_cycle > 11) {
+			reverse = 1;
+			duty_cycle = 11-3.5;
+		} else if (duty_cycle < 4) {
+			reverse = 0;
+			duty_cycle = 4+3.5;
+		}
 
-//  if (get_roll_and_pitch(hspi1, &roll, &pitch)) {
-//    continue;
-//  }
+		sprintf(str_buff, "Cycle: %.1f%%\r\n", duty_cycle);
+		CDC_Transmit_FS(str_buff, strlen(str_buff));
 
-  if (imu_read8(hspi1, 'a', 0x00, &data)) {
-	  continue;
-  }
+		htim3.Instance->CCR1 = duty_cycle * 200 / 100;
+		htim3.Instance->CCR2 = duty_cycle * 200 / 100;
 
-  
-	HAL_Delay(300);
+		if (reverse) {
+			duty_cycle -= 3.5;
+		} else {
+			duty_cycle += 3.5;
+		}
+
+		if (duty_cycle > 11) {
+			reverse = 1;
+		} else if (duty_cycle < 4) {
+			reverse = 0;
+		}
+
+		HAL_Delay(300);
   }
   /* USER CODE END 3 */
 }

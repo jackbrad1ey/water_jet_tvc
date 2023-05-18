@@ -1,4 +1,4 @@
 BMX0055.c:8:9:imu_read8	4
-BMX0055.c:42:9:imu_read_sub16	4
-BMX0055.c:73:9:get_ang_rate	5
-BMX0055.c:97:9:get_roll_and_pitch	4
+BMX0055.c:40:9:imu_read_sub16	4
+BMX0055.c:71:9:get_ang_rate	5
+BMX0055.c:95:9:get_roll_and_pitch	4
