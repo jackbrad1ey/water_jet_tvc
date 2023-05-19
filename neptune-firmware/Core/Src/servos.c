@@ -5,14 +5,8 @@
  *      Author: jb
  */
 
-#include "servos.h";
-#include "usbd_cdc_if.h";
-#include "string.h";
-
-const float MIN_DUTY_CYCLE = 2.5;
-const float MAX_DUTY_CYCLE = 10.5;
-const float MAX_ANGLE = 180;
-const float MIN_ANGLE = 0;  // may want to do -90 to 90 instead, we'll see how we go
+#include "servos.h"
+#include "usbd_cdc_if.h"
 
 float _degrees_to_duty_cycle(float degrees) {
 	float duty_cycle = MIN_DUTY_CYCLE + ((MAX_DUTY_CYCLE - MIN_DUTY_CYCLE) / (MAX_ANGLE - MIN_ANGLE)) * (degrees - MIN_ANGLE);

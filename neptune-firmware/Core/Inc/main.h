@@ -31,8 +31,7 @@ extern "C" {
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-#include "BMX055.h"
-#include "servos.h"
+#define ARM_MATH_CM4
 /* USER CODE END Includes */
 
 /* Exported types ------------------------------------------------------------*/

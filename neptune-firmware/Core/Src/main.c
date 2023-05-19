@@ -23,17 +23,51 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
+#include <math.h>
+#include <string.h>
 #include "usbd_cdc_if.h"
-#include "string.h"
+#include "arm_math.h"
+
 #include "BMX055.h"
+#include "LoRa.h"
 #include "Sensors.h"
-#include "utils.h"
 #include "packets.h"
+#include "EKF.h"
+#include "utils.h"
+#include "servos.h"
+
+// #include "arm_math.h"
+// #include "usbd_cdc_if.h"
+// #include "string.h"
+// #include "BMX055.h"
+// #include "Sensors.h"
+// #include "utils.h"
+// #include "packets.h"
+// #include "LoRa.h"
+// #include "servos.h"
+// #include "EKF.h"
+
+// #include <stdbool.h>
+// #include <math.h>
+// #include "usbd_cdc_if.h"
+// #include "arm_math.h"
+
+// #include "BMX055.h"
+// #include "MS5611.h"
+// #include "LoRa.h"
+// #include "Sensors.h"
+// #include "Packets.h"
+// #include "EKF.h"
+// #include "debug.h"
+// #include "gps.h"
+// #include "State_Machine.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
 /* USER CODE BEGIN PTD */
-
+#define SAMPLE_FREQUENCY 100
+#define ACCEL_ALPHA 0.9
+#define GYRO_ALPHA 0.5
 /* USER CODE END PTD */
 
 /* Private define ------------------------------------------------------------*/
@@ -54,6 +88,7 @@ SPI_HandleTypeDef hspi1;
 SPI_HandleTypeDef hspi2;
 SPI_HandleTypeDef hspi3;
 
+TIM_HandleTypeDef htim2;
 TIM_HandleTypeDef htim3;
 
 /* Definitions for SensorRead */
@@ -96,6 +131,7 @@ static void MX_SPI2_Init(void);
 static void MX_SPI3_Init(void);
 static void MX_ADC1_Init(void);
 static void MX_TIM3_Init(void);
+static void MX_TIM2_Init(void);
 void start_sensor_reading(void *argument);
 void start_LoRa_task(void *argument);
 void start_servo_control(void *argument);
@@ -105,11 +141,59 @@ void start_kalman_filter(void *argument);
 BMX055_Handle bmx055;
 BMX055_Data_Handle bmx055_data;
 Motors motors;
+TIM_HandleTypeDef *Micros_Timer = &htim2;
+
+/* Define data class structs */
+int trace_counter = 0;
+BMX055_Handle bmx055;
+BMX055_Data_Handle bmx055_data;
+LoRa LoRa_Handle;
+EKF ekf;
+float EKF_K[12] = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+float qu[4] = { 1, 0, 0, 0 }; // Corresponds to 0, 0, 0 YPR
+float EKF_P[16] = { 0.01, 0, 0, 0, 0, 0.01, 0, 0, 0, 0, 0.01, 0, 0, 0, 0, 0.01 };
+float EKF_Q[16] = { 0.01, 0, 0, 0, 0, 0.01, 0, 0, 0, 0, 0.01, 0, 0, 0, 0, 0.01 };
+float EKF_R[9] = { 496, 025, 271, 025, 379, 326, 271, 326, 998 }; // These are in units of 100*m/s^2
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
+uint32_t micros(TIM_HandleTypeDef *timer) {
+	return __HAL_TIM_GET_COUNTER(timer);
+}
 
+void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin) {
+	// Give notification to Sample_Sensors_Handle so that scheduler enables the task
+//	vTaskNotifyGiveFromISR(Sample_Sensors_Handle, NULL);
+	switch (GPIO_Pin) {
+	case GPIO_PIN_4:
+		/* Accelerometer interrupt */
+		// Log time of interrupt
+		bmx055_data.accel[4] = bmx055_data.accel[3];
+		bmx055_data.accel[3] = micros(Micros_Timer);
+		xTaskNotifyFromISR(SensorReadHandle, (uint32_t)Accel_Sensor, eSetBits, NULL);
+		return;
+	case GPIO_PIN_5:
+		/* Gyroscope interrupt */
+		// Log time of interrupt
+		bmx055_data.gyro[4] = bmx055_data.gyro[3];
+		bmx055_data.gyro[3] = micros(Micros_Timer);
+		xTaskNotifyFromISR(SensorReadHandle, (uint32_t)Gyro_Sensor, eSetBits, NULL);
+		return;
+	case GPIO_PIN_6:
+		/* Magnetometer interrupt */
+		// Log time of interrupt
+		bmx055_data.mag[4] = bmx055_data.mag[3];
+		bmx055_data.mag[3] = micros(Micros_Timer);
+		xTaskNotifyFromISR(SensorReadHandle, (uint32_t)Mag_Sensor, eSetBits, NULL);
+		return;
+	case GPIO_PIN_11:
+		/* LoRa interrupt */
+		xTaskNotifyFromISR(LoRaHandle, NULL, eNoAction, NULL);
+	default:
+		return;
+	}
+}
 /* USER CODE END 0 */
 
 /**
@@ -145,6 +229,7 @@ int main(void)
   MX_SPI3_Init();
   MX_ADC1_Init();
   MX_TIM3_Init();
+  MX_TIM2_Init();
   /* USER CODE BEGIN 2 */
   HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_1);
   HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_2);
@@ -215,6 +300,18 @@ int main(void)
   *
   ******************************************************************************
   */
+  
+  	/* Create the thread(s) */
+	/* creation of Sample_Sensors_ */
+	SensorReadHandle = osThreadNew(start_sensor_reading, NULL, &SensorRead_attributes);
+
+	/* creation of LoRa */
+	LoRaHandle = osThreadNew(start_LoRa_task, NULL, &LoRa_attributes);
+
+	/* creation of Kalman_Filter */
+	KalmanFilterHandle = osThreadNew(start_kalman_filter, NULL, &KalmanFilter_attributes);
+    ServoActuateHandle = osThreadNew(start_servo_control, NULL, &ServoActuate_attributes);
+  
 /* USER CODE END Header */
 /**
 * @}
@@ -277,7 +374,7 @@ int main(void)
 
 
 
-	HAL_Delay(50);
+	// HAL_Delay(50);
   }
   /* USER CODE END 3 */
 }
@@ -494,6 +591,51 @@ static void MX_SPI3_Init(void)
 }
 
 /**
+  * @brief TIM2 Initialization Function
+  * @param None
+  * @retval None
+  */
+static void MX_TIM2_Init(void)
+{
+
+  /* USER CODE BEGIN TIM2_Init 0 */
+
+  /* USER CODE END TIM2_Init 0 */
+
+  TIM_ClockConfigTypeDef sClockSourceConfig = {0};
+  TIM_MasterConfigTypeDef sMasterConfig = {0};
+
+  /* USER CODE BEGIN TIM2_Init 1 */
+
+  /* USER CODE END TIM2_Init 1 */
+  htim2.Instance = TIM2;
+  htim2.Init.Prescaler = 192-1;
+  htim2.Init.CounterMode = TIM_COUNTERMODE_UP;
+  htim2.Init.Period = 4294967295;
+  htim2.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
+  htim2.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_DISABLE;
+  if (HAL_TIM_Base_Init(&htim2) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  sClockSourceConfig.ClockSource = TIM_CLOCKSOURCE_INTERNAL;
+  if (HAL_TIM_ConfigClockSource(&htim2, &sClockSourceConfig) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  sMasterConfig.MasterOutputTrigger = TIM_TRGO_RESET;
+  sMasterConfig.MasterSlaveMode = TIM_MASTERSLAVEMODE_DISABLE;
+  if (HAL_TIMEx_MasterConfigSynchronization(&htim2, &sMasterConfig) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  /* USER CODE BEGIN TIM2_Init 2 */
+
+  /* USER CODE END TIM2_Init 2 */
+
+}
+
+/**
   * @brief TIM3 Initialization Function
   * @param None
   * @retval None
@@ -649,7 +791,7 @@ void start_sensor_reading(void *argument)
 		switch (sensor_type) {
 		case Accel_Sensor:
 			// Clear bits corresponding to this case
-			ulTaskNotifyValueClear(Sample_Sensors_Handle, Accel_Sensor);
+			ulTaskNotifyValueClear(SensorReadHandle, Accel_Sensor);
 			float accel_data[3];
 			BMX055_readAccel(&bmx055, accel_data);
 			BMX055_exp_filter(bmx055_data.accel, accel_data, bmx055_data.accel, sizeof(accel_data) / sizeof(int),
@@ -658,7 +800,7 @@ void start_sensor_reading(void *argument)
 
 		case Gyro_Sensor:
 			// Clear bits corresponding to this case
-			ulTaskNotifyValueClear(Sample_Sensors_Handle, Gyro_Sensor);
+			ulTaskNotifyValueClear(SensorReadHandle, Gyro_Sensor);
 			float gyro_data[3];
 			BMX055_readGyro(&bmx055, gyro_data);
 			BMX055_exp_filter(bmx055_data.gyro, gyro_data, bmx055_data.gyro, sizeof(gyro_data) / sizeof(int),
@@ -667,13 +809,13 @@ void start_sensor_reading(void *argument)
 
 		case Mag_Sensor:
 			// Clear bits corresponding to this case
-			ulTaskNotifyValueClear(Sample_Sensors_Handle, Mag_Sensor);
+			ulTaskNotifyValueClear(SensorReadHandle, Mag_Sensor);
 			BMX055_readCompensatedMag(&bmx055, bmx055_data.mag);
 			break;
 
 		case Accel_Sensor | Gyro_Sensor:
 			// Clear bits corresponding to this case
-			ulTaskNotifyValueClear(Sample_Sensors_Handle,
+			ulTaskNotifyValueClear(SensorReadHandle,
 			Accel_Sensor | Gyro_Sensor);
 			BMX055_readAccel(&bmx055, accel_data);
 			BMX055_exp_filter(bmx055_data.accel, accel_data, bmx055_data.accel, sizeof(accel_data) / sizeof(int),
@@ -686,7 +828,7 @@ void start_sensor_reading(void *argument)
 
 		case Accel_Sensor | Mag_Sensor:
 			// Clear bits corresponding to this case
-			ulTaskNotifyValueClear(Sample_Sensors_Handle,
+			ulTaskNotifyValueClear(SensorReadHandle,
 			Accel_Sensor | Mag_Sensor);
 			BMX055_readAccel(&bmx055, accel_data);
 			BMX055_exp_filter(bmx055_data.accel, accel_data, bmx055_data.accel, sizeof(accel_data) / sizeof(int),
@@ -696,7 +838,7 @@ void start_sensor_reading(void *argument)
 
 		case Gyro_Sensor | Mag_Sensor:
 			// Clear bits corresponding to this case
-			ulTaskNotifyValueClear(Sample_Sensors_Handle,
+			ulTaskNotifyValueClear(SensorReadHandle,
 			Gyro_Sensor | Mag_Sensor);
 			BMX055_readGyro(&bmx055, gyro_data);
 			BMX055_exp_filter(bmx055_data.gyro, gyro_data, bmx055_data.gyro, sizeof(gyro_data) / sizeof(int),
@@ -706,7 +848,7 @@ void start_sensor_reading(void *argument)
 
 		case Accel_Sensor | Gyro_Sensor | Mag_Sensor:
 			// Clear bits corresponding to this case
-			ulTaskNotifyValueClear(Sample_Sensors_Handle,
+			ulTaskNotifyValueClear(SensorReadHandle,
 			Accel_Sensor | Gyro_Sensor | Mag_Sensor);
 			BMX055_readAccel(&bmx055, accel_data);
 			BMX055_exp_filter(bmx055_data.accel, accel_data, bmx055_data.accel, sizeof(accel_data) / sizeof(int),
@@ -733,7 +875,7 @@ void start_sensor_reading(void *argument)
 /* USER CODE END Header_start_LoRa_task */
 void start_LoRa_task(void *argument)
 {
-    /* USER CODE BEGIN start_LoRa_task */
+  /* USER CODE BEGIN start_LoRa_task */
     LoRa_reset(&LoRa_Handle);
 	LoRa_setModulation(&LoRa_Handle, LORA_MODULATION);
 	if (LoRa_init(&LoRa_Handle) != LORA_OK) {
@@ -752,7 +894,7 @@ void start_LoRa_task(void *argument)
     size_t bytes_read = LoRa_receive(&LoRa_Handle, read_data, sizeof(read_data));
 
     switch (read_data[0]) {
-      case SET_ANGLES:
+      case SET_ANGLES: ;
         float x = read_data[1] << 24;
         x = ((unsigned long) x) | (read_data[2] << 16);
         x = ((unsigned long) x) | (read_data[3] << 8);
@@ -769,9 +911,10 @@ void start_LoRa_task(void *argument)
       case GIMBLE_MOTORS:
         gimble_test(htim3);
         break;
-      case PONG:
+      case PONG: ;
         uint8_t resp = 1;
-        LoRa_transmit(&LoRa_Handle, &resp, 1, portMAX_DELAY);
+        LoRa_transmit(&LoRa_Handle, &resp, 1, 0xffff);
+        break;
       default:
         break;
     }
@@ -793,8 +936,8 @@ void start_servo_control(void *argument)
   for(;;)
   {
     if (SERVO_ENABLED) {
-        set_motor(1, motors->m1_angle, htim3);
-        set_motor(2, motors->m2_angle, htim3);
+        set_motor(1, motors.m1_angle, htim3);
+        set_motor(2, motors.m2_angle, htim3);
     }
   }
   /* USER CODE END start_servo_control */

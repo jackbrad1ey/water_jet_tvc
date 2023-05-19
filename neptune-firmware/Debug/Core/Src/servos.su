@@ -1,2 +1,3 @@
-../Core/Src/servos.c:17:7:_degrees_to_duty_cycle	24	static
-../Core/Src/servos.c:23:7:set_motor	56	static
+../Core/Src/servos.c:11:7:_degrees_to_duty_cycle	24	static
+../Core/Src/servos.c:17:6:set_motor	56	static
+../Core/Src/servos.c:35:6:gimble_test	88	static

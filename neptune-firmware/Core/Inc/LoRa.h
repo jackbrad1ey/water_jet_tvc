@@ -5,6 +5,8 @@
 // |            E-MAIL:  motlaq@aut.ac.ir           | \\
 // |                                                | \\
 // -------------------------------------------------- //
+#ifndef LORA_H
+#define LORA_H
 
 #include "main.h"
 
@@ -159,3 +161,5 @@ uint8_t LoRa_received_bytes(LoRa* _LoRa);
 int LoRa_getRSSI(LoRa* _LoRa);
 
 uint16_t LoRa_init(LoRa* _LoRa);
+
+#endif
