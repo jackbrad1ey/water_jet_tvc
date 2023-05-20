@@ -3,6 +3,7 @@ import struct
 import time
 import os
 import controller
+import zlib
 
 class GroundStation:
     def __init__(self, com_port):
@@ -16,29 +17,42 @@ class GroundStation:
             if self._acknowledge():
                 break
 
-            print("Failed to receive acknowledgement packet, retrying...")
+            print("Failed to get serial acknowledgement, retrying...")
             time.sleep(2)
         else:
             print("Acknowledgement failed, terminating program...")
             os._exit(1)  # kill all threads and exit
-        
-        print("Serial connection active")
+
+        print("------Serial connection active------")
 
     def _acknowledge(self):
         self.serial_port.write(b"\x1b")
         return b"\x66" == self.serial_port.read()
-    
-    def test_gimbal(self):
-        packet = bytearray()
-        packet.append(2)
 
-        self.serial_port.write(packet)
+    # def _calculate_crc32(self, received_bytes):
+    #     # zlib uses 0x4C11DB7 polynomial
+    #     return zlib.crc32(received_bytes[0:-4])
+
+    # def _compare_crc32(self, received_bytes):
+    #     rec_CRC = received_bytes[-4:-1]
+    #     calc_CRC = self.calculate_crc32(received_bytes)
+    #     return calc_CRC == rec_CRC
+
+    def test_gimbal(self):
+        self.serial_port.write(b"\x02")
     
     def controller_control(self):
-        while self.controller.swa == 4:
-            angle_x, angle_y = self.controller.convert_to_angles()
-            data = struct.pack("cff", 1, angle_x, angle_y)
-            self.serial_port.write(data)
+        packet = bytearray()
+        byte_x, byte_y = self.controller.get_single_byte_values()
+        # print(angle_x, angle_y)
+        # data = struct.pack("<c2L", b"\x01", int(round(angle_x, 2)*100), int(round(angle_y, 2)*100))
+        # print(data)
+        packet.append(1)
+        packet.append(1)
+        packet.append(round(byte_x))
+        packet.append(round(byte_y))
+        self.serial_port.write(packet)
+        time.sleep(0.01)
 
     def ping_vehicle(self):
         packet = bytearray()
@@ -46,11 +60,8 @@ class GroundStation:
 
         self.serial_port.write(packet)
         result = self.serial_port.read()
-        print(result)
-        if result == b"\x01":
-            print("Successfully pinged vehicle")
-        else:
-            print("Ping failed")
+        
+        return result == b"\x01"
 
 
 gs = GroundStation("/dev/tty.usbmodem101")
@@ -58,12 +69,23 @@ connected = False
 
 while True:
     if gs.controller.swc == 1 and not connected:
-        gs.ping_vehicle()
+        print("SWC toggled, attempting to ping vehicle");
+        for _ in range(5):
+            if gs.ping_vehicle():
+                print("Successfully pinged vehicle")
+                break
+
+            print("Ping failed")
+            time.sleep(2)
+        else:
+            print("Failed to connect to vehicle, terminating...")
+            os._exit(1)
+
         connected = True
-        print("Armed")
+        print("--Vehicle connected--")
     elif gs.controller.swc == 0 and connected:
         connected = False
-        print("Disarmed")
+        print("--Vehicle disconnected--")
     elif gs.controller.swa == 4 and gs.controller.swc == 1:
         gs.controller_control()
     elif gs.controller.swa == 7 and gs.controller.swc == 1:
@@ -75,3 +97,15 @@ while True:
 # SWA -> 
 
 
+# sensor sample 
+#  realtime
+#  512
+#  Default, NULL, Dynamic
+# LoRa
+#  low
+#  512
+#  Default NULL Dynamic
+# kalman filter
+#  low (same as lora)
+#  1024
+#  Default NULL Dynamic

@@ -43,6 +43,16 @@ class Controller:
 
         return angle_x, angle_y
 
+    def get_single_byte_values(self):
+        MIN_OUT = 0
+        MAX_OUT = 255
+        MIN_IN = 0
+        MAX_IN = 2048
+
+        byte_x = MIN_OUT + ((MAX_OUT - MIN_OUT) / (MAX_IN - MIN_IN)) * (self.rjs_h - MIN_IN)
+        byte_y = MIN_OUT + ((MAX_OUT - MIN_OUT) / (MAX_IN - MIN_IN)) * (self.rjs_v - MIN_IN)
+
+        return byte_x, byte_y
 
 
         
