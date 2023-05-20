@@ -773,87 +773,22 @@ void start_sensor_reading(void *argument)
 
 	// Sensor type that is ready when task is released
 	uint32_t sensor_type;
-
+  osDelay(2000);  // give it a lil
 	/* Infinite loop */
 	for (;;) {
 		// Wait for sensors to be ready before running task
-		xTaskNotifyWait(0, 0, &sensor_type, (TickType_t) portMAX_DELAY);
+		// xTaskNotifyWait(0, 0, &sensor_type, (TickType_t) portMAX_DELAY);
 
 		/* Check each sensor each loop for new data */
-		switch (sensor_type) {
-		case Accel_Sensor:
-			// Clear bits corresponding to this case
-			ulTaskNotifyValueClear(SensorReadHandle, Accel_Sensor);
-			float accel_data[3];
-			BMX055_readAccel(&bmx055, accel_data);
-			BMX055_exp_filter(bmx055_data.accel, accel_data, bmx055_data.accel, sizeof(accel_data) / sizeof(int),
-			ACCEL_ALPHA);
-			break;
+    BMX055_readAccel(&bmx055, accel_data);
+    BMX055_exp_filter(bmx055_data.accel, accel_data, bmx055_data.accel, sizeof(accel_data) / sizeof(int),
+    ACCEL_ALPHA);
+    BMX055_readGyro(&bmx055, gyro_data);
+    BMX055_exp_filter(bmx055_data.gyro, gyro_data, bmx055_data.gyro, sizeof(gyro_data) / sizeof(int),
+    GYRO_ALPHA);
+    BMX055_readCompensatedMag(&bmx055, bmx055_data.mag);
 
-		case Gyro_Sensor:
-			// Clear bits corresponding to this case
-			ulTaskNotifyValueClear(SensorReadHandle, Gyro_Sensor);
-			float gyro_data[3];
-			BMX055_readGyro(&bmx055, gyro_data);
-			BMX055_exp_filter(bmx055_data.gyro, gyro_data, bmx055_data.gyro, sizeof(gyro_data) / sizeof(int),
-			GYRO_ALPHA);
-			break;
-
-		case Mag_Sensor:
-			// Clear bits corresponding to this case
-			ulTaskNotifyValueClear(SensorReadHandle, Mag_Sensor);
-			BMX055_readCompensatedMag(&bmx055, bmx055_data.mag);
-			break;
-
-		case Accel_Sensor | Gyro_Sensor:
-			// Clear bits corresponding to this case
-			ulTaskNotifyValueClear(SensorReadHandle,
-			Accel_Sensor | Gyro_Sensor);
-			BMX055_readAccel(&bmx055, accel_data);
-			BMX055_exp_filter(bmx055_data.accel, accel_data, bmx055_data.accel, sizeof(accel_data) / sizeof(int),
-			ACCEL_ALPHA);
-			BMX055_readGyro(&bmx055, gyro_data);
-			BMX055_exp_filter(bmx055_data.gyro, gyro_data, bmx055_data.gyro, sizeof(gyro_data) / sizeof(int),
-			GYRO_ALPHA);
-
-			break;
-
-		case Accel_Sensor | Mag_Sensor:
-			// Clear bits corresponding to this case
-			ulTaskNotifyValueClear(SensorReadHandle,
-			Accel_Sensor | Mag_Sensor);
-			BMX055_readAccel(&bmx055, accel_data);
-			BMX055_exp_filter(bmx055_data.accel, accel_data, bmx055_data.accel, sizeof(accel_data) / sizeof(int),
-			ACCEL_ALPHA);
-			BMX055_readCompensatedMag(&bmx055, bmx055_data.mag);
-			break;
-
-		case Gyro_Sensor | Mag_Sensor:
-			// Clear bits corresponding to this case
-			ulTaskNotifyValueClear(SensorReadHandle,
-			Gyro_Sensor | Mag_Sensor);
-			BMX055_readGyro(&bmx055, gyro_data);
-			BMX055_exp_filter(bmx055_data.gyro, gyro_data, bmx055_data.gyro, sizeof(gyro_data) / sizeof(int),
-			GYRO_ALPHA);
-			BMX055_readCompensatedMag(&bmx055, bmx055_data.mag);
-			break;
-
-		case Accel_Sensor | Gyro_Sensor | Mag_Sensor:
-			// Clear bits corresponding to this case
-			ulTaskNotifyValueClear(SensorReadHandle,
-			Accel_Sensor | Gyro_Sensor | Mag_Sensor);
-			BMX055_readAccel(&bmx055, accel_data);
-			BMX055_exp_filter(bmx055_data.accel, accel_data, bmx055_data.accel, sizeof(accel_data) / sizeof(int),
-			ACCEL_ALPHA);
-			BMX055_readGyro(&bmx055, gyro_data);
-			BMX055_exp_filter(bmx055_data.gyro, gyro_data, bmx055_data.gyro, sizeof(gyro_data) / sizeof(int),
-			GYRO_ALPHA);
-			BMX055_readCompensatedMag(&bmx055, bmx055_data.mag);
-			break;
-
-		default:
-			break;
-		}
+    osDelay(30);  // every 30ms let's grab some new data
 	}
   /* USER CODE END 5 */
 }
@@ -868,7 +803,7 @@ void start_sensor_reading(void *argument)
 void start_LoRa_task(void *argument)
 {
   /* USER CODE BEGIN start_LoRa_task */
-    LoRa_reset(&LoRa_Handle);
+  LoRa_reset(&LoRa_Handle);
 	LoRa_setModulation(&LoRa_Handle, LORA_MODULATION);
 	if (LoRa_init(&LoRa_Handle) != LORA_OK) {
       CDC_Transmit_FS("LoRa connection failed\r\n", strlen("LoRa connection failed\r\n"));
