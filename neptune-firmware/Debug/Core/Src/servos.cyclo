@@ -1,0 +1,3 @@
+servos.c:10:7:_degrees_to_duty_cycle	1
+servos.c:16:6:set_motor	3
+servos.c:34:6:gimble_test	2

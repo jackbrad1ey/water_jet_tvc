@@ -1,0 +1,15 @@
+../Core/Src/BMX055.c:35:6:BMX055_init	16	static
+../Core/Src/BMX055.c:113:6:BMX055_searchDevice	32	static
+../Core/Src/BMX055.c:142:6:BMX055_configuration	32	static
+../Core/Src/BMX055.c:193:6:BMX055_readAccel	64	static
+../Core/Src/BMX055.c:228:6:BMX055_readGyro	56	static
+../Core/Src/BMX055.c:262:6:BMX055_readRawMag	48	static
+../Core/Src/BMX055.c:290:12:BMX055_readCompensatedMag	72	static
+../Core/Src/BMX055.c:324:6:BMX055_setInterrupts	32	static
+../Core/Src/BMX055.c:385:6:BMX055_exp_filter	88	static
+../Core/Src/BMX055.c:412:6:BMX055_writeSPI	24	static
+../Core/Src/BMX055.c:426:6:BMX055_readSPI	64	static
+../Core/Src/BMX055.c:442:15:perform_adv_self_test	56	static
+../Core/Src/BMX055.c:527:15:perform_normal_self_test	32	static
+../Core/Src/BMX055.c:561:6:BMX055_accelCalibration	32	static
+../Core/Src/BMX055.c:627:6:BMX055_gyroCalibration	32	static

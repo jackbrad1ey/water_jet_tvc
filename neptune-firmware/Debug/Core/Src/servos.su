@@ -1,0 +1,4 @@
+../Core/Src/servos.c:10:7:_degrees_to_duty_cycle	24	static
+../Core/Src/servos.c:16:7:_byte_to_duty_cycle	24	static
+../Core/Src/servos.c:22:6:set_motor	88	static
+../Core/Src/servos.c:45:6:gimble_test	88	static

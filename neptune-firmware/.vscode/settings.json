@@ -1,0 +1,7 @@
+{
+    "files.associations": {
+        "sensors.h": "c",
+        "complex": "c",
+        "stm32f4xx_hal.h": "c"
+    }
+}
