@@ -6,7 +6,6 @@
  */
 
 #include "servos.h"
-#include "usbd_cdc_if.h"
 
 float _degrees_to_duty_cycle(float degrees) {
 	float duty_cycle = MIN_DUTY_CYCLE + ((MAX_DUTY_CYCLE - MIN_DUTY_CYCLE) / (MAX_ANGLE - MIN_ANGLE)) * (degrees - MIN_ANGLE);

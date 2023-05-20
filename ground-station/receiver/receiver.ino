@@ -23,8 +23,11 @@ void loop() {
 
   if (Serial.available() > 0) {
     int indicator = Serial.read();
-    if (indicator == 0) {
+    if (indicator == 27) {
       Serial.write(0x66);
+      return;
+    } else if (indicator == 10) {
+      Serial.print("Hey there\n");
       return;
     } else {
       size_t packet_length = 0;

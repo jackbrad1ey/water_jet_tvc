@@ -103,21 +103,21 @@ osThreadId_t LoRaHandle;
 const osThreadAttr_t LoRa_attributes = {
   .name = "LoRa",
   .stack_size = 512 * 4,
-  .priority = (osPriority_t) osPriorityLow7,
+  .priority = (osPriority_t) osPriorityLow,
 };
 /* Definitions for ServoActuate */
 osThreadId_t ServoActuateHandle;
 const osThreadAttr_t ServoActuate_attributes = {
   .name = "ServoActuate",
   .stack_size = 128 * 4,
-  .priority = (osPriority_t) osPriorityRealtime,
+  .priority = (osPriority_t) osPriorityHigh,
 };
 /* Definitions for KalmanFilter */
 osThreadId_t KalmanFilterHandle;
 const osThreadAttr_t KalmanFilter_attributes = {
   .name = "KalmanFilter",
   .stack_size = 1024 * 4,
-  .priority = (osPriority_t) osPriorityRealtime,
+  .priority = (osPriority_t) osPriorityLow,
 };
 /* USER CODE BEGIN PV */
 int SERVO_ENABLED = 0;  // disabled by default
@@ -279,6 +279,9 @@ int main(void)
 
   /* Servo configurations */
 
+	/* Start timers */
+	HAL_TIM_Base_Start(Micros_Timer);
+
   /* USER CODE END 2 */
 
   /* Init scheduler */
@@ -310,7 +313,7 @@ int main(void)
 
 	/* creation of Kalman_Filter */
 	KalmanFilterHandle = osThreadNew(start_kalman_filter, NULL, &KalmanFilter_attributes);
-    ServoActuateHandle = osThreadNew(start_servo_control, NULL, &ServoActuate_attributes);
+  ServoActuateHandle = osThreadNew(start_servo_control, NULL, &ServoActuate_attributes);
   
 /* USER CODE END Header */
 /**
