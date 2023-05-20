@@ -701,7 +701,11 @@
     (property "Datasheet" "" (at 46.99 57.15 0)
       (effects (font (size 1.27 1.27)) hide)
     )
+<<<<<<< HEAD
     (pin "1" (uuid 0bffd568-74e2-4f83-8a0b-eebe1f49ea29))
+=======
+    (pin "1" (uuid 6d11e9ca-cc05-4425-bebb-a400f2289795))
+>>>>>>> 0e7a4fd (Continued work on pcb)
     (instances
       (project "neptune"
         (path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/b694d9b6-8e2a-4217-a81b-e156ec88b46a"
@@ -726,8 +730,13 @@
     (property "Datasheet" "~" (at 80.01 49.53 0)
       (effects (font (size 1.27 1.27)) hide)
     )
+<<<<<<< HEAD
     (pin "1" (uuid 05f1b477-19e3-4bd6-9e0d-ba87eda08558))
     (pin "2" (uuid b73ef96e-e140-4b27-9637-cc46775aa64e))
+=======
+    (pin "1" (uuid 954368f7-f725-47f5-9a12-c8e66b02851f))
+    (pin "2" (uuid a6857ae6-23ba-4650-8998-f8b444e6322a))
+>>>>>>> 0e7a4fd (Continued work on pcb)
     (instances
       (project "neptune"
         (path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/fd0daead-056b-49b0-b136-e76d44737a4c"
@@ -755,8 +764,13 @@
     (property "Datasheet" "~" (at 67.31 49.53 0)
       (effects (font (size 1.27 1.27)) hide)
     )
+<<<<<<< HEAD
     (pin "1" (uuid b7cdb8a4-cb68-4435-9ce8-6edb8b7636c6))
     (pin "2" (uuid 42ba966f-e808-4620-aef3-53e3d2914be5))
+=======
+    (pin "1" (uuid b40c46a8-3359-4ac6-86f5-addb583e4095))
+    (pin "2" (uuid fd8470d0-5867-429f-9c0f-42a492551755))
+>>>>>>> 0e7a4fd (Continued work on pcb)
     (instances
       (project "neptune"
         (path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/fd0daead-056b-49b0-b136-e76d44737a4c"
@@ -772,7 +786,11 @@
   (symbol (lib_id "power:GND") (at 46.99 91.44 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 1e295ccf-d58f-4d56-9b3f-857eee3b562a)
+<<<<<<< HEAD
     (property "Reference" "#PWR037" (at 46.99 97.79 0)
+=======
+    (property "Reference" "#PWR?" (at 46.99 97.79 0)
+>>>>>>> 0e7a4fd (Continued work on pcb)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 47.117 95.8342 0)
@@ -784,11 +802,19 @@
     (property "Datasheet" "" (at 46.99 91.44 0)
       (effects (font (size 1.27 1.27)) hide)
     )
+<<<<<<< HEAD
     (pin "1" (uuid e2b78781-7bef-4fb7-86fe-e46f82a6c0ef))
     (instances
       (project "neptune"
         (path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/b694d9b6-8e2a-4217-a81b-e156ec88b46a"
           (reference "#PWR037") (unit 1)
+=======
+    (pin "1" (uuid e5da05b2-e6b5-4791-911e-97e6763d74fc))
+    (instances
+      (project "neptune"
+        (path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/b694d9b6-8e2a-4217-a81b-e156ec88b46a"
+          (reference "#PWR?") (unit 1)
+>>>>>>> 0e7a4fd (Continued work on pcb)
         )
       )
     )
@@ -797,7 +823,11 @@
   (symbol (lib_id "power:GND") (at 66.04 71.12 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 38e42cee-fb17-4206-b8ac-2610e9a26c5d)
+<<<<<<< HEAD
     (property "Reference" "#PWR038" (at 66.04 77.47 0)
+=======
+    (property "Reference" "#PWR?" (at 66.04 77.47 0)
+>>>>>>> 0e7a4fd (Continued work on pcb)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 66.167 75.5142 0)
@@ -809,16 +839,25 @@
     (property "Datasheet" "" (at 66.04 71.12 0)
       (effects (font (size 1.27 1.27)) hide)
     )
+<<<<<<< HEAD
     (pin "1" (uuid fd8bc529-95f9-480d-8806-78435ec585bb))
     (instances
       (project "neptune"
         (path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/b694d9b6-8e2a-4217-a81b-e156ec88b46a"
           (reference "#PWR038") (unit 1)
+=======
+    (pin "1" (uuid 8896ea72-c60d-4d75-92e6-e96e0a00752a))
+    (instances
+      (project "neptune"
+        (path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/b694d9b6-8e2a-4217-a81b-e156ec88b46a"
+          (reference "#PWR?") (unit 1)
+>>>>>>> 0e7a4fd (Continued work on pcb)
         )
       )
     )
   )
 
+<<<<<<< HEAD
   (symbol (lib_id "power:GND") (at 73.66 53.34 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 6f0fb3e2-1941-4361-9b05-6ffb22febe2a)
@@ -868,6 +907,123 @@
       (project "neptune"
         (path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/b694d9b6-8e2a-4217-a81b-e156ec88b46a"
           (reference "J3") (unit 1)
+=======
+  (symbol (lib_id "THD2528-11SD-GF:THD2528-11SD-GF") (at 124.46 50.8 0) (unit 1)
+    (in_bom yes) (on_board yes) (dnp no)
+    (uuid 64393d69-1e7f-4c45-9e44-ef16e9116db0)
+    (property "Reference" "J7" (at 140.97 44.069 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Value" "THD2528-11SD-GF" (at 140.97 46.3804 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Footprint" "Local_footprints:THD252811SDGF" (at 153.67 48.26 0)
+      (effects (font (size 1.27 1.27)) (justify left) hide)
+    )
+    (property "Datasheet" "https://jlcpcb.com/partdetail/Thd-THD2528_11SDGF/C283232" (at 153.67 50.8 0)
+      (effects (font (size 1.27 1.27)) (justify left) hide)
+    )
+    (property "Description" "Connector - Card Sockets SMD RoHS" (at 153.67 53.34 0)
+      (effects (font (size 1.27 1.27)) (justify left) hide)
+    )
+    (property "Height" "2" (at 153.67 55.88 0)
+      (effects (font (size 1.27 1.27)) (justify left) hide)
+    )
+    (property "Manufacturer_Name" "THD" (at 153.67 58.42 0)
+      (effects (font (size 1.27 1.27)) (justify left) hide)
+    )
+    (property "Manufacturer_Part_Number" "THD2528-11SD-GF" (at 153.67 60.96 0)
+      (effects (font (size 1.27 1.27)) (justify left) hide)
+    )
+    (property "Mouser Part Number" "" (at 153.67 63.5 0)
+      (effects (font (size 1.27 1.27)) (justify left) hide)
+    )
+    (property "Mouser Price/Stock" "" (at 153.67 66.04 0)
+      (effects (font (size 1.27 1.27)) (justify left) hide)
+    )
+    (property "Arrow Part Number" "" (at 153.67 68.58 0)
+      (effects (font (size 1.27 1.27)) (justify left) hide)
+    )
+    (property "Arrow Price/Stock" "" (at 153.67 71.12 0)
+      (effects (font (size 1.27 1.27)) (justify left) hide)
+    )
+    (pin "1" (uuid 0fb9cdd4-1a22-4cb5-aa3b-d6622b2e01bf))
+    (pin "2" (uuid cac09155-e667-4888-a089-ee6525e445fd))
+    (pin "3" (uuid 4eb3817e-f53a-495c-955b-c77ad16e4b47))
+    (pin "4" (uuid 02579833-1916-46bf-b325-78afcc2471ec))
+    (pin "5" (uuid e1f536e7-7497-47ae-a3ad-6237d1f5ea1d))
+    (pin "6" (uuid ab94336e-5f9a-43d7-b754-85d7970dcf1a))
+    (pin "7" (uuid 8b4c9a42-938c-485f-99b4-0c9905ab821b))
+    (pin "8" (uuid 6872a59d-7840-4589-9487-6eb899bfa3c4))
+    (pin "9" (uuid 7870c7c3-ad07-428c-a7c5-a18cfa91f21e))
+    (pin "MP1" (uuid bef488fb-1140-4aa6-bf3f-7095d52d0308))
+    (pin "MP2" (uuid 4531a001-7693-43e7-83b2-bef5bd664f4c))
+    (pin "MP3" (uuid ac3dd732-674d-4383-83a4-685ef0f231bc))
+    (pin "MP4" (uuid 7578c94e-fdee-46c6-acea-a56816d06c11))
+    (instances
+      (project "Liaka_V3"
+        (path "/9186fd02-f30d-4e17-aa38-378ab73e3908/38f95464-c4fd-44f7-9819-1304e1c28009"
+          (reference "J7") (unit 1)
+        )
+      )
+      (project "neptune"
+        (path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/b694d9b6-8e2a-4217-a81b-e156ec88b46a"
+          (reference "J1") (unit 1)
+        )
+      )
+    )
+  )
+
+  (symbol (lib_id "power:GND") (at 73.66 53.34 0) (unit 1)
+    (in_bom yes) (on_board yes) (dnp no)
+    (uuid 6f0fb3e2-1941-4361-9b05-6ffb22febe2a)
+    (property "Reference" "#PWR?" (at 73.66 59.69 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Value" "GND" (at 73.787 57.7342 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Footprint" "" (at 73.66 53.34 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Datasheet" "" (at 73.66 53.34 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (pin "1" (uuid 62b0623a-d824-4e02-8ad0-54d8f304142e))
+    (instances
+      (project "neptune"
+        (path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/fd0daead-056b-49b0-b136-e76d44737a4c"
+          (reference "#PWR?") (unit 1)
+        )
+        (path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/b694d9b6-8e2a-4217-a81b-e156ec88b46a"
+          (reference "#PWR09") (unit 1)
+        )
+      )
+    )
+  )
+
+  (symbol (lib_id "Connector:Conn_Coaxial") (at 66.04 64.77 0) (unit 1)
+    (in_bom yes) (on_board yes) (dnp no)
+    (uuid 7ddd9267-2a38-4b8a-a128-be1304020ffd)
+    (property "Reference" "J?" (at 68.58 65.405 0)
+      (effects (font (size 1.27 1.27)) (justify left))
+    )
+    (property "Value" "Conn_Coaxial" (at 68.58 67.7164 0)
+      (effects (font (size 1.27 1.27)) (justify left))
+    )
+    (property "Footprint" "Connector_Coaxial:SMA_Amphenol_132291_Vertical" (at 66.04 64.77 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Datasheet" " ~" (at 66.04 64.77 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (pin "1" (uuid 0c4154ab-e2c3-405a-b26e-56fcbbc5478c))
+    (pin "2" (uuid 162dbe48-079a-4722-a13b-eeddc688bde8))
+    (instances
+      (project "neptune"
+        (path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/b694d9b6-8e2a-4217-a81b-e156ec88b46a"
+          (reference "J?") (unit 1)
+>>>>>>> 0e7a4fd (Continued work on pcb)
         )
       )
     )
@@ -877,6 +1033,7 @@
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 96d40f6c-d039-41e9-899e-7f64c4af6a89)
     (property "Reference" "#PWR0178" (at 160.782 69.85 0)
+<<<<<<< HEAD
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 160.909 67.8942 0)
@@ -938,6 +1095,69 @@
       (project "neptune"
         (path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/b694d9b6-8e2a-4217-a81b-e156ec88b46a"
           (reference "U5") (unit 1)
+=======
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Value" "GND" (at 160.909 67.8942 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Footprint" "" (at 160.782 63.5 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Datasheet" "" (at 160.782 63.5 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (pin "1" (uuid 02e07284-4c5b-4947-b247-c5089ec0a763))
+    (instances
+      (project "Liaka_V3"
+        (path "/9186fd02-f30d-4e17-aa38-378ab73e3908/38f95464-c4fd-44f7-9819-1304e1c28009"
+          (reference "#PWR0178") (unit 1)
+        )
+      )
+      (project "neptune"
+        (path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/b694d9b6-8e2a-4217-a81b-e156ec88b46a"
+          (reference "#PWR05") (unit 1)
+        )
+      )
+    )
+  )
+
+  (symbol (lib_id "RF_Module:RFM95W-915S2") (at 46.99 72.39 0) (unit 1)
+    (in_bom yes) (on_board yes) (dnp no)
+    (uuid a1a0b9c4-a8f4-4095-bda7-92722fe56435)
+    (property "Reference" "U?" (at 36.83 54.61 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Value" "RFM95W-915S2" (at 36.83 57.15 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Footprint" "RF_Module:HOPERF_RFM9XW_SMD" (at -36.83 30.48 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Datasheet" "https://www.hoperf.com/data/upload/portal/20181127/5bfcbea20e9ef.pdf" (at -36.83 30.48 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (pin "1" (uuid ed2924a6-4b12-4b30-ba8c-2a33781c4ffd))
+    (pin "10" (uuid f8943bfc-18cc-4075-98fe-b14b7ca1cbf3))
+    (pin "11" (uuid 6bd5cac7-f2a6-4429-b69a-8aa8afb33d2d))
+    (pin "12" (uuid 4b112ca1-d9b9-4ab5-8ccb-85e914d3bad4))
+    (pin "13" (uuid 856fc2b0-c6b3-4cee-a0ba-ac6ecd0e6def))
+    (pin "14" (uuid ae15bd79-513a-45c5-ad47-25cb5fd1256f))
+    (pin "15" (uuid 6d0414b0-35c6-492d-8aad-288825b45b02))
+    (pin "16" (uuid 41ee127b-89fe-42c5-bc05-519cc177c5c6))
+    (pin "2" (uuid 23439339-1009-42c7-a90f-23514b31ff5b))
+    (pin "3" (uuid 7095ce37-55ed-439f-810d-141d11342e7b))
+    (pin "4" (uuid 685734fb-4f57-46a0-801d-8ca9328f23be))
+    (pin "5" (uuid 75a7664b-8e57-4d33-8657-b7ebcb7281b0))
+    (pin "6" (uuid 91d2dc24-4f97-4f99-8689-9ccbaf1da529))
+    (pin "7" (uuid 0892c533-139f-4523-8f0b-2d3bc885d455))
+    (pin "8" (uuid 8a3123a2-5014-47e5-9edb-2d771f599152))
+    (pin "9" (uuid 3b926305-2dd2-4a62-be96-41791e0db084))
+    (instances
+      (project "neptune"
+        (path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/b694d9b6-8e2a-4217-a81b-e156ec88b46a"
+          (reference "U?") (unit 1)
+>>>>>>> 0e7a4fd (Continued work on pcb)
         )
       )
     )
@@ -958,7 +1178,11 @@
     (property "Datasheet" "" (at 73.66 45.72 0)
       (effects (font (size 1.27 1.27)) hide)
     )
+<<<<<<< HEAD
     (pin "1" (uuid 19479a65-ca98-4e7f-a1a7-32def1476197))
+=======
+    (pin "1" (uuid 151167da-5fcb-4978-a736-82fca5198c60))
+>>>>>>> 0e7a4fd (Continued work on pcb)
     (instances
       (project "neptune"
         (path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/fd0daead-056b-49b0-b136-e76d44737a4c"
@@ -971,6 +1195,7 @@
     )
   )
 
+<<<<<<< HEAD
   (symbol (lib_id "THD2528-11SD-GF:THD2528-11SD-GF") (at 124.46 50.8 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid be37622d-00cc-464e-9399-c16708f774cd)
@@ -1093,5 +1318,60 @@
         )
       )
     )
+=======
+  (symbol (lib_id "power:+3.3V") (at 109.22 55.88 0) (unit 1)
+    (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
+    (uuid bee910a0-c0bb-4783-9a8a-558a4d941a75)
+    (property "Reference" "#PWR03" (at 109.22 59.69 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Value" "+3.3V" (at 109.22 52.07 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Footprint" "" (at 109.22 55.88 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Datasheet" "" (at 109.22 55.88 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (pin "1" (uuid ce0187f4-4f38-4353-a010-16c8da489356))
+    (instances
+      (project "neptune"
+        (path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/b694d9b6-8e2a-4217-a81b-e156ec88b46a"
+          (reference "#PWR03") (unit 1)
+        )
+      )
+    )
+  )
+
+  (symbol (lib_id "power:GND") (at 111.76 64.77 0) (unit 1)
+    (in_bom yes) (on_board yes) (dnp no)
+    (uuid c75246ba-eefa-490a-a355-84d74092ce43)
+    (property "Reference" "#PWR0160" (at 111.76 71.12 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Value" "GND" (at 111.887 69.1642 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Footprint" "" (at 111.76 64.77 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Datasheet" "" (at 111.76 64.77 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (pin "1" (uuid a260edfc-c827-4ef2-abaa-0a0f102b6706))
+    (instances
+      (project "Liaka_V3"
+        (path "/9186fd02-f30d-4e17-aa38-378ab73e3908/38f95464-c4fd-44f7-9819-1304e1c28009"
+          (reference "#PWR0160") (unit 1)
+        )
+      )
+      (project "neptune"
+        (path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/b694d9b6-8e2a-4217-a81b-e156ec88b46a"
+          (reference "#PWR04") (unit 1)
+        )
+      )
+    )
+>>>>>>> 0e7a4fd (Continued work on pcb)
   )
 )
