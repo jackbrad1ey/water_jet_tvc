@@ -61,6 +61,7 @@ void Error_Handler(void);
 /* Private defines -----------------------------------------------------------*/
 #define RF_10O_Pin GPIO_PIN_0
 #define RF_10O_GPIO_Port GPIOC
+#define RF_10O_EXTI_IRQn EXTI0_IRQn
 #define RF_RESET_Pin GPIO_PIN_1
 #define RF_RESET_GPIO_Port GPIOC
 #define RF_CE_Pin GPIO_PIN_2

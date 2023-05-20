@@ -103,21 +103,21 @@ osThreadId_t LoRaHandle;
 const osThreadAttr_t LoRa_attributes = {
   .name = "LoRa",
   .stack_size = 512 * 4,
-  .priority = (osPriority_t) osPriorityLow,
+  .priority = (osPriority_t) osPriorityLow7,
 };
 /* Definitions for ServoActuate */
 osThreadId_t ServoActuateHandle;
 const osThreadAttr_t ServoActuate_attributes = {
   .name = "ServoActuate",
-  .stack_size = 128 * 4,
-  .priority = (osPriority_t) osPriorityHigh,
+  .stack_size = 512 * 4,
+  .priority = (osPriority_t) osPriorityRealtime,
 };
 /* Definitions for KalmanFilter */
 osThreadId_t KalmanFilterHandle;
 const osThreadAttr_t KalmanFilter_attributes = {
   .name = "KalmanFilter",
   .stack_size = 1024 * 4,
-  .priority = (osPriority_t) osPriorityLow,
+  .priority = (osPriority_t) osPriorityRealtime,
 };
 /* USER CODE BEGIN PV */
 int SERVO_ENABLED = 0;  // disabled by default
@@ -231,6 +231,7 @@ int main(void)
   MX_TIM3_Init();
   MX_TIM2_Init();
   /* USER CODE BEGIN 2 */
+  HAL_NVIC_DisableIRQ(EXTI0_IRQn);
   HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_1);
   HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_2);
 
@@ -286,30 +287,43 @@ int main(void)
 
   /* Init scheduler */
   osKernelInitialize();
-/* USER CODE BEGIN Header */
-/**
-  ******************************************************************************
-  * @file           : main.c
-  * @brief          : Main program body
-  ******************************************************************************
-  * @attention
-  *
-  * Copyright (c) 2023 STMicroelectronics.
-  * All rights reserved.
-  *
-  * This software is licensed under terms that can be found in the LICENSE file
-  * in the root directory of this software component.
-  * If no LICENSE file comes with this software, it is provided AS-IS.
-  *
-  ******************************************************************************
-  */
-/* USER CODE END Header */
-/**
-* @}
-*/
-/**
-* @}
-*/
+
+  /* USER CODE BEGIN RTOS_MUTEX */
+  /* add mutexes, ... */
+  /* USER CODE END RTOS_MUTEX */
+
+  /* USER CODE BEGIN RTOS_SEMAPHORES */
+  /* add semaphores, ... */
+  /* USER CODE END RTOS_SEMAPHORES */
+
+  /* USER CODE BEGIN RTOS_TIMERS */
+  /* start timers, add new ones, ... */
+  /* USER CODE END RTOS_TIMERS */
+
+  /* USER CODE BEGIN RTOS_QUEUES */
+  /* add queues, ... */
+  /* USER CODE END RTOS_QUEUES */
+
+  /* Create the thread(s) */
+  /* creation of SensorRead */
+  SensorReadHandle = osThreadNew(start_sensor_reading, NULL, &SensorRead_attributes);
+
+  /* creation of LoRa */
+  LoRaHandle = osThreadNew(start_LoRa_task, NULL, &LoRa_attributes);
+
+  /* creation of ServoActuate */
+//  ServoActuateHandle = osThreadNew(start_servo_control, NULL, &ServoActuate_attributes);
+
+  /* creation of KalmanFilter */
+  // KalmanFilterHandle = osThreadNew(start_kalman_filter, NULL, &KalmanFilter_attributes);
+
+  /* USER CODE BEGIN RTOS_THREADS */
+  /* add threads, ... */
+  /* USER CODE END RTOS_THREADS */
+
+  /* USER CODE BEGIN RTOS_EVENTS */
+  /* add events, ... */
+  /* USER CODE END RTOS_EVENTS */
 
   /* Start scheduler */
   osKernelStart();
@@ -730,6 +744,10 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
 
+  /* EXTI interrupt init*/
+  HAL_NVIC_SetPriority(EXTI0_IRQn, 5, 0);
+  HAL_NVIC_EnableIRQ(EXTI0_IRQn);
+
 }
 
 /* USER CODE BEGIN 4 */
@@ -780,6 +798,8 @@ void start_sensor_reading(void *argument)
 		// xTaskNotifyWait(0, 0, &sensor_type, (TickType_t) portMAX_DELAY);
 
 		/* Check each sensor each loop for new data */
+    float accel_data[3];
+    float gyro_data[3];
     BMX055_readAccel(&bmx055, accel_data);
     BMX055_exp_filter(bmx055_data.accel, accel_data, bmx055_data.accel, sizeof(accel_data) / sizeof(int),
     ACCEL_ALPHA);
@@ -803,6 +823,7 @@ void start_sensor_reading(void *argument)
 void start_LoRa_task(void *argument)
 {
   /* USER CODE BEGIN start_LoRa_task */
+	HAL_NVIC_EnableIRQ(EXTI0_IRQn);
   LoRa_reset(&LoRa_Handle);
 	LoRa_setModulation(&LoRa_Handle, LORA_MODULATION);
 	if (LoRa_init(&LoRa_Handle) != LORA_OK) {
@@ -810,6 +831,21 @@ void start_LoRa_task(void *argument)
 	}
 
 	LoRa_startReceiving(&LoRa_Handle);
+
+//  for (;;) { // testing if we receive anything
+//	int amount = LoRa_received_bytes(&LoRa_Handle);
+//    if (amount) {
+//        uint8_t read_data[255];
+//        size_t bytes_read = LoRa_receive(&LoRa_Handle, read_data, sizeof(read_data));
+//
+//        for (int i=0; i < bytes_read; i++) {
+//        	uint8_t var = read_data[i];
+//        }
+//        // uint8_t resp = 1;
+//        // LoRa_transmit(&LoRa_Handle, &resp, 1, TRANSMIT_TIMEOUT);
+//    }
+//
+//  }
   /* Infinite loop */
   for(;;)
   {
@@ -822,18 +858,13 @@ void start_LoRa_task(void *argument)
 
     switch (read_data[0]) {
       case SET_ANGLES: ;
-        float x = read_data[1] << 24;
-        x = ((unsigned long) x) | (read_data[2] << 16);
-        x = ((unsigned long) x) | (read_data[3] << 8);
-        x = ((unsigned long) x) | read_data[4];
-
-        float y = read_data[5] << 24;
-        y = ((unsigned long) y) | (read_data[6] << 16);
-        y = ((unsigned long) y) | (read_data[7] << 8);
-        y = ((unsigned long) y) | read_data[8];
-
-        set_motor(1, x, htim3);
-        set_motor(2, y, htim3);
+      	if (bytes_read < 3) break;
+//      	SERVO_ENABLED = 1;
+//      	motors.m1_angle = (float) read_data[1];
+//      	motors.m2_angle = (float) read_data[2];
+      	float a = (float) read_data[bytes_read-2];
+      	set_motor(1, 1, (float) read_data[bytes_read-2], htim3);
+      	set_motor(2, 1, (float) read_data[bytes_read-1], htim3);
         break;
       case GIMBLE_MOTORS:
         gimble_test(htim3);
@@ -863,9 +894,10 @@ void start_servo_control(void *argument)
   for(;;)
   {
     if (SERVO_ENABLED) {
-        set_motor(1, motors.m1_angle, htim3);
-        set_motor(2, motors.m2_angle, htim3);
+        set_motor(1, 1, motors.m1_angle, htim3);
+        set_motor(2, 1, motors.m2_angle, htim3);
     }
+    osDelay(10);
   }
   /* USER CODE END start_servo_control */
 }
@@ -923,7 +955,7 @@ void start_kalman_filter(void *argument)
 //		debug_print(printData, sz);
 //		sz = snprintf(printData, sizeof(printData), "Orientation: %0.4f, %0.4f, %0.4f\r\n", euler_result[0] * 57.2958, euler_result[1] * 57.2958, euler_result[2] * 57.2958);
 //		debug_print(printData, sz, dbg=DBG);
-		osDelay(10);
+		osDelay(30);
 //		for (int idx = 0; idx < 10; idx++) {
 //			EKF_Predict(&ekf, fake_gyr_dat[idx][0], fake_gyr_dat[idx][1], fake_gyr_dat[idx][2], 1.0);
 //			EKF_Update(&ekf, fake_acc_dat[idx][0], fake_acc_dat[idx][1], fake_acc_dat[idx][2], 1.5, 0, 0);
