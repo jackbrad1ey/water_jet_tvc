@@ -22,7 +22,7 @@
 
 #define ARM_MATH_CM4
 #include "stm32f4xx_hal.h"
-//#include "cmsis_os.h"
+#include "cmsis_os.h"
 #include <stdint.h>
 #include <stdbool.h>
 #include <stdio.h>
