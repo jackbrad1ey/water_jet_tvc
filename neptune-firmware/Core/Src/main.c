@@ -166,28 +166,28 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin) {
 	// Give notification to Sample_Sensors_Handle so that scheduler enables the task
 //	vTaskNotifyGiveFromISR(Sample_Sensors_Handle, NULL);
 	switch (GPIO_Pin) {
-	case GPIO_PIN_4:
-		/* Accelerometer interrupt */
-		// Log time of interrupt
-		bmx055_data.accel[4] = bmx055_data.accel[3];
-		bmx055_data.accel[3] = micros(Micros_Timer);
-		xTaskNotifyFromISR(SensorReadHandle, (uint32_t)Accel_Sensor, eSetBits, NULL);
-		return;
-	case GPIO_PIN_5:
-		/* Gyroscope interrupt */
-		// Log time of interrupt
-		bmx055_data.gyro[4] = bmx055_data.gyro[3];
-		bmx055_data.gyro[3] = micros(Micros_Timer);
-		xTaskNotifyFromISR(SensorReadHandle, (uint32_t)Gyro_Sensor, eSetBits, NULL);
-		return;
-	case GPIO_PIN_6:
-		/* Magnetometer interrupt */
-		// Log time of interrupt
-		bmx055_data.mag[4] = bmx055_data.mag[3];
-		bmx055_data.mag[3] = micros(Micros_Timer);
-		xTaskNotifyFromISR(SensorReadHandle, (uint32_t)Mag_Sensor, eSetBits, NULL);
-		return;
-	case GPIO_PIN_11:
+	// case GPIO_PIN_4:
+	// 	/* Accelerometer interrupt */
+	// 	// Log time of interrupt
+	// 	bmx055_data.accel[4] = bmx055_data.accel[3];
+	// 	bmx055_data.accel[3] = micros(Micros_Timer);
+	// 	xTaskNotifyFromISR(SensorReadHandle, (uint32_t)Accel_Sensor, eSetBits, NULL);
+	// 	return;
+	// case GPIO_PIN_5:
+	// 	/* Gyroscope interrupt */
+	// 	// Log time of interrupt
+	// 	bmx055_data.gyro[4] = bmx055_data.gyro[3];
+	// 	bmx055_data.gyro[3] = micros(Micros_Timer);
+	// 	xTaskNotifyFromISR(SensorReadHandle, (uint32_t)Gyro_Sensor, eSetBits, NULL);
+	// 	return;
+	// case GPIO_PIN_6:
+	// 	/* Magnetometer interrupt */
+	// 	// Log time of interrupt
+	// 	bmx055_data.mag[4] = bmx055_data.mag[3];
+	// 	bmx055_data.mag[3] = micros(Micros_Timer);
+	// 	xTaskNotifyFromISR(SensorReadHandle, (uint32_t)Mag_Sensor, eSetBits, NULL);
+	// 	return;
+	case GPIO_PIN_0:
 		/* LoRa interrupt */
 		xTaskNotifyFromISR(LoRaHandle, NULL, eNoAction, NULL);
 	default:
@@ -303,18 +303,6 @@ int main(void)
   *
   ******************************************************************************
   */
-  
-  	/* Create the thread(s) */
-	/* creation of Sample_Sensors_ */
-	SensorReadHandle = osThreadNew(start_sensor_reading, NULL, &SensorRead_attributes);
-
-	/* creation of LoRa */
-	LoRaHandle = osThreadNew(start_LoRa_task, NULL, &LoRa_attributes);
-
-	/* creation of Kalman_Filter */
-	KalmanFilterHandle = osThreadNew(start_kalman_filter, NULL, &KalmanFilter_attributes);
-  ServoActuateHandle = osThreadNew(start_servo_control, NULL, &ServoActuate_attributes);
-  
 /* USER CODE END Header */
 /**
 * @}
@@ -724,7 +712,7 @@ static void MX_GPIO_Init(void)
 
   /*Configure GPIO pin : RF_10O_Pin */
   GPIO_InitStruct.Pin = RF_10O_Pin;
-  GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
+  GPIO_InitStruct.Mode = GPIO_MODE_IT_RISING;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   HAL_GPIO_Init(RF_10O_GPIO_Port, &GPIO_InitStruct);
 
@@ -764,7 +752,8 @@ void start_sensor_reading(void *argument)
 	if (!BMX055_init(&bmx055)) {
 		printf("[main] BMX055 failed to start\r\n");
 	}
-	BMX055_setInterrupts(&bmx055);
+  // We're not using interrupts (good idea for V2 though)
+	// BMX055_setInterrupts(&bmx055);
 
 	uint8_t data;
 
@@ -774,13 +763,13 @@ void start_sensor_reading(void *argument)
 //	GNSS_LoadConfig(&GNSS_Handle);
 	/* EXTI interrupt init*/
 //	HAL_NVIC_SetPriority(EXTI4_IRQn, 5, 0);
-	HAL_NVIC_EnableIRQ(EXTI4_IRQn);
+	// HAL_NVIC_EnableIRQ(EXTI4_IRQn);
 
 //	HAL_NVIC_SetPriority(EXTI9_5_IRQn, 5, 0);
-	HAL_NVIC_EnableIRQ(EXTI9_5_IRQn);
+	// HAL_NVIC_EnableIRQ(EXTI9_5_IRQn);
 
 //	HAL_NVIC_SetPriority(EXTI15_10_IRQn, 5, 0);
-	HAL_NVIC_EnableIRQ(EXTI15_10_IRQn);
+	// HAL_NVIC_EnableIRQ(EXTI15_10_IRQn);
 
 	// Sensor type that is ready when task is released
 	uint32_t sensor_type;
