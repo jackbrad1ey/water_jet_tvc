@@ -10,7 +10,7 @@
 ../Core/Src/main.c:648:13:MX_TIM3_Init	64	static
 ../Core/Src/main.c:711:13:MX_GPIO_Init	48	static
 ../Core/Src/main.c:764:6:start_sensor_reading	40	static
-../Core/Src/main.c:823:6:start_LoRa_task	384	static
-../Core/Src/main.c:921:6:start_servo_control	96	static
-../Core/Src/main.c:943:6:start_kalman_filter	568	static
-../Core/Src/main.c:1010:6:Error_Handler	4	static,ignoring_inline_asm
+../Core/Src/main.c:823:6:start_LoRa_task	376	static
+../Core/Src/main.c:915:6:start_servo_control	104	static
+../Core/Src/main.c:944:6:start_kalman_filter	568	static
+../Core/Src/main.c:1011:6:Error_Handler	4	static,ignoring_inline_asm

@@ -312,7 +312,7 @@ int main(void)
   LoRaHandle = osThreadNew(start_LoRa_task, NULL, &LoRa_attributes);
 
   /* creation of ServoActuate */
-//  ServoActuateHandle = osThreadNew(start_servo_control, NULL, &ServoActuate_attributes);
+  ServoActuateHandle = osThreadNew(start_servo_control, NULL, &ServoActuate_attributes);
 
   /* creation of KalmanFilter */
   // KalmanFilterHandle = osThreadNew(start_kalman_filter, NULL, &KalmanFilter_attributes);
@@ -808,7 +808,7 @@ void start_sensor_reading(void *argument)
     GYRO_ALPHA);
     BMX055_readCompensatedMag(&bmx055, bmx055_data.mag);
 
-    osDelay(30);  // every 30ms let's grab some new data
+    osDelay(10);  // every 30ms let's grab some new data
 	}
   /* USER CODE END 5 */
 }
@@ -897,13 +897,7 @@ void start_LoRa_task(void *argument)
 //        LoRa_transmit(&LoRa_Handle, packet, 4, TRANSMIT_TIMEOUT);
         break;
       case COUNTER_TILT: ;
-        float roll;
-        float pitch;
-        get_roll_and_pitch(bmx055_data.accel, &roll, &pitch);
-        roll = fmaxf(fminf(roll, 180), 0);
-        pitch = fmaxf(fminf(pitch, 180), 0);
-        set_motor(1, 0, roll, htim3);
-      	set_motor(2, 0, pitch, htim3);
+        SERVO_ENABLED = !SERVO_ENABLED;
       default:
         break;
     }
@@ -925,10 +919,17 @@ void start_servo_control(void *argument)
   for(;;)
   {
     if (SERVO_ENABLED) {
-        set_motor(1, 1, motors.m1_angle, htim3);
-        set_motor(2, 1, motors.m2_angle, htim3);
+      // roll increases == servo decreases
+      // pitch increases == servo decreases
+        float roll;
+        float pitch;
+        get_roll_and_pitch(bmx055_data.accel, &roll, &pitch);
+        pitch = fmaxf(fminf((90 - pitch*1.15), 170), 10);
+        roll = fmaxf(fminf(90 - (roll*1.15 - 90), 170), 10);
+        set_motor(1, 0, roll, htim3);
+      	set_motor(2, 0, pitch, htim3);
     }
-    osDelay(10);
+    osDelay(30);
   }
   /* USER CODE END start_servo_control */
 }

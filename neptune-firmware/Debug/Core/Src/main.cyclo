@@ -11,6 +11,6 @@ main.c:648:13:MX_TIM3_Init	7
 main.c:711:13:MX_GPIO_Init	1
 main.c:764:6:start_sensor_reading	2
 main.c:823:6:start_LoRa_task	10
-main.c:921:6:start_servo_control	2
-main.c:943:6:start_kalman_filter	2
-main.c:1010:6:Error_Handler	1
+main.c:915:6:start_servo_control	2
+main.c:944:6:start_kalman_filter	2
+main.c:1011:6:Error_Handler	1

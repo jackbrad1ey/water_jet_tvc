@@ -51,6 +51,8 @@ class GroundStation:
         packet.append(1)
         packet.append(round(byte_x))
         packet.append(round(byte_y))
+        # packet.append(90)
+        # packet.append(90)
         self.serial_port.write(packet)
         time.sleep(0.03)
 
@@ -73,17 +75,18 @@ class GroundStation:
         pitch_sign = -1 if int.from_bytes(self.serial_port.read(), "big") else 1
         pitch = int.from_bytes(self.serial_port.read(), "big")
         print(f"Roll: {roll_sign * roll}\tPitch: {pitch_sign * pitch}")
-        time.sleep(0.2)
+        time.sleep(0.05)
     
-    def counter_tilt(self):
+    def counter_tilt_toggle(self):
         packet = bytearray()
         packet.append(5)
         self.serial_port.write(packet)
 
-# gs = GroundStation("/dev/tty.usbmodem101")
-gs = GroundStation("COM6")
+gs = GroundStation("/dev/tty.usbmodem101")
+# gs = GroundStation("COM6")
 connected = False
 sens_report = False
+counter_tilt = False
 
 while True:
     if gs.controller.swc == 1 and not connected:
@@ -116,8 +119,14 @@ while True:
     elif sens_report and gs.controller.swd != 2:
         print("-End sensor report-")
         sens_report = False
-    elif gs.controller.swb == 4:
-        gs.counter_tilt()
+    elif gs.controller.swb == 4 and not counter_tilt:
+        print("--Counter tilt enabled--")
+        counter_tilt = True
+        gs.counter_tilt_toggle()
+    elif gs.controller.swb != 4 and counter_tilt:
+        print("--Counter tilt disabled--")
+        counter_tilt = False
+        gs.counter_tilt_toggle()
 
     
 # SWC -> enable motors
@@ -136,3 +145,9 @@ while True:
 #  low (same as lora)
 #  1024
 #  Default NULL Dynamic
+
+
+
+
+#servo 1: Controls pitch
+#servo 2: Controls roll (starts at 90 when upright)
