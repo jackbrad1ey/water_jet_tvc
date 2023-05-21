@@ -52,7 +52,7 @@ class GroundStation:
         packet.append(round(byte_x))
         packet.append(round(byte_y))
         self.serial_port.write(packet)
-        time.sleep(0.01)
+        time.sleep(0.03)
 
     def ping_vehicle(self):
         packet = bytearray()
@@ -63,9 +63,18 @@ class GroundStation:
         
         return result == b"\x01"
 
+    def report_sensors(self):
+        packet = bytearray()
+        packet.append(4)
+        self.serial_port.write(packet)
+        roll = self.serial_port.read().decode()
+        pitch = self.serial_port.read().decode()
+        print(f"Roll: {roll}\tPitch: {pitch}")
+        time.sleep(0.3)
 
 gs = GroundStation("/dev/tty.usbmodem101")
 connected = False
+sens_report = False
 
 while True:
     if gs.controller.swc == 1 and not connected:
@@ -90,6 +99,14 @@ while True:
         gs.controller_control()
     elif gs.controller.swa == 7 and gs.controller.swc == 1:
         gs.test_gimbal()
+    elif gs.controller.swd == 2 and not sens_report:
+        print("-Reporting sensor data-")
+        sens_report = True
+    elif gs.controller.swd == 2 and sens_report:
+        gs.report_sensors()
+    elif sens_report and gs.controller.swd != 2:
+        print("-End sensor report-")
+        sens_report = False
     
 
     

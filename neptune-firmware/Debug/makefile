@@ -68,8 +68,8 @@ all: main-build
 main-build: neptune-firmware.elf secondary-outputs
 
 # Tool invocations
-neptune-firmware.elf neptune-firmware.map: $(OBJS) $(USER_OBJS) C:\Users\Jack\University\MEC2402\water_jet_tvc\neptune-firmware\STM32F411RETX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-gcc -o "neptune-firmware.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"C:\Users\Jack\University\MEC2402\water_jet_tvc\neptune-firmware\STM32F411RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="neptune-firmware.map" -Wl,--gc-sections -static -L"../libs" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+neptune-firmware.elf neptune-firmware.map: $(OBJS) $(USER_OBJS) /Users/jb/University/MEC2402/water_jet_tvc/neptune-firmware/STM32F411RETX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-gcc -o "neptune-firmware.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"/Users/jb/University/MEC2402/water_jet_tvc/neptune-firmware/STM32F411RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="neptune-firmware.map" -Wl,--gc-sections -static -L"../libs" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 

@@ -855,7 +855,6 @@ void start_LoRa_task(void *argument)
     // Read bytes in FIFO buffer
     uint8_t read_data[255];
     size_t bytes_read = LoRa_receive(&LoRa_Handle, read_data, sizeof(read_data));
-
     switch (read_data[0]) {
       case SET_ANGLES: ;
       	if (bytes_read < 3) break;
@@ -871,7 +870,13 @@ void start_LoRa_task(void *argument)
         break;
       case PONG: ;
         uint8_t resp = 1;
-        LoRa_transmit(&LoRa_Handle, &resp, 1, 0xffff);
+        LoRa_transmit(&LoRa_Handle, &resp, 1, TRANSMIT_TIMEOUT);
+        break;
+      case SENS_REPORT: ;
+        float dummy[2];
+        get_roll_and_pitch(bmx055_data.accel, &dummy[0], &dummy[1]);
+        uint8_t packet = {round(dummy[0]), round(dummy[1])};
+        LoRa_transmit(&LoRa_Handle, packet, 2, TRANSMIT_TIMEOUT);
         break;
       default:
         break;
