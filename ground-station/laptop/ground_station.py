@@ -67,12 +67,21 @@ class GroundStation:
         packet = bytearray()
         packet.append(4)
         self.serial_port.write(packet)
-        roll = self.serial_port.read().decode()
-        pitch = self.serial_port.read().decode()
-        print(f"Roll: {roll}\tPitch: {pitch}")
-        time.sleep(0.3)
+        # print(self.serial_port.read(), self.serial_port.read(), self.serial_port.read(), self.serial_port.read())
+        roll_sign = -1 if int.from_bytes(self.serial_port.read(), "big") else 1
+        roll = int.from_bytes(self.serial_port.read(), "big")
+        pitch_sign = -1 if int.from_bytes(self.serial_port.read(), "big") else 1
+        pitch = int.from_bytes(self.serial_port.read(), "big")
+        print(f"Roll: {roll_sign * roll}\tPitch: {pitch_sign * pitch}")
+        time.sleep(0.2)
+    
+    def counter_tilt(self):
+        packet = bytearray()
+        packet.append(5)
+        self.serial_port.write(packet)
 
-gs = GroundStation("/dev/tty.usbmodem101")
+# gs = GroundStation("/dev/tty.usbmodem101")
+gs = GroundStation("COM6")
 connected = False
 sens_report = False
 
@@ -91,10 +100,10 @@ while True:
             os._exit(1)
 
         connected = True
-        print("--Vehicle connected--")
+        print("--Servos armed--")
     elif gs.controller.swc == 0 and connected:
         connected = False
-        print("--Vehicle disconnected--")
+        print("--Servos disarmed--")
     elif gs.controller.swa == 4 and gs.controller.swc == 1:
         gs.controller_control()
     elif gs.controller.swa == 7 and gs.controller.swc == 1:
@@ -107,7 +116,8 @@ while True:
     elif sens_report and gs.controller.swd != 2:
         print("-End sensor report-")
         sens_report = False
-    
+    elif gs.controller.swb == 4:
+        gs.counter_tilt()
 
     
 # SWC -> enable motors
