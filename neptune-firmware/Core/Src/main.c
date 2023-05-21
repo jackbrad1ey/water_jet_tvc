@@ -861,7 +861,6 @@ void start_LoRa_task(void *argument)
 //      	SERVO_ENABLED = 1;
 //      	motors.m1_angle = (float) read_data[1];
 //      	motors.m2_angle = (float) read_data[2];
-      	float a = (float) read_data[bytes_read-2];
       	set_motor(1, 1, (float) read_data[bytes_read-2], htim3);
       	set_motor(2, 1, (float) read_data[bytes_read-1], htim3);
         break;
@@ -875,9 +874,36 @@ void start_LoRa_task(void *argument)
       case SENS_REPORT: ;
         float dummy[2];
         get_roll_and_pitch(bmx055_data.accel, &dummy[0], &dummy[1]);
-        uint8_t packet = {round(dummy[0]), round(dummy[1])};
-        LoRa_transmit(&LoRa_Handle, packet, 2, TRANSMIT_TIMEOUT);
+        uint8_t packet[4];
+        if (dummy[0] < 0) {
+        	packet[0] = 1;  // sign bit
+        	packet[1] = round(-dummy[0]);
+        } else {
+        	packet[0] = 0;  // sign bit
+        	packet[1] = round(dummy[0]);
+        }
+        if (dummy[1] < 0) {
+        	packet[2] = 1;  // sign bit
+        	packet[3] = round(-dummy[1]);
+        } else {
+        	packet[2] = 0;  // sign bit
+        	packet[3] = round(dummy[1]);
+        }
+
+        LoRa_transmit(&LoRa_Handle, &packet[0], 1, TRANSMIT_TIMEOUT);
+        LoRa_transmit(&LoRa_Handle, &packet[1], 1, TRANSMIT_TIMEOUT);
+        LoRa_transmit(&LoRa_Handle, &packet[2], 1, TRANSMIT_TIMEOUT);
+        LoRa_transmit(&LoRa_Handle, &packet[3], 1, TRANSMIT_TIMEOUT);
+//        LoRa_transmit(&LoRa_Handle, packet, 4, TRANSMIT_TIMEOUT);
         break;
+      case COUNTER_TILT: ;
+        float roll;
+        float pitch;
+        get_roll_and_pitch(bmx055_data.accel, &roll, &pitch);
+        roll = fmaxf(fminf(roll, 180), 0);
+        pitch = fmaxf(fminf(pitch, 180), 0);
+        set_motor(1, 0, roll, htim3);
+      	set_motor(2, 0, pitch, htim3);
       default:
         break;
     }
