@@ -925,7 +925,7 @@ void start_servo_control(void *argument)
         float pitch;
         get_roll_and_pitch(bmx055_data.accel, &roll, &pitch);
         pitch = fmaxf(fminf((90 - pitch*1.15), 170), 10);
-        roll = fmaxf(fminf(90 - (roll*1.15 - 90), 170), 10);
+        roll = fmaxf(fminf(90 - (roll - 90)*1.15, 170), 10);
         set_motor(1, 0, roll, htim3);
       	set_motor(2, 0, pitch, htim3);
     }
