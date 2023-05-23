@@ -25,7 +25,8 @@ class Controller:
 
             self.swc = raw_data[0]
             self.swa = raw_data[18]
-
+            self.swd = raw_data[0]
+            self.swb = raw_data[0]
             # min 0, max 2048
             self.ljs_v = raw_data[7] + 256 * raw_data[8]
             self.ljs_h = raw_data[9] + 256 * raw_data[10]

@@ -312,7 +312,7 @@ int main(void)
   LoRaHandle = osThreadNew(start_LoRa_task, NULL, &LoRa_attributes);
 
   /* creation of ServoActuate */
-//  ServoActuateHandle = osThreadNew(start_servo_control, NULL, &ServoActuate_attributes);
+  ServoActuateHandle = osThreadNew(start_servo_control, NULL, &ServoActuate_attributes);
 
   /* creation of KalmanFilter */
   // KalmanFilterHandle = osThreadNew(start_kalman_filter, NULL, &KalmanFilter_attributes);
@@ -808,7 +808,7 @@ void start_sensor_reading(void *argument)
     GYRO_ALPHA);
     BMX055_readCompensatedMag(&bmx055, bmx055_data.mag);
 
-    osDelay(30);  // every 30ms let's grab some new data
+    osDelay(10);  // every 30ms let's grab some new data
 	}
   /* USER CODE END 5 */
 }
@@ -855,14 +855,12 @@ void start_LoRa_task(void *argument)
     // Read bytes in FIFO buffer
     uint8_t read_data[255];
     size_t bytes_read = LoRa_receive(&LoRa_Handle, read_data, sizeof(read_data));
-
     switch (read_data[0]) {
       case SET_ANGLES: ;
       	if (bytes_read < 3) break;
 //      	SERVO_ENABLED = 1;
 //      	motors.m1_angle = (float) read_data[1];
 //      	motors.m2_angle = (float) read_data[2];
-      	float a = (float) read_data[bytes_read-2];
       	set_motor(1, 1, (float) read_data[bytes_read-2], htim3);
       	set_motor(2, 1, (float) read_data[bytes_read-1], htim3);
         break;
@@ -871,8 +869,35 @@ void start_LoRa_task(void *argument)
         break;
       case PONG: ;
         uint8_t resp = 1;
-        LoRa_transmit(&LoRa_Handle, &resp, 1, 0xffff);
+        LoRa_transmit(&LoRa_Handle, &resp, 1, TRANSMIT_TIMEOUT);
         break;
+      case SENS_REPORT: ;
+        float dummy[2];
+        get_roll_and_pitch(bmx055_data.accel, &dummy[0], &dummy[1]);
+        uint8_t packet[4];
+        if (dummy[0] < 0) {
+        	packet[0] = 1;  // sign bit
+        	packet[1] = round(-dummy[0]);
+        } else {
+        	packet[0] = 0;  // sign bit
+        	packet[1] = round(dummy[0]);
+        }
+        if (dummy[1] < 0) {
+        	packet[2] = 1;  // sign bit
+        	packet[3] = round(-dummy[1]);
+        } else {
+        	packet[2] = 0;  // sign bit
+        	packet[3] = round(dummy[1]);
+        }
+
+        LoRa_transmit(&LoRa_Handle, &packet[0], 1, TRANSMIT_TIMEOUT);
+        LoRa_transmit(&LoRa_Handle, &packet[1], 1, TRANSMIT_TIMEOUT);
+        LoRa_transmit(&LoRa_Handle, &packet[2], 1, TRANSMIT_TIMEOUT);
+        LoRa_transmit(&LoRa_Handle, &packet[3], 1, TRANSMIT_TIMEOUT);
+//        LoRa_transmit(&LoRa_Handle, packet, 4, TRANSMIT_TIMEOUT);
+        break;
+      case COUNTER_TILT: ;
+        SERVO_ENABLED = !SERVO_ENABLED;
       default:
         break;
     }
@@ -894,10 +919,17 @@ void start_servo_control(void *argument)
   for(;;)
   {
     if (SERVO_ENABLED) {
-        set_motor(1, 1, motors.m1_angle, htim3);
-        set_motor(2, 1, motors.m2_angle, htim3);
+      // roll increases == servo decreases
+      // pitch increases == servo decreases
+        float roll;
+        float pitch;
+        get_roll_and_pitch(bmx055_data.accel, &roll, &pitch);
+        pitch = fmaxf(fminf((90 - pitch*1.15), 170), 10);
+        roll = fmaxf(fminf(90 - (roll - 90)*1.15, 170), 10);
+        set_motor(1, 0, roll, htim3);
+      	set_motor(2, 0, pitch, htim3);
     }
-    osDelay(10);
+    osDelay(30);
   }
   /* USER CODE END start_servo_control */
 }

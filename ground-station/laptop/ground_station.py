@@ -51,8 +51,10 @@ class GroundStation:
         packet.append(1)
         packet.append(round(byte_x))
         packet.append(round(byte_y))
+        # packet.append(90)
+        # packet.append(90)
         self.serial_port.write(packet)
-        time.sleep(0.01)
+        time.sleep(0.03)
 
     def ping_vehicle(self):
         packet = bytearray()
@@ -63,9 +65,28 @@ class GroundStation:
         
         return result == b"\x01"
 
+    def report_sensors(self):
+        packet = bytearray()
+        packet.append(4)
+        self.serial_port.write(packet)
+        # print(self.serial_port.read(), self.serial_port.read(), self.serial_port.read(), self.serial_port.read())
+        roll_sign = -1 if int.from_bytes(self.serial_port.read(), "big") else 1
+        roll = int.from_bytes(self.serial_port.read(), "big")
+        pitch_sign = -1 if int.from_bytes(self.serial_port.read(), "big") else 1
+        pitch = int.from_bytes(self.serial_port.read(), "big")
+        print(f"Roll: {roll_sign * roll}\tPitch: {pitch_sign * pitch}")
+        time.sleep(0.05)
+    
+    def counter_tilt_toggle(self):
+        packet = bytearray()
+        packet.append(5)
+        self.serial_port.write(packet)
 
 gs = GroundStation("/dev/tty.usbmodem101")
+# gs = GroundStation("COM6")
 connected = False
+sens_report = False
+counter_tilt = False
 
 while True:
     if gs.controller.swc == 1 and not connected:
@@ -82,15 +103,30 @@ while True:
             os._exit(1)
 
         connected = True
-        print("--Vehicle connected--")
+        print("--Servos armed--")
     elif gs.controller.swc == 0 and connected:
         connected = False
-        print("--Vehicle disconnected--")
+        print("--Servos disarmed--")
     elif gs.controller.swa == 4 and gs.controller.swc == 1:
         gs.controller_control()
     elif gs.controller.swa == 7 and gs.controller.swc == 1:
         gs.test_gimbal()
-    
+    elif gs.controller.swd == 2 and not sens_report:
+        print("-Reporting sensor data-")
+        sens_report = True
+    elif gs.controller.swd == 2 and sens_report:
+        gs.report_sensors()
+    elif sens_report and gs.controller.swd != 2:
+        print("-End sensor report-")
+        sens_report = False
+    elif gs.controller.swb == 4 and not counter_tilt:
+        print("--Counter tilt enabled--")
+        counter_tilt = True
+        gs.counter_tilt_toggle()
+    elif gs.controller.swb != 4 and counter_tilt:
+        print("--Counter tilt disabled--")
+        counter_tilt = False
+        gs.counter_tilt_toggle()
 
     
 # SWC -> enable motors
@@ -109,3 +145,9 @@ while True:
 #  low (same as lora)
 #  1024
 #  Default NULL Dynamic
+
+
+
+
+#servo 1: Controls pitch
+#servo 2: Controls roll (starts at 90 when upright)

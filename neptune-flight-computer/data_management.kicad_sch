@@ -615,11 +615,6 @@
     (uuid fa99d56e-cbdb-4843-b164-824eb5aa0094)
   )
 
-  (text "Just something to note, try get this stuff as far away from\nthe servo wires as you can, I'm worried about the noise\nproduced by the servos interfering with the RF signals"
-    (at 17.78 25.4 0)
-    (effects (font (size 1.27 1.27)) (justify left bottom))
-    (uuid 173aef67-6600-4f05-b484-ceb8f96bd83e)
-  )
   (text "RFM95W" (at 20.32 41.91 0)
     (effects (font (size 1.27 1.27) (thickness 0.254) bold) (justify left bottom))
     (uuid 19e324c7-c5b9-405d-93d8-22710524a15c)
