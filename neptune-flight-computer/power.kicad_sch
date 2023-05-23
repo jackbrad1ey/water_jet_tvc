@@ -1670,11 +1670,7 @@
   (symbol (lib_id "Device:C_Small") (at 201.93 53.34 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 03aa680d-635d-4ee3-8171-f0053892833f)
-<<<<<<< HEAD
     (property "Reference" "C18" (at 204.597 52.0762 0)
-=======
-    (property "Reference" "C?" (at 204.597 52.0762 0)
->>>>>>> 0e7a4fd (Continued work on pcb)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "10p" (at 204.597 54.6162 0)
@@ -1686,21 +1682,12 @@
     (property "Datasheet" "~" (at 201.93 53.34 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-<<<<<<< HEAD
     (pin "1" (uuid e5863ba3-ebf4-4164-92bd-c6fb2628bcc7))
     (pin "2" (uuid ba3180bd-43e6-42c6-ac52-596b0a7dad3a))
     (instances
       (project "neptune"
         (path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/761c8e29-382a-475c-a37a-7201cc9cd0f5"
           (reference "C18") (unit 1)
-=======
-    (pin "1" (uuid f08f9bf9-fbc1-4434-adb8-bdb75709aa36))
-    (pin "2" (uuid 7b238332-a7ec-4bd5-941c-2b52c6d844b7))
-    (instances
-      (project "neptune"
-        (path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/761c8e29-382a-475c-a37a-7201cc9cd0f5"
-          (reference "C?") (unit 1)
->>>>>>> 0e7a4fd (Continued work on pcb)
         )
       )
     )
@@ -1709,11 +1696,7 @@
   (symbol (lib_id "power:VCC") (at 125.095 38.1 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 07af1437-031e-4585-a165-f16be7be49bc)
-<<<<<<< HEAD
     (property "Reference" "#PWR020" (at 125.095 41.91 0)
-=======
-    (property "Reference" "#PWR?" (at 125.095 41.91 0)
->>>>>>> 0e7a4fd (Continued work on pcb)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "VCC" (at 126.365 36.83 0)
@@ -1725,19 +1708,11 @@
     (property "Datasheet" "" (at 125.095 38.1 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-<<<<<<< HEAD
     (pin "1" (uuid 4b970b6e-8ce4-41e6-af1b-239436d2a4d1))
     (instances
       (project "neptune"
         (path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/761c8e29-382a-475c-a37a-7201cc9cd0f5"
           (reference "#PWR020") (unit 1)
-=======
-    (pin "1" (uuid d418ae0b-b412-4816-8be1-ee4c357a43c3))
-    (instances
-      (project "neptune"
-        (path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/761c8e29-382a-475c-a37a-7201cc9cd0f5"
-          (reference "#PWR?") (unit 1)
->>>>>>> 0e7a4fd (Continued work on pcb)
         )
       )
     )
@@ -1746,11 +1721,7 @@
   (symbol (lib_name "+3.3V_1") (lib_id "power:+3.3V") (at 191.135 74.93 0) (mirror y) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 0ad26d6a-33f4-4bbe-a1a6-057dedc0af16)
-<<<<<<< HEAD
     (property "Reference" "#PWR030" (at 191.135 78.74 0)
-=======
-    (property "Reference" "#PWR?" (at 191.135 78.74 0)
->>>>>>> 0e7a4fd (Continued work on pcb)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "+3.3V" (at 191.135 69.85 0)
@@ -1762,19 +1733,11 @@
     (property "Datasheet" "" (at 191.135 74.93 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-<<<<<<< HEAD
     (pin "1" (uuid 80e2102c-0943-4ebb-b1e6-56db247daa57))
     (instances
       (project "neptune"
         (path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/761c8e29-382a-475c-a37a-7201cc9cd0f5"
           (reference "#PWR030") (unit 1)
-=======
-    (pin "1" (uuid 1ac7786d-c707-4470-9e9d-8e3db810a9dc))
-    (instances
-      (project "neptune"
-        (path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/761c8e29-382a-475c-a37a-7201cc9cd0f5"
-          (reference "#PWR?") (unit 1)
->>>>>>> 0e7a4fd (Continued work on pcb)
         )
       )
     )
@@ -1783,11 +1746,7 @@
   (symbol (lib_id "power:GND") (at 132.08 87.63 0) (mirror y) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 0e5fa463-1a6c-451c-b6fb-8ccf1f88d0cf)
-<<<<<<< HEAD
     (property "Reference" "#PWR023" (at 132.08 93.98 0)
-=======
-    (property "Reference" "#PWR?" (at 132.08 93.98 0)
->>>>>>> 0e7a4fd (Continued work on pcb)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 132.08 92.71 0)
@@ -1799,19 +1758,11 @@
     (property "Datasheet" "" (at 132.08 87.63 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-<<<<<<< HEAD
     (pin "1" (uuid fd42c286-ed8f-450e-926a-4829a3a7dd76))
     (instances
       (project "neptune"
         (path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/761c8e29-382a-475c-a37a-7201cc9cd0f5"
           (reference "#PWR023") (unit 1)
-=======
-    (pin "1" (uuid d80d584c-4948-4da0-b91a-74ee42b81312))
-    (instances
-      (project "neptune"
-        (path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/761c8e29-382a-475c-a37a-7201cc9cd0f5"
-          (reference "#PWR?") (unit 1)
->>>>>>> 0e7a4fd (Continued work on pcb)
         )
       )
     )
@@ -1820,11 +1771,7 @@
   (symbol (lib_id "power:VDC") (at 49.53 87.63 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 0f733580-5b91-4bca-b709-bd216e3b7eef)
-<<<<<<< HEAD
     (property "Reference" "#PWR013" (at 49.53 90.17 0)
-=======
-    (property "Reference" "#PWR?" (at 49.53 90.17 0)
->>>>>>> 0e7a4fd (Continued work on pcb)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "VDC" (at 49.53 83.058 0)
@@ -1836,19 +1783,11 @@
     (property "Datasheet" "" (at 49.53 87.63 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-<<<<<<< HEAD
     (pin "1" (uuid 2699e418-9c75-4d7f-83a5-100e246d9ef2))
     (instances
       (project "neptune"
         (path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/761c8e29-382a-475c-a37a-7201cc9cd0f5"
           (reference "#PWR013") (unit 1)
-=======
-    (pin "1" (uuid 7f0c31f7-42b0-49fc-9bb9-9868e916f54e))
-    (instances
-      (project "neptune"
-        (path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/761c8e29-382a-475c-a37a-7201cc9cd0f5"
-          (reference "#PWR?") (unit 1)
->>>>>>> 0e7a4fd (Continued work on pcb)
         )
       )
     )
@@ -1857,11 +1796,7 @@
   (symbol (lib_id "power:VDC") (at 39.37 73.66 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 0ff5c88c-73e0-4e46-bbf2-1d9a50aea9bc)
-<<<<<<< HEAD
     (property "Reference" "#PWR010" (at 39.37 76.2 0)
-=======
-    (property "Reference" "#PWR?" (at 39.37 76.2 0)
->>>>>>> 0e7a4fd (Continued work on pcb)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "VDC" (at 39.37 69.088 0)
@@ -1873,19 +1808,11 @@
     (property "Datasheet" "" (at 39.37 73.66 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-<<<<<<< HEAD
     (pin "1" (uuid c409fa12-1fd3-4922-9da8-61258c751c11))
     (instances
       (project "neptune"
         (path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/761c8e29-382a-475c-a37a-7201cc9cd0f5"
           (reference "#PWR010") (unit 1)
-=======
-    (pin "1" (uuid bdb3261b-fff4-4209-af72-4ab02bd38f6a))
-    (instances
-      (project "neptune"
-        (path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/761c8e29-382a-475c-a37a-7201cc9cd0f5"
-          (reference "#PWR?") (unit 1)
->>>>>>> 0e7a4fd (Continued work on pcb)
         )
       )
     )
@@ -1894,11 +1821,7 @@
   (symbol (lib_id "power:VDC") (at 64.77 39.37 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 121413a3-6566-4a3e-89ca-69b316cbcba6)
-<<<<<<< HEAD
     (property "Reference" "#PWR015" (at 64.77 41.91 0)
-=======
-    (property "Reference" "#PWR?" (at 64.77 41.91 0)
->>>>>>> 0e7a4fd (Continued work on pcb)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "VDC" (at 64.77 34.798 0)
@@ -1910,19 +1833,11 @@
     (property "Datasheet" "" (at 64.77 39.37 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-<<<<<<< HEAD
     (pin "1" (uuid 0586512c-e830-40e7-8bb7-871d118b6895))
     (instances
       (project "neptune"
         (path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/761c8e29-382a-475c-a37a-7201cc9cd0f5"
           (reference "#PWR015") (unit 1)
-=======
-    (pin "1" (uuid 18d3c765-8cf6-489c-8100-aec7b3b93ea4))
-    (instances
-      (project "neptune"
-        (path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/761c8e29-382a-475c-a37a-7201cc9cd0f5"
-          (reference "#PWR?") (unit 1)
->>>>>>> 0e7a4fd (Continued work on pcb)
         )
       )
     )
@@ -1931,11 +1846,7 @@
   (symbol (lib_id "power:+5V") (at 125.73 77.47 0) (mirror y) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 12db251c-e401-4e62-9296-2faed3e89cf6)
-<<<<<<< HEAD
     (property "Reference" "#PWR021" (at 125.73 81.28 0)
-=======
-    (property "Reference" "#PWR?" (at 125.73 81.28 0)
->>>>>>> 0e7a4fd (Continued work on pcb)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "+5V" (at 125.73 72.39 0)
@@ -1947,19 +1858,11 @@
     (property "Datasheet" "" (at 125.73 77.47 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-<<<<<<< HEAD
     (pin "1" (uuid 1caca677-747b-4597-b32d-f59dbe1c2ab5))
     (instances
       (project "neptune"
         (path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/761c8e29-382a-475c-a37a-7201cc9cd0f5"
           (reference "#PWR021") (unit 1)
-=======
-    (pin "1" (uuid e597e99f-e8b3-4238-8fad-e56f6eccbf0a))
-    (instances
-      (project "neptune"
-        (path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/761c8e29-382a-475c-a37a-7201cc9cd0f5"
-          (reference "#PWR?") (unit 1)
->>>>>>> 0e7a4fd (Continued work on pcb)
         )
       )
     )
@@ -1968,11 +1871,7 @@
   (symbol (lib_id "power:+5V") (at 232.41 31.75 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 13ccfd87-f7ed-4d7e-94a5-896d2589ffb8)
-<<<<<<< HEAD
     (property "Reference" "#PWR034" (at 232.41 35.56 0)
-=======
-    (property "Reference" "#PWR?" (at 232.41 35.56 0)
->>>>>>> 0e7a4fd (Continued work on pcb)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "+5V" (at 232.41 26.67 0)
@@ -1984,19 +1883,11 @@
     (property "Datasheet" "" (at 232.41 31.75 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-<<<<<<< HEAD
     (pin "1" (uuid a581a409-40f2-4e49-8178-d9fbe84dced4))
     (instances
       (project "neptune"
         (path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/761c8e29-382a-475c-a37a-7201cc9cd0f5"
           (reference "#PWR034") (unit 1)
-=======
-    (pin "1" (uuid 6a5f9612-23cc-4011-85cb-876de6f12eed))
-    (instances
-      (project "neptune"
-        (path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/761c8e29-382a-475c-a37a-7201cc9cd0f5"
-          (reference "#PWR?") (unit 1)
->>>>>>> 0e7a4fd (Continued work on pcb)
         )
       )
     )
@@ -2005,11 +1896,7 @@
   (symbol (lib_id "Device:D_Schottky_Small") (at 52.07 43.18 270) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 1444d49f-1253-44c6-b265-5d56e5057df7)
-<<<<<<< HEAD
     (property "Reference" "D1" (at 55.88 44.45 90)
-=======
-    (property "Reference" "D?" (at 55.88 44.45 90)
->>>>>>> 0e7a4fd (Continued work on pcb)
       (effects (font (size 1.27 1.27)) (justify right))
     )
     (property "Value" "B5819W" (at 60.96 41.91 90)
@@ -2024,21 +1911,12 @@
     (property "LCSC" "C8598" (at 52.07 43.18 90)
       (effects (font (size 1.27 1.27)) hide)
     )
-<<<<<<< HEAD
     (pin "1" (uuid f87465c9-5b0f-4ac7-9250-3afda22f5015))
     (pin "2" (uuid b0ebb4fb-404f-47fc-85bf-cb41f89e5106))
     (instances
       (project "neptune"
         (path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/761c8e29-382a-475c-a37a-7201cc9cd0f5"
           (reference "D1") (unit 1)
-=======
-    (pin "1" (uuid 181743ff-74dc-4f2c-91cb-dcb6366eea9e))
-    (pin "2" (uuid 8cf7229b-0521-469c-9144-be5ad2da2891))
-    (instances
-      (project "neptune"
-        (path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/761c8e29-382a-475c-a37a-7201cc9cd0f5"
-          (reference "D?") (unit 1)
->>>>>>> 0e7a4fd (Continued work on pcb)
         )
       )
     )
@@ -2047,11 +1925,7 @@
   (symbol (lib_id "power:GND") (at 194.31 54.61 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 145024ef-8c34-4314-9482-a6c3bba7bcd8)
-<<<<<<< HEAD
     (property "Reference" "#PWR031" (at 194.31 60.96 0)
-=======
-    (property "Reference" "#PWR?" (at 194.31 60.96 0)
->>>>>>> 0e7a4fd (Continued work on pcb)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 194.31 59.69 0)
@@ -2063,19 +1937,11 @@
     (property "Datasheet" "" (at 194.31 54.61 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-<<<<<<< HEAD
     (pin "1" (uuid 3ff3e6a6-1592-4aa9-b292-c3284c9e3637))
     (instances
       (project "neptune"
         (path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/761c8e29-382a-475c-a37a-7201cc9cd0f5"
           (reference "#PWR031") (unit 1)
-=======
-    (pin "1" (uuid 3f254174-6014-4bdd-b42c-46a0480ca174))
-    (instances
-      (project "neptune"
-        (path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/761c8e29-382a-475c-a37a-7201cc9cd0f5"
-          (reference "#PWR?") (unit 1)
->>>>>>> 0e7a4fd (Continued work on pcb)
         )
       )
     )
@@ -2084,23 +1950,15 @@
   (symbol (lib_id "AP2210N-3.3TRG1:AP2210N-3.3TRG1") (at 158.115 81.28 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 1ae4c183-83e2-4f63-ae85-d2ba9b46c404)
-<<<<<<< HEAD
     (property "Reference" "U4" (at 158.115 72.39 0)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "LP3993-33B3F" (at 158.115 74.93 0)
-=======
-    (property "Reference" "U?" (at 158.115 71.12 0)
-      (effects (font (size 1.27 1.27)))
-    )
-    (property "Value" "AP2210N-3.3TRG1" (at 158.115 73.66 0)
->>>>>>> 0e7a4fd (Continued work on pcb)
       (effects (font (size 1.27 1.27)))
     )
     (property "Footprint" "Package_TO_SOT_SMD:SOT-23" (at 158.115 81.28 0)
       (effects (font (size 1.27 1.27)) (justify bottom) hide)
     )
-<<<<<<< HEAD
     (property "Datasheet" "https://jlcpcb.com/partdetail/Lowpower-LP399333B3F/C387705" (at 158.115 81.28 0)
       (effects (font (size 1.27 1.27)) hide)
     )
@@ -2114,21 +1972,6 @@
       (project "neptune"
         (path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/761c8e29-382a-475c-a37a-7201cc9cd0f5"
           (reference "U4") (unit 1)
-=======
-    (property "Datasheet" "https://datasheet.lcsc.com/lcsc/1810171025_Diodes-Incorporated-AP2210N-3-3TRG1_C155508.pdf" (at 158.115 81.28 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "LCSC" "C155508" (at 158.115 81.28 0)
-      (effects (font (size 1.27 1.27)) (justify bottom) hide)
-    )
-    (pin "1" (uuid 218bc572-f4c1-4591-a149-ee182c9bdf0c))
-    (pin "2" (uuid 2516cf4f-c06f-40a3-8f7e-a6533ac229a9))
-    (pin "3" (uuid 4845d368-96c3-4406-bfe4-504cb7573699))
-    (instances
-      (project "neptune"
-        (path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/761c8e29-382a-475c-a37a-7201cc9cd0f5"
-          (reference "U?") (unit 1)
->>>>>>> 0e7a4fd (Continued work on pcb)
         )
       )
     )
@@ -2137,11 +1980,7 @@
   (symbol (lib_id "Device:C_Small") (at 135.255 43.18 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 273115c9-6927-4886-8cb5-dd6c89477bff)
-<<<<<<< HEAD
     (property "Reference" "C14" (at 137.922 41.9162 0)
-=======
-    (property "Reference" "C?" (at 137.922 41.9162 0)
->>>>>>> 0e7a4fd (Continued work on pcb)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "10u" (at 137.922 44.4562 0)
@@ -2156,21 +1995,12 @@
     (property "LCSC" "C440198" (at 135.255 43.18 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-<<<<<<< HEAD
     (pin "1" (uuid b3a2e635-8ea9-4174-b713-458be894782c))
     (pin "2" (uuid 871fb17c-58fb-465e-915d-bb15aadb6915))
     (instances
       (project "neptune"
         (path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/761c8e29-382a-475c-a37a-7201cc9cd0f5"
           (reference "C14") (unit 1)
-=======
-    (pin "1" (uuid 3408a82a-40d5-47fd-87e1-288eba00f155))
-    (pin "2" (uuid a7f3d8d3-c300-4370-9039-800683827b43))
-    (instances
-      (project "neptune"
-        (path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/761c8e29-382a-475c-a37a-7201cc9cd0f5"
-          (reference "C?") (unit 1)
->>>>>>> 0e7a4fd (Continued work on pcb)
         )
       )
     )
@@ -2179,11 +2009,7 @@
   (symbol (lib_id "power:GND") (at 45.72 53.34 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 2bad4e8b-36aa-4a0b-ab67-e9477132d368)
-<<<<<<< HEAD
     (property "Reference" "#PWR012" (at 45.72 59.69 0)
-=======
-    (property "Reference" "#PWR?" (at 45.72 59.69 0)
->>>>>>> 0e7a4fd (Continued work on pcb)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 45.72 58.42 0)
@@ -2195,19 +2021,11 @@
     (property "Datasheet" "" (at 45.72 53.34 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-<<<<<<< HEAD
     (pin "1" (uuid 0b182ecf-356d-49c1-9e1b-446fd69b6dd1))
     (instances
       (project "neptune"
         (path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/761c8e29-382a-475c-a37a-7201cc9cd0f5"
           (reference "#PWR012") (unit 1)
-=======
-    (pin "1" (uuid c4103d5d-d800-4fc4-a8aa-ae98d32157d8))
-    (instances
-      (project "neptune"
-        (path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/761c8e29-382a-475c-a37a-7201cc9cd0f5"
-          (reference "#PWR?") (unit 1)
->>>>>>> 0e7a4fd (Continued work on pcb)
         )
       )
     )
@@ -2216,21 +2034,13 @@
   (symbol (lib_id "Comparator:LM393") (at 60.96 91.44 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 2c36de4c-1408-4a4c-b53d-373b61b29b08)
-<<<<<<< HEAD
     (property "Reference" "U2" (at 60.96 81.28 0)
-=======
-    (property "Reference" "U?" (at 60.96 81.28 0)
->>>>>>> 0e7a4fd (Continued work on pcb)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "LM393" (at 60.96 83.82 0)
       (effects (font (size 1.27 1.27)))
     )
-<<<<<<< HEAD
     (property "Footprint" "Local Library:SOIC127P600X175-8N" (at 60.96 91.44 0)
-=======
-    (property "Footprint" "footprints:SOIC127P600X175-8N" (at 60.96 91.44 0)
->>>>>>> 0e7a4fd (Continued work on pcb)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "http://www.ti.com/lit/ds/symlink/lm393.pdf" (at 60.96 91.44 0)
@@ -2239,7 +2049,6 @@
     (property "LCSC" "C7955" (at 60.96 91.44 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-<<<<<<< HEAD
     (pin "1" (uuid e307948c-de26-41dc-8327-db70f29fcf7f))
     (pin "2" (uuid 07f17e42-d2c4-453c-8a47-4357d5e01584))
     (pin "3" (uuid dc0b68d9-e60a-46fb-96d2-fc1f2468b924))
@@ -2252,20 +2061,6 @@
       (project "neptune"
         (path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/761c8e29-382a-475c-a37a-7201cc9cd0f5"
           (reference "U2") (unit 1)
-=======
-    (pin "1" (uuid e5441b9b-23fb-4b9e-b72c-6c7a6ca8614d))
-    (pin "2" (uuid 9ae7cfed-1027-4b6e-8f75-8f6e2e1a67f4))
-    (pin "3" (uuid b58a7b9c-ad17-45e3-b88e-7f13c1337f60))
-    (pin "5" (uuid 268e89f2-659c-485b-b6b7-9ce947d63a69))
-    (pin "6" (uuid 48c044bd-234d-4bd5-8ed3-546f947e3ffa))
-    (pin "7" (uuid 8f74d8dd-0dc3-429d-9f89-f1ed4270f951))
-    (pin "4" (uuid 9c8d391d-7765-4360-a38a-e564870db824))
-    (pin "8" (uuid 37781e2b-b29f-4e1e-8dce-647b8a6d1dd1))
-    (instances
-      (project "neptune"
-        (path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/761c8e29-382a-475c-a37a-7201cc9cd0f5"
-          (reference "U?") (unit 1)
->>>>>>> 0e7a4fd (Continued work on pcb)
         )
       )
     )
@@ -2274,11 +2069,7 @@
   (symbol (lib_id "power:VDC") (at 100.33 78.74 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 2f53eade-34a2-4820-9c7c-99c05a6a68e9)
-<<<<<<< HEAD
     (property "Reference" "#PWR018" (at 100.33 81.28 0)
-=======
-    (property "Reference" "#PWR?" (at 100.33 81.28 0)
->>>>>>> 0e7a4fd (Continued work on pcb)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "VDC" (at 100.33 74.168 0)
@@ -2290,19 +2081,11 @@
     (property "Datasheet" "" (at 100.33 78.74 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-<<<<<<< HEAD
     (pin "1" (uuid b871e95a-2cfe-4b0e-a359-a49902a33e77))
     (instances
       (project "neptune"
         (path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/761c8e29-382a-475c-a37a-7201cc9cd0f5"
           (reference "#PWR018") (unit 1)
-=======
-    (pin "1" (uuid 8231b19c-ae8e-483e-8754-7633ede6e6be))
-    (instances
-      (project "neptune"
-        (path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/761c8e29-382a-475c-a37a-7201cc9cd0f5"
-          (reference "#PWR?") (unit 1)
->>>>>>> 0e7a4fd (Continued work on pcb)
         )
       )
     )
@@ -2311,14 +2094,10 @@
   (symbol (lib_id "Device:R_Small") (at 49.53 97.79 180) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 34600403-f41d-47ed-8742-771add37111a)
-<<<<<<< HEAD
     (property "Reference" "R4" (at 48.0314 98.9584 0)
-=======
-    (property "Reference" "R?" (at 48.0314 98.9584 0)
->>>>>>> 0e7a4fd (Continued work on pcb)
       (effects (font (size 1.27 1.27)) (justify left))
     )
-    (property "Value" "10k" (at 48.0314 96.647 0)
+    (property "Value" "30k" (at 48.0314 96.647 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Footprint" "Resistor_SMD:R_0402_1005Metric" (at 49.53 97.79 0)
@@ -2327,21 +2106,12 @@
     (property "Datasheet" "~" (at 49.53 97.79 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-<<<<<<< HEAD
     (pin "1" (uuid 66010c5d-11c7-4167-a652-cbb127d3019b))
     (pin "2" (uuid e381c440-3d01-4b4b-8263-755b6eccb301))
     (instances
       (project "neptune"
         (path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/761c8e29-382a-475c-a37a-7201cc9cd0f5"
           (reference "R4") (unit 1)
-=======
-    (pin "1" (uuid 321442de-1be8-447c-864f-6a257a7c6538))
-    (pin "2" (uuid e58a7eb3-037c-4a74-aecd-96a5df6a265b))
-    (instances
-      (project "neptune"
-        (path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/761c8e29-382a-475c-a37a-7201cc9cd0f5"
-          (reference "R?") (unit 1)
->>>>>>> 0e7a4fd (Continued work on pcb)
         )
       )
     )
@@ -2350,11 +2120,7 @@
   (symbol (lib_id "Device:C_Small") (at 194.31 53.34 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 357f1976-9a9a-4511-924a-985c8d4695a5)
-<<<<<<< HEAD
     (property "Reference" "C17" (at 196.977 52.0762 0)
-=======
-    (property "Reference" "C?" (at 196.977 52.0762 0)
->>>>>>> 0e7a4fd (Continued work on pcb)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "1n" (at 196.977 54.6162 0)
@@ -2366,21 +2132,12 @@
     (property "Datasheet" "~" (at 194.31 53.34 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-<<<<<<< HEAD
     (pin "1" (uuid 035f0f3e-f608-4eb1-9f45-7ca2b721053f))
     (pin "2" (uuid df942c48-45a8-4d1b-bee2-3f867b14e654))
     (instances
       (project "neptune"
         (path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/761c8e29-382a-475c-a37a-7201cc9cd0f5"
           (reference "C17") (unit 1)
-=======
-    (pin "1" (uuid 1a6d31d1-f6fb-41ff-ae2f-0b740d586837))
-    (pin "2" (uuid 7fc997ff-0808-4daa-9890-ab5d6fdaecc5))
-    (instances
-      (project "neptune"
-        (path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/761c8e29-382a-475c-a37a-7201cc9cd0f5"
-          (reference "C?") (unit 1)
->>>>>>> 0e7a4fd (Continued work on pcb)
         )
       )
     )
@@ -2389,11 +2146,7 @@
   (symbol (lib_id "power:VDC") (at 69.85 81.28 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 41cd091d-6410-4c0a-b273-1a0100005cab)
-<<<<<<< HEAD
     (property "Reference" "#PWR016" (at 69.85 83.82 0)
-=======
-    (property "Reference" "#PWR?" (at 69.85 83.82 0)
->>>>>>> 0e7a4fd (Continued work on pcb)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "VDC" (at 69.85 76.708 0)
@@ -2405,19 +2158,11 @@
     (property "Datasheet" "" (at 69.85 81.28 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-<<<<<<< HEAD
     (pin "1" (uuid 08b31802-76c7-49d8-83fc-eba054f519fa))
     (instances
       (project "neptune"
         (path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/761c8e29-382a-475c-a37a-7201cc9cd0f5"
           (reference "#PWR016") (unit 1)
-=======
-    (pin "1" (uuid 9b947aa1-ba9d-4a23-bc1a-15da5f7737a9))
-    (instances
-      (project "neptune"
-        (path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/761c8e29-382a-475c-a37a-7201cc9cd0f5"
-          (reference "#PWR?") (unit 1)
->>>>>>> 0e7a4fd (Continued work on pcb)
         )
       )
     )
@@ -2426,11 +2171,7 @@
   (symbol (lib_id "Device:R_Small") (at 146.685 41.91 270) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 44cd4453-c039-43c8-86fc-7e92cd848dcf)
-<<<<<<< HEAD
     (property "Reference" "R6" (at 147.8534 43.4086 0)
-=======
-    (property "Reference" "R?" (at 147.8534 43.4086 0)
->>>>>>> 0e7a4fd (Continued work on pcb)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "NC" (at 145.542 43.4086 0)
@@ -2445,21 +2186,12 @@
     (property "MFR#" "RMCF0805FT36K5" (at 146.685 41.91 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-<<<<<<< HEAD
     (pin "1" (uuid 31a299f6-ffe4-4491-ac7b-989e98eb60ca))
     (pin "2" (uuid c56fd1e5-9caa-48c7-b256-dc9df150d561))
     (instances
       (project "neptune"
         (path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/761c8e29-382a-475c-a37a-7201cc9cd0f5"
           (reference "R6") (unit 1)
-=======
-    (pin "1" (uuid e2c2aa61-cb9b-479e-bd75-232b1b0f379c))
-    (pin "2" (uuid 7085ea2c-44aa-4079-90ba-9701349a1dc8))
-    (instances
-      (project "neptune"
-        (path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/761c8e29-382a-475c-a37a-7201cc9cd0f5"
-          (reference "R?") (unit 1)
->>>>>>> 0e7a4fd (Continued work on pcb)
         )
       )
     )
@@ -2468,11 +2200,7 @@
   (symbol (lib_id "power:GND") (at 35.56 43.18 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 6174ff9d-b396-48af-af74-61c8efa9e518)
-<<<<<<< HEAD
     (property "Reference" "#PWR07" (at 35.56 49.53 0)
-=======
-    (property "Reference" "#PWR?" (at 35.56 49.53 0)
->>>>>>> 0e7a4fd (Continued work on pcb)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 35.56 48.26 0)
@@ -2484,19 +2212,11 @@
     (property "Datasheet" "" (at 35.56 43.18 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-<<<<<<< HEAD
     (pin "1" (uuid 6934f6ad-885e-4306-b3ef-ae011c440396))
     (instances
       (project "neptune"
         (path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/761c8e29-382a-475c-a37a-7201cc9cd0f5"
           (reference "#PWR07") (unit 1)
-=======
-    (pin "1" (uuid 79a3868b-51be-4940-9fb9-587951cd7b21))
-    (instances
-      (project "neptune"
-        (path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/761c8e29-382a-475c-a37a-7201cc9cd0f5"
-          (reference "#PWR?") (unit 1)
->>>>>>> 0e7a4fd (Continued work on pcb)
         )
       )
     )
@@ -2505,11 +2225,7 @@
   (symbol (lib_id "Device:R_Small") (at 232.41 40.64 0) (mirror x) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 66161da9-3c69-4fec-8c8f-0b31fb218d71)
-<<<<<<< HEAD
     (property "Reference" "R8" (at 233.9086 41.8084 0)
-=======
-    (property "Reference" "R?" (at 233.9086 41.8084 0)
->>>>>>> 0e7a4fd (Continued work on pcb)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "10.2k" (at 233.9086 39.497 0)
@@ -2524,21 +2240,12 @@
     (property "LCSC" "C234238" (at 232.41 40.64 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-<<<<<<< HEAD
     (pin "1" (uuid a028ee3c-3d3e-4235-9209-a8b7b5e5d865))
     (pin "2" (uuid 56d54818-af34-445a-b224-9bdc5c144a6f))
     (instances
       (project "neptune"
         (path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/761c8e29-382a-475c-a37a-7201cc9cd0f5"
           (reference "R8") (unit 1)
-=======
-    (pin "1" (uuid aad1d6c5-605e-47bd-adeb-be0163b40e11))
-    (pin "2" (uuid c52d99d3-2078-46ba-97d4-33951497732a))
-    (instances
-      (project "neptune"
-        (path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/761c8e29-382a-475c-a37a-7201cc9cd0f5"
-          (reference "R?") (unit 1)
->>>>>>> 0e7a4fd (Continued work on pcb)
         )
       )
     )
@@ -2547,11 +2254,7 @@
   (symbol (lib_id "power:GND") (at 135.255 54.61 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 6a2a8dda-3d45-492a-83ca-3fcabddc834e)
-<<<<<<< HEAD
     (property "Reference" "#PWR024" (at 135.255 60.96 0)
-=======
-    (property "Reference" "#PWR?" (at 135.255 60.96 0)
->>>>>>> 0e7a4fd (Continued work on pcb)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 135.255 59.69 0)
@@ -2563,19 +2266,11 @@
     (property "Datasheet" "" (at 135.255 54.61 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-<<<<<<< HEAD
     (pin "1" (uuid 2819bb36-bb06-4504-ac65-1a86f3319758))
     (instances
       (project "neptune"
         (path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/761c8e29-382a-475c-a37a-7201cc9cd0f5"
           (reference "#PWR024") (unit 1)
-=======
-    (pin "1" (uuid 75add12d-b900-431c-9604-a5dc06c38de4))
-    (instances
-      (project "neptune"
-        (path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/761c8e29-382a-475c-a37a-7201cc9cd0f5"
-          (reference "#PWR?") (unit 1)
->>>>>>> 0e7a4fd (Continued work on pcb)
         )
       )
     )
@@ -2584,11 +2279,7 @@
   (symbol (lib_id "power:GND") (at 210.82 54.61 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 6b8d4a10-acb5-4c34-a421-34b8ee2ea0c9)
-<<<<<<< HEAD
     (property "Reference" "#PWR033" (at 210.82 60.96 0)
-=======
-    (property "Reference" "#PWR?" (at 210.82 60.96 0)
->>>>>>> 0e7a4fd (Continued work on pcb)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 210.82 59.69 0)
@@ -2600,19 +2291,11 @@
     (property "Datasheet" "" (at 210.82 54.61 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-<<<<<<< HEAD
     (pin "1" (uuid 3920f91b-f46a-4991-bc6b-ee2e49bc1577))
     (instances
       (project "neptune"
         (path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/761c8e29-382a-475c-a37a-7201cc9cd0f5"
           (reference "#PWR033") (unit 1)
-=======
-    (pin "1" (uuid 9f298dd5-f538-41c8-9bfc-5a7e71c62a5e))
-    (instances
-      (project "neptune"
-        (path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/761c8e29-382a-475c-a37a-7201cc9cd0f5"
-          (reference "#PWR?") (unit 1)
->>>>>>> 0e7a4fd (Continued work on pcb)
         )
       )
     )
@@ -2621,11 +2304,7 @@
   (symbol (lib_id "Device:R_Small") (at 69.85 86.36 180) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 6bced446-6fa1-4a44-9b3f-54cd3597a1e2)
-<<<<<<< HEAD
     (property "Reference" "R5" (at 76.2 87.4014 0)
-=======
-    (property "Reference" "R?" (at 76.2 87.4014 0)
->>>>>>> 0e7a4fd (Continued work on pcb)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "100k" (at 76.2 85.09 0)
@@ -2637,21 +2316,12 @@
     (property "Datasheet" "~" (at 69.85 86.36 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-<<<<<<< HEAD
     (pin "1" (uuid e00ad15c-857d-453a-9714-c489e365c2c6))
     (pin "2" (uuid ceb1a875-b8c4-4c29-b30b-2a942508e7bc))
     (instances
       (project "neptune"
         (path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/761c8e29-382a-475c-a37a-7201cc9cd0f5"
           (reference "R5") (unit 1)
-=======
-    (pin "1" (uuid 2cef1244-ff69-49b2-9f29-bb30a4e78f9b))
-    (pin "2" (uuid f28244be-a819-452a-bfdb-f5adf4a3dd4e))
-    (instances
-      (project "neptune"
-        (path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/761c8e29-382a-475c-a37a-7201cc9cd0f5"
-          (reference "R?") (unit 1)
->>>>>>> 0e7a4fd (Continued work on pcb)
         )
       )
     )
@@ -2660,14 +2330,10 @@
   (symbol (lib_id "Device:R_Small") (at 39.37 76.2 180) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 6cc37b0d-5d45-4e55-9e68-18ce835c859a)
-<<<<<<< HEAD
     (property "Reference" "R1" (at 37.8714 77.3684 0)
-=======
-    (property "Reference" "R?" (at 37.8714 77.3684 0)
->>>>>>> 0e7a4fd (Continued work on pcb)
       (effects (font (size 1.27 1.27)) (justify left))
     )
-    (property "Value" "56k" (at 37.8714 75.057 0)
+    (property "Value" "30k" (at 37.8714 75.057 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Footprint" "Resistor_SMD:R_0402_1005Metric" (at 39.37 76.2 0)
@@ -2676,21 +2342,12 @@
     (property "Datasheet" "~" (at 39.37 76.2 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-<<<<<<< HEAD
     (pin "1" (uuid 2edd9faf-bf4e-48cd-aa1d-61e844751b58))
     (pin "2" (uuid 3ea1e080-c91e-4385-91f7-ed58102e89d6))
     (instances
       (project "neptune"
         (path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/761c8e29-382a-475c-a37a-7201cc9cd0f5"
           (reference "R1") (unit 1)
-=======
-    (pin "1" (uuid 7db2a4b9-f872-48cc-a2a7-1f09e20dda1e))
-    (pin "2" (uuid 93187180-9f21-401e-89e0-97ed31a5dad1))
-    (instances
-      (project "neptune"
-        (path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/761c8e29-382a-475c-a37a-7201cc9cd0f5"
-          (reference "R?") (unit 1)
->>>>>>> 0e7a4fd (Continued work on pcb)
         )
       )
     )
@@ -2699,11 +2356,7 @@
   (symbol (lib_id "Reference_Voltage:LM4040DBZ-2.0") (at 39.37 85.09 90) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 745426e3-e0e8-456a-8219-3ff990cba810)
-<<<<<<< HEAD
     (property "Reference" "U1" (at 41.402 83.8199 90)
-=======
-    (property "Reference" "U?" (at 41.402 83.8199 90)
->>>>>>> 0e7a4fd (Continued work on pcb)
       (effects (font (size 1.27 1.27)) (justify right))
     )
     (property "Value" "ADR5040ARTZ-2.048" (at 16.383 86.233 90)
@@ -2718,21 +2371,12 @@
     (property "LCSC" "C144273" (at 39.37 85.09 90)
       (effects (font (size 1.27 1.27)) hide)
     )
-<<<<<<< HEAD
     (pin "1" (uuid 14bfa80e-4a3a-4d6f-a94b-aa7126741553))
     (pin "2" (uuid bca60752-0246-4259-8d5d-917699474f05))
     (instances
       (project "neptune"
         (path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/761c8e29-382a-475c-a37a-7201cc9cd0f5"
           (reference "U1") (unit 1)
-=======
-    (pin "1" (uuid fd5299da-3099-4934-9d33-520c8e829f28))
-    (pin "2" (uuid a349d333-1a5f-4436-9e07-9dd43b13bf92))
-    (instances
-      (project "neptune"
-        (path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/761c8e29-382a-475c-a37a-7201cc9cd0f5"
-          (reference "U?") (unit 1)
->>>>>>> 0e7a4fd (Continued work on pcb)
         )
       )
     )
@@ -2741,17 +2385,10 @@
   (symbol (lib_id "Device:C_Small") (at 181.61 85.09 0) (mirror y) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 74d4f3da-2f9e-44f4-a94f-ffc4057c7d48)
-<<<<<<< HEAD
     (property "Reference" "C16" (at 184.15 83.8262 0)
       (effects (font (size 1.27 1.27)) (justify right))
     )
     (property "Value" "1u" (at 184.15 86.3662 0)
-=======
-    (property "Reference" "C?" (at 184.15 83.8262 0)
-      (effects (font (size 1.27 1.27)) (justify right))
-    )
-    (property "Value" "2.2u" (at 184.15 86.3662 0)
->>>>>>> 0e7a4fd (Continued work on pcb)
       (effects (font (size 1.27 1.27)) (justify right))
     )
     (property "Footprint" "Capacitor_SMD:C_0402_1005Metric" (at 181.61 85.09 0)
@@ -2760,21 +2397,12 @@
     (property "Datasheet" "~" (at 181.61 85.09 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-<<<<<<< HEAD
     (pin "1" (uuid 4b1ca19a-0fd8-4da7-af94-9d0337d75c42))
     (pin "2" (uuid a6940187-8b76-4b0c-9cd9-e20a05f5d56b))
     (instances
       (project "neptune"
         (path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/761c8e29-382a-475c-a37a-7201cc9cd0f5"
           (reference "C16") (unit 1)
-=======
-    (pin "1" (uuid fe77a80e-3102-4344-acbe-4a4abb6a1a97))
-    (pin "2" (uuid 5dba0fe9-88de-429f-b5d2-0b43389e5f0b))
-    (instances
-      (project "neptune"
-        (path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/761c8e29-382a-475c-a37a-7201cc9cd0f5"
-          (reference "C?") (unit 1)
->>>>>>> 0e7a4fd (Continued work on pcb)
         )
       )
     )
@@ -2783,11 +2411,7 @@
   (symbol (lib_id "power:GND") (at 126.365 54.61 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 752b8e7b-c558-493e-b712-e76f5e2b268d)
-<<<<<<< HEAD
     (property "Reference" "#PWR022" (at 126.365 60.96 0)
-=======
-    (property "Reference" "#PWR?" (at 126.365 60.96 0)
->>>>>>> 0e7a4fd (Continued work on pcb)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 126.365 59.69 0)
@@ -2799,19 +2423,11 @@
     (property "Datasheet" "" (at 126.365 54.61 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-<<<<<<< HEAD
     (pin "1" (uuid 5318fab1-3c75-42bd-a63a-d2d1e1196cf8))
     (instances
       (project "neptune"
         (path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/761c8e29-382a-475c-a37a-7201cc9cd0f5"
           (reference "#PWR022") (unit 1)
-=======
-    (pin "1" (uuid 226a5ba9-7a99-4d86-a88b-2a4e05b20904))
-    (instances
-      (project "neptune"
-        (path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/761c8e29-382a-475c-a37a-7201cc9cd0f5"
-          (reference "#PWR?") (unit 1)
->>>>>>> 0e7a4fd (Continued work on pcb)
         )
       )
     )
@@ -2832,13 +2448,8 @@
     (property "Datasheet" "~" (at 140.97 85.09 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-<<<<<<< HEAD
     (pin "1" (uuid aeab838a-c73d-4ae1-831a-48cbca435e65))
     (pin "2" (uuid 4e6810ca-af15-441e-962b-ac25db2be2ec))
-=======
-    (pin "1" (uuid a186b2fa-611f-4234-97ac-36a1ced2f694))
-    (pin "2" (uuid 90263482-9f37-4c30-8e9e-097811d2a9fd))
->>>>>>> 0e7a4fd (Continued work on pcb)
     (instances
       (project "neptune"
         (path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/fd0daead-056b-49b0-b136-e76d44737a4c"
@@ -2869,13 +2480,8 @@
     (property "Datasheet" "~" (at 186.69 30.48 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-<<<<<<< HEAD
     (pin "1" (uuid dab61d4e-d5e4-4d77-91c3-5ad68f5840f6))
     (pin "2" (uuid bb1401ec-bfd8-48ca-8b15-7feed87b4d38))
-=======
-    (pin "1" (uuid 02195fbe-8979-4ecf-b1d8-6844c423b96e))
-    (pin "2" (uuid fe7f96ff-ac50-414c-a540-8a483259854e))
->>>>>>> 0e7a4fd (Continued work on pcb)
     (instances
       (project "neptune"
         (path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/fd0daead-056b-49b0-b136-e76d44737a4c"
@@ -2894,11 +2500,7 @@
   (symbol (lib_id "Device:C_Small") (at 151.13 46.99 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 78d9d4b2-c17a-48dd-99ab-42e7a5702f74)
-<<<<<<< HEAD
     (property "Reference" "C15" (at 153.797 45.7262 0)
-=======
-    (property "Reference" "C?" (at 153.797 45.7262 0)
->>>>>>> 0e7a4fd (Continued work on pcb)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "8.2n" (at 153.797 48.2662 0)
@@ -2913,21 +2515,12 @@
     (property "LCSC" "C45186" (at 151.13 46.99 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-<<<<<<< HEAD
     (pin "1" (uuid c8bc0422-39e3-4ffa-8939-ee2095dee20c))
     (pin "2" (uuid debca1ab-5818-4253-8698-59dc00728112))
     (instances
       (project "neptune"
         (path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/761c8e29-382a-475c-a37a-7201cc9cd0f5"
           (reference "C15") (unit 1)
-=======
-    (pin "1" (uuid 68ef4eec-c592-4dfb-9553-658e61ccbc09))
-    (pin "2" (uuid 7adb4ca6-bddd-467d-88e7-a911656ab86d))
-    (instances
-      (project "neptune"
-        (path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/761c8e29-382a-475c-a37a-7201cc9cd0f5"
-          (reference "C?") (unit 1)
->>>>>>> 0e7a4fd (Continued work on pcb)
         )
       )
     )
@@ -2936,11 +2529,7 @@
   (symbol (lib_id "power:GND") (at 49.53 100.33 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 80be4997-7cfe-4061-b95f-42478c21188b)
-<<<<<<< HEAD
     (property "Reference" "#PWR014" (at 49.53 106.68 0)
-=======
-    (property "Reference" "#PWR?" (at 49.53 106.68 0)
->>>>>>> 0e7a4fd (Continued work on pcb)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 49.657 104.7242 0)
@@ -2952,19 +2541,11 @@
     (property "Datasheet" "" (at 49.53 100.33 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-<<<<<<< HEAD
     (pin "1" (uuid 8666e234-fe8f-4d60-807e-e0b833c0c3cf))
     (instances
       (project "neptune"
         (path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/761c8e29-382a-475c-a37a-7201cc9cd0f5"
           (reference "#PWR014") (unit 1)
-=======
-    (pin "1" (uuid 6916b03b-1110-449f-9f3c-ab347cf003e7))
-    (instances
-      (project "neptune"
-        (path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/761c8e29-382a-475c-a37a-7201cc9cd0f5"
-          (reference "#PWR?") (unit 1)
->>>>>>> 0e7a4fd (Continued work on pcb)
         )
       )
     )
@@ -2973,11 +2554,7 @@
   (symbol (lib_id "Device:R_Small") (at 45.72 50.8 180) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 80ec60f4-9b67-4979-b8b9-9b5fca1af63f)
-<<<<<<< HEAD
     (property "Reference" "R2" (at 44.2214 51.9684 0)
-=======
-    (property "Reference" "R?" (at 44.2214 51.9684 0)
->>>>>>> 0e7a4fd (Continued work on pcb)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "100k" (at 44.2214 49.657 0)
@@ -2989,21 +2566,12 @@
     (property "Datasheet" "~" (at 45.72 50.8 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-<<<<<<< HEAD
     (pin "1" (uuid 16e15730-0e63-40f0-a723-565eae6cbd45))
     (pin "2" (uuid b9bbba65-d15d-44ad-8e6c-da9951476cf1))
     (instances
       (project "neptune"
         (path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/761c8e29-382a-475c-a37a-7201cc9cd0f5"
           (reference "R2") (unit 1)
-=======
-    (pin "1" (uuid a07a9195-5a50-4332-a32e-70931b08a17c))
-    (pin "2" (uuid f19d9769-1603-4d69-89b3-a18763e14ed0))
-    (instances
-      (project "neptune"
-        (path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/761c8e29-382a-475c-a37a-7201cc9cd0f5"
-          (reference "R?") (unit 1)
->>>>>>> 0e7a4fd (Continued work on pcb)
         )
       )
     )
@@ -3012,11 +2580,7 @@
   (symbol (lib_id "power:GND") (at 172.085 87.63 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 83b78e4a-2ae0-4fcf-8939-24f8547de4bd)
-<<<<<<< HEAD
     (property "Reference" "#PWR027" (at 172.085 93.98 0)
-=======
-    (property "Reference" "#PWR?" (at 172.085 93.98 0)
->>>>>>> 0e7a4fd (Continued work on pcb)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 172.085 92.71 0)
@@ -3028,19 +2592,11 @@
     (property "Datasheet" "" (at 172.085 87.63 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-<<<<<<< HEAD
     (pin "1" (uuid 545c8d60-131d-41a2-ac63-30ecc9238e18))
     (instances
       (project "neptune"
         (path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/761c8e29-382a-475c-a37a-7201cc9cd0f5"
           (reference "#PWR027") (unit 1)
-=======
-    (pin "1" (uuid bea8db17-33ad-4e6b-97f7-554d35a1dffd))
-    (instances
-      (project "neptune"
-        (path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/761c8e29-382a-475c-a37a-7201cc9cd0f5"
-          (reference "#PWR?") (unit 1)
->>>>>>> 0e7a4fd (Continued work on pcb)
         )
       )
     )
@@ -3049,11 +2605,7 @@
   (symbol (lib_id "power:GND") (at 232.41 54.61 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 8572397b-5469-48fb-adee-83c3efae79e6)
-<<<<<<< HEAD
     (property "Reference" "#PWR035" (at 232.41 60.96 0)
-=======
-    (property "Reference" "#PWR?" (at 232.41 60.96 0)
->>>>>>> 0e7a4fd (Continued work on pcb)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 232.41 59.69 0)
@@ -3065,19 +2617,11 @@
     (property "Datasheet" "" (at 232.41 54.61 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-<<<<<<< HEAD
     (pin "1" (uuid 0a51e497-0c43-4036-8297-f4f10bfdb2e7))
     (instances
       (project "neptune"
         (path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/761c8e29-382a-475c-a37a-7201cc9cd0f5"
           (reference "#PWR035") (unit 1)
-=======
-    (pin "1" (uuid 9b4ad1cd-e881-4ce3-82d3-c82792165ea8))
-    (instances
-      (project "neptune"
-        (path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/761c8e29-382a-475c-a37a-7201cc9cd0f5"
-          (reference "#PWR?") (unit 1)
->>>>>>> 0e7a4fd (Continued work on pcb)
         )
       )
     )
@@ -3086,11 +2630,7 @@
   (symbol (lib_id "Device:C_Small") (at 126.365 43.18 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 877c3fb5-6549-4ea3-9af6-a23063a08a80)
-<<<<<<< HEAD
     (property "Reference" "C12" (at 129.032 41.9162 0)
-=======
-    (property "Reference" "C?" (at 129.032 41.9162 0)
->>>>>>> 0e7a4fd (Continued work on pcb)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "10u" (at 129.032 44.4562 0)
@@ -3105,21 +2645,12 @@
     (property "LCSC" "C440198" (at 126.365 43.18 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-<<<<<<< HEAD
     (pin "1" (uuid 7de0a2ba-d1dd-40bb-8b7b-08417a3cc05f))
     (pin "2" (uuid 309324e2-9e19-4f6a-8c41-94b1961aab29))
     (instances
       (project "neptune"
         (path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/761c8e29-382a-475c-a37a-7201cc9cd0f5"
           (reference "C12") (unit 1)
-=======
-    (pin "1" (uuid 5db1600a-78cb-490e-b4f0-caffcfa0f1c9))
-    (pin "2" (uuid f9d66798-4407-4119-8c17-dcd46895e70c))
-    (instances
-      (project "neptune"
-        (path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/761c8e29-382a-475c-a37a-7201cc9cd0f5"
-          (reference "C?") (unit 1)
->>>>>>> 0e7a4fd (Continued work on pcb)
         )
       )
     )
@@ -3128,11 +2659,7 @@
   (symbol (lib_id "power:GND") (at 151.13 54.61 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 8a1a5a1c-bd19-4a0c-a8ec-87d256e9a653)
-<<<<<<< HEAD
     (property "Reference" "#PWR026" (at 151.13 60.96 0)
-=======
-    (property "Reference" "#PWR?" (at 151.13 60.96 0)
->>>>>>> 0e7a4fd (Continued work on pcb)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 151.13 59.69 0)
@@ -3144,19 +2671,11 @@
     (property "Datasheet" "" (at 151.13 54.61 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-<<<<<<< HEAD
     (pin "1" (uuid 4c1ba960-15b2-42a3-a8ff-2764224ec661))
     (instances
       (project "neptune"
         (path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/761c8e29-382a-475c-a37a-7201cc9cd0f5"
           (reference "#PWR026") (unit 1)
-=======
-    (pin "1" (uuid da1eeb8d-9ccf-48eb-9b16-3d40b2f1d505))
-    (instances
-      (project "neptune"
-        (path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/761c8e29-382a-475c-a37a-7201cc9cd0f5"
-          (reference "#PWR?") (unit 1)
->>>>>>> 0e7a4fd (Continued work on pcb)
         )
       )
     )
@@ -3177,13 +2696,8 @@
     (property "Datasheet" "~" (at 95.25 86.36 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-<<<<<<< HEAD
     (pin "1" (uuid 1fffd0b4-0c97-4ab1-acd2-25109769c55b))
     (pin "2" (uuid 9cf90c8e-a923-4fec-9b94-bb3819cfe499))
-=======
-    (pin "1" (uuid 563c836b-c05c-4e63-82dd-fd2a980eddb5))
-    (pin "2" (uuid 5236e9b8-92c1-40ac-a0dc-d12f5cd87ef8))
->>>>>>> 0e7a4fd (Continued work on pcb)
     (instances
       (project "neptune"
         (path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/fd0daead-056b-49b0-b136-e76d44737a4c"
@@ -3202,11 +2716,7 @@
   (symbol (lib_id "power:GND") (at 100.33 93.98 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 8f666109-3a9f-4466-928f-d81c5e1d486b)
-<<<<<<< HEAD
     (property "Reference" "#PWR019" (at 100.33 100.33 0)
-=======
-    (property "Reference" "#PWR?" (at 100.33 100.33 0)
->>>>>>> 0e7a4fd (Continued work on pcb)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 100.457 98.3742 0)
@@ -3218,19 +2728,11 @@
     (property "Datasheet" "" (at 100.33 93.98 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-<<<<<<< HEAD
     (pin "1" (uuid 3bced925-7670-4df6-bbd2-930a5303ce12))
     (instances
       (project "neptune"
         (path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/761c8e29-382a-475c-a37a-7201cc9cd0f5"
           (reference "#PWR019") (unit 1)
-=======
-    (pin "1" (uuid a452a9fc-5991-4009-9e56-7642676d69c4))
-    (instances
-      (project "neptune"
-        (path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/761c8e29-382a-475c-a37a-7201cc9cd0f5"
-          (reference "#PWR?") (unit 1)
->>>>>>> 0e7a4fd (Continued work on pcb)
         )
       )
     )
@@ -3239,27 +2741,18 @@
   (symbol (lib_id "Comparator:LM393") (at 102.87 86.36 0) (unit 3)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 9a064237-81c6-4294-a4e7-2aadc7d202ff)
-<<<<<<< HEAD
     (property "Reference" "U2" (at 102.108 85.0899 0)
-=======
-    (property "Reference" "U?" (at 102.108 85.0899 0)
->>>>>>> 0e7a4fd (Continued work on pcb)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "LM393" (at 102.108 87.6299 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
-<<<<<<< HEAD
     (property "Footprint" "Local Library:SOIC127P600X175-8N" (at 102.87 86.36 0)
-=======
-    (property "Footprint" "footprints:SOIC127P600X175-8N" (at 102.87 86.36 0)
->>>>>>> 0e7a4fd (Continued work on pcb)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "http://www.ti.com/lit/ds/symlink/lm393.pdf" (at 102.87 86.36 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-<<<<<<< HEAD
     (property "LCSC" "C7955" (at 102.87 86.36 0)
       (effects (font (size 1.27 1.27)) hide)
     )
@@ -3275,20 +2768,6 @@
       (project "neptune"
         (path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/761c8e29-382a-475c-a37a-7201cc9cd0f5"
           (reference "U2") (unit 3)
-=======
-    (pin "1" (uuid bee61a20-f539-4ee9-b341-3c3e24dfe780))
-    (pin "2" (uuid e56559d5-9235-40b7-8162-eb0c47687079))
-    (pin "3" (uuid 6a28fc74-372d-42c1-bc49-c39761ce3936))
-    (pin "5" (uuid fc2e4b87-96b0-45d3-90d0-edccfcb0f503))
-    (pin "6" (uuid eab529b0-762a-412a-be71-6e07e6afefcf))
-    (pin "7" (uuid 0344d67c-9110-487e-b0b1-bdeea10c6d7d))
-    (pin "4" (uuid 6aa0c7aa-154b-4cf1-b26b-41c107eb038a))
-    (pin "8" (uuid 1e58ffc7-8d50-4250-bea4-a79ddbf6a0f0))
-    (instances
-      (project "neptune"
-        (path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/761c8e29-382a-475c-a37a-7201cc9cd0f5"
-          (reference "U?") (unit 3)
->>>>>>> 0e7a4fd (Continued work on pcb)
         )
       )
     )
@@ -3297,11 +2776,7 @@
   (symbol (lib_id "Device:R_Small") (at 194.31 48.26 180) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 9dbe33fd-c0b4-417c-84f2-a8c664f3c385)
-<<<<<<< HEAD
     (property "Reference" "R7" (at 192.8114 49.4284 0)
-=======
-    (property "Reference" "R?" (at 192.8114 49.4284 0)
->>>>>>> 0e7a4fd (Continued work on pcb)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "36.5k" (at 192.8114 47.117 0)
@@ -3316,21 +2791,12 @@
     (property "LCSC" "C162860" (at 194.31 48.26 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-<<<<<<< HEAD
     (pin "1" (uuid 952462e3-7746-4616-928b-06a72c3f60d2))
     (pin "2" (uuid 67df2e51-9de8-4360-8881-70afea8b02c4))
     (instances
       (project "neptune"
         (path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/761c8e29-382a-475c-a37a-7201cc9cd0f5"
           (reference "R7") (unit 1)
-=======
-    (pin "1" (uuid 50dc91db-ad4e-4510-90fc-fd2ef6cd0cc0))
-    (pin "2" (uuid 012ef9fd-b92e-444d-ae39-c70dc97a5253))
-    (instances
-      (project "neptune"
-        (path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/761c8e29-382a-475c-a37a-7201cc9cd0f5"
-          (reference "R?") (unit 1)
->>>>>>> 0e7a4fd (Continued work on pcb)
         )
       )
     )
@@ -3339,11 +2805,7 @@
   (symbol (lib_id "Device:D_Schottky_Small") (at 240.03 33.655 90) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid a075ae8d-55b5-4179-8237-62630a5f53e6)
-<<<<<<< HEAD
     (property "Reference" "D3" (at 241.3 32.385 90)
-=======
-    (property "Reference" "D?" (at 241.3 32.385 90)
->>>>>>> 0e7a4fd (Continued work on pcb)
       (effects (font (size 1.27 1.27)) (justify right))
     )
     (property "Value" "B5819W" (at 241.3 34.925 90)
@@ -3358,21 +2820,12 @@
     (property "LCSC" "C8598" (at 240.03 33.655 90)
       (effects (font (size 1.27 1.27)) hide)
     )
-<<<<<<< HEAD
     (pin "1" (uuid 07263277-49d8-4519-8597-69361f6b1432))
     (pin "2" (uuid a33ab420-6e98-42d2-a6d8-865d8a1f118c))
     (instances
       (project "neptune"
         (path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/761c8e29-382a-475c-a37a-7201cc9cd0f5"
           (reference "D3") (unit 1)
-=======
-    (pin "1" (uuid be615100-fb39-4b8a-b67d-aba8c38e0e2f))
-    (pin "2" (uuid 3ea765d6-484e-4f60-b8a1-c52695138073))
-    (instances
-      (project "neptune"
-        (path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/761c8e29-382a-475c-a37a-7201cc9cd0f5"
-          (reference "D?") (unit 1)
->>>>>>> 0e7a4fd (Continued work on pcb)
         )
       )
     )
@@ -3381,14 +2834,10 @@
   (symbol (lib_id "Device:R_Small") (at 49.53 90.17 180) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid a215d009-312b-4641-aa25-3a4b24e6dd5a)
-<<<<<<< HEAD
     (property "Reference" "R3" (at 48.0314 91.3384 0)
-=======
-    (property "Reference" "R?" (at 48.0314 91.3384 0)
->>>>>>> 0e7a4fd (Continued work on pcb)
       (effects (font (size 1.27 1.27)) (justify left))
     )
-    (property "Value" "30k" (at 48.0314 89.027 0)
+    (property "Value" "56k" (at 48.0314 89.027 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Footprint" "Resistor_SMD:R_0402_1005Metric" (at 49.53 90.17 0)
@@ -3397,21 +2846,12 @@
     (property "Datasheet" "~" (at 49.53 90.17 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-<<<<<<< HEAD
     (pin "1" (uuid 6cc50357-bbdf-496e-b14c-e1e25eaf39f8))
     (pin "2" (uuid 8e019ce9-f7ec-451c-9799-f51aba4402e3))
     (instances
       (project "neptune"
         (path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/761c8e29-382a-475c-a37a-7201cc9cd0f5"
           (reference "R3") (unit 1)
-=======
-    (pin "1" (uuid 1f1c3e7c-3f92-4f3f-a04d-2d2bee3bcd18))
-    (pin "2" (uuid bfe2e29b-66a8-4293-90aa-30815a841c98))
-    (instances
-      (project "neptune"
-        (path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/761c8e29-382a-475c-a37a-7201cc9cd0f5"
-          (reference "R?") (unit 1)
->>>>>>> 0e7a4fd (Continued work on pcb)
         )
       )
     )
@@ -3420,11 +2860,7 @@
   (symbol (lib_id "power:GND") (at 140.97 87.63 0) (mirror y) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid a470ca0b-2a36-4daa-901d-3247fe3e860c)
-<<<<<<< HEAD
     (property "Reference" "#PWR025" (at 140.97 93.98 0)
-=======
-    (property "Reference" "#PWR?" (at 140.97 93.98 0)
->>>>>>> 0e7a4fd (Continued work on pcb)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 140.97 92.71 0)
@@ -3436,19 +2872,11 @@
     (property "Datasheet" "" (at 140.97 87.63 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-<<<<<<< HEAD
     (pin "1" (uuid f7111a89-bdbf-4675-812c-3dffc1fd7fcc))
     (instances
       (project "neptune"
         (path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/761c8e29-382a-475c-a37a-7201cc9cd0f5"
           (reference "#PWR025") (unit 1)
-=======
-    (pin "1" (uuid e66ec4e9-db79-453c-b779-1e8bd3c36e48))
-    (instances
-      (project "neptune"
-        (path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/761c8e29-382a-475c-a37a-7201cc9cd0f5"
-          (reference "#PWR?") (unit 1)
->>>>>>> 0e7a4fd (Continued work on pcb)
         )
       )
     )
@@ -3457,11 +2885,7 @@
   (symbol (lib_id "Device:D_Schottky_Small") (at 210.82 52.07 270) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid a9d4eaa3-58a5-472f-9f91-a27b8de65d6d)
-<<<<<<< HEAD
     (property "Reference" "D2" (at 212.598 50.9813 90)
-=======
-    (property "Reference" "D?" (at 212.598 50.9813 90)
->>>>>>> 0e7a4fd (Continued work on pcb)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "RB056LAM-40TR" (at 212.598 53.5182 90)
@@ -3476,21 +2900,12 @@
     (property "LCSC" "C308719" (at 210.82 52.07 90)
       (effects (font (size 1.27 1.27)) hide)
     )
-<<<<<<< HEAD
     (pin "1" (uuid 32d07ec8-f86f-4a05-b861-5cc22a62d528))
     (pin "2" (uuid 275aa84e-4418-478a-a5b2-3d035751dd2d))
     (instances
       (project "neptune"
         (path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/761c8e29-382a-475c-a37a-7201cc9cd0f5"
           (reference "D2") (unit 1)
-=======
-    (pin "1" (uuid d30876d3-b75d-4b1e-ac43-66fefeda72f6))
-    (pin "2" (uuid 644225dc-283c-4c44-ae9a-5d8a0f8d16ab))
-    (instances
-      (project "neptune"
-        (path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/761c8e29-382a-475c-a37a-7201cc9cd0f5"
-          (reference "D?") (unit 1)
->>>>>>> 0e7a4fd (Continued work on pcb)
         )
       )
     )
@@ -3499,21 +2914,13 @@
   (symbol (lib_id "SRU1048-100Y:SRU1048-100Y") (at 220.98 36.83 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid b20d0817-6e1f-47f1-87be-06097301834d)
-<<<<<<< HEAD
     (property "Reference" "L1" (at 220.5101 29.083 0)
-=======
-    (property "Reference" "L?" (at 220.5101 29.083 0)
->>>>>>> 0e7a4fd (Continued work on pcb)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "IHLP2020CZER100M01" (at 220.5101 31.623 0)
       (effects (font (size 1.27 1.27)))
     )
-<<<<<<< HEAD
     (property "Footprint" "Local Library:IHLP2020CZER100M01" (at 220.98 36.83 0)
-=======
-    (property "Footprint" "footprints:IHLP2020CZER100M01" (at 220.98 36.83 0)
->>>>>>> 0e7a4fd (Continued work on pcb)
       (effects (font (size 1.27 1.27)) (justify left bottom) hide)
     )
     (property "Datasheet" "https://datasheet.lcsc.com/lcsc/2205091530_Vishay-Intertech-IHLP2020CZER100M01_C844996.pdf" (at 220.98 36.83 0)
@@ -3522,21 +2929,12 @@
     (property "LCSC" "C844996" (at 220.98 36.83 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-<<<<<<< HEAD
     (pin "1" (uuid 8c006915-b0bd-426f-b9bd-466b593542d7))
     (pin "2" (uuid 64e531d6-92bd-41c3-80a3-5a04275c2c0d))
     (instances
       (project "neptune"
         (path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/761c8e29-382a-475c-a37a-7201cc9cd0f5"
           (reference "L1") (unit 1)
-=======
-    (pin "1" (uuid fbfccb68-7a2e-4ad0-934f-1e24f1016ff0))
-    (pin "2" (uuid dfc94b64-11d2-4880-9749-9df3a17955b3))
-    (instances
-      (project "neptune"
-        (path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/761c8e29-382a-475c-a37a-7201cc9cd0f5"
-          (reference "L?") (unit 1)
->>>>>>> 0e7a4fd (Continued work on pcb)
         )
       )
     )
@@ -3545,11 +2943,7 @@
   (symbol (lib_id "Device:R_Small") (at 232.41 49.53 0) (mirror x) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid b232abab-7792-40df-aafd-825af43e3b5e)
-<<<<<<< HEAD
     (property "Reference" "R9" (at 233.9086 50.6984 0)
-=======
-    (property "Reference" "R?" (at 233.9086 50.6984 0)
->>>>>>> 0e7a4fd (Continued work on pcb)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "1.91k" (at 233.9086 48.387 0)
@@ -3564,21 +2958,12 @@
     (property "LCSC" "C217858" (at 232.41 49.53 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-<<<<<<< HEAD
     (pin "1" (uuid f7d34479-52b5-45d6-8cc0-4c3586133bca))
     (pin "2" (uuid 9ba0964e-bee8-464c-848c-12a87b5a59b9))
     (instances
       (project "neptune"
         (path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/761c8e29-382a-475c-a37a-7201cc9cd0f5"
           (reference "R9") (unit 1)
-=======
-    (pin "1" (uuid 183cde98-bab0-4968-88af-53864d2fd937))
-    (pin "2" (uuid b3e652f7-0425-46d6-a5a2-71ad7eea48d8))
-    (instances
-      (project "neptune"
-        (path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/761c8e29-382a-475c-a37a-7201cc9cd0f5"
-          (reference "R?") (unit 1)
->>>>>>> 0e7a4fd (Continued work on pcb)
         )
       )
     )
@@ -3587,11 +2972,7 @@
   (symbol (lib_id "power:GND") (at 39.37 88.9 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid b83aa53f-6f3f-48bf-b41f-2e5458df2888)
-<<<<<<< HEAD
     (property "Reference" "#PWR011" (at 39.37 95.25 0)
-=======
-    (property "Reference" "#PWR?" (at 39.37 95.25 0)
->>>>>>> 0e7a4fd (Continued work on pcb)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 39.497 93.2942 0)
@@ -3603,19 +2984,11 @@
     (property "Datasheet" "" (at 39.37 88.9 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-<<<<<<< HEAD
     (pin "1" (uuid 8cd1d9a2-0a94-4c47-a586-0acd4144ca0c))
     (instances
       (project "neptune"
         (path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/761c8e29-382a-475c-a37a-7201cc9cd0f5"
           (reference "#PWR011") (unit 1)
-=======
-    (pin "1" (uuid cca20c0e-4dd8-43e2-8d36-77b8f7eb2b62))
-    (instances
-      (project "neptune"
-        (path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/761c8e29-382a-475c-a37a-7201cc9cd0f5"
-          (reference "#PWR?") (unit 1)
->>>>>>> 0e7a4fd (Continued work on pcb)
         )
       )
     )
@@ -3624,11 +2997,7 @@
   (symbol (lib_id "power:GND") (at 201.93 54.61 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid b85a89bb-be3b-4f3d-a120-71bef9c572e3)
-<<<<<<< HEAD
     (property "Reference" "#PWR032" (at 201.93 60.96 0)
-=======
-    (property "Reference" "#PWR?" (at 201.93 60.96 0)
->>>>>>> 0e7a4fd (Continued work on pcb)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 201.93 59.69 0)
@@ -3640,19 +3009,11 @@
     (property "Datasheet" "" (at 201.93 54.61 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-<<<<<<< HEAD
     (pin "1" (uuid 1a4d6cc6-1934-4fa2-9304-22529c39fe4a))
     (instances
       (project "neptune"
         (path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/761c8e29-382a-475c-a37a-7201cc9cd0f5"
           (reference "#PWR032") (unit 1)
-=======
-    (pin "1" (uuid bd4b1bf8-371b-468f-a21d-a85fe9f179ad))
-    (instances
-      (project "neptune"
-        (path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/761c8e29-382a-475c-a37a-7201cc9cd0f5"
-          (reference "#PWR?") (unit 1)
->>>>>>> 0e7a4fd (Continued work on pcb)
         )
       )
     )
@@ -3661,11 +3022,7 @@
   (symbol (lib_id "Transistor_FET:Si2319CDS") (at 45.72 41.91 90) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid ba26c8b7-4366-4b8e-b1e8-b548f7e2e619)
-<<<<<<< HEAD
     (property "Reference" "Q1" (at 44.5516 36.7284 0)
-=======
-    (property "Reference" "Q?" (at 44.5516 36.7284 0)
->>>>>>> 0e7a4fd (Continued work on pcb)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "Si2301-TP" (at 46.863 36.7284 0)
@@ -3680,7 +3037,6 @@
     (property "LCSC" "C10487" (at 45.72 41.91 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-<<<<<<< HEAD
     (pin "1" (uuid d53a4819-fbb8-48cf-8504-922c56448cd3))
     (pin "2" (uuid f16c4de1-db5c-4e2a-a1d5-b0bcfaa15f24))
     (pin "3" (uuid 710fbe09-182d-4c54-8088-71de3d4e6a49))
@@ -3688,15 +3044,6 @@
       (project "neptune"
         (path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/761c8e29-382a-475c-a37a-7201cc9cd0f5"
           (reference "Q1") (unit 1)
-=======
-    (pin "1" (uuid b6a23e91-69f5-44fe-a673-f9196ceb2100))
-    (pin "2" (uuid 398326f2-da46-4ebe-9538-675da775d35b))
-    (pin "3" (uuid 16ec93a2-15f8-4482-90b2-46f71079e412))
-    (instances
-      (project "neptune"
-        (path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/761c8e29-382a-475c-a37a-7201cc9cd0f5"
-          (reference "Q?") (unit 1)
->>>>>>> 0e7a4fd (Continued work on pcb)
         )
       )
     )
@@ -3705,11 +3052,7 @@
   (symbol (lib_id "Device:C_Small") (at 132.08 85.09 0) (mirror y) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid bf1a3858-9fb0-46de-bab4-bd386edc9d50)
-<<<<<<< HEAD
     (property "Reference" "C13" (at 134.62 83.8262 0)
-=======
-    (property "Reference" "C?" (at 134.62 83.8262 0)
->>>>>>> 0e7a4fd (Continued work on pcb)
       (effects (font (size 1.27 1.27)) (justify right))
     )
     (property "Value" "1u" (at 134.62 86.3662 0)
@@ -3721,21 +3064,12 @@
     (property "Datasheet" "~" (at 132.08 85.09 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-<<<<<<< HEAD
     (pin "1" (uuid f20659dc-89ba-43bc-ad70-0658ecbdb5ff))
     (pin "2" (uuid 0f53a2d6-d6f6-486f-9b82-b9556ef6e641))
     (instances
       (project "neptune"
         (path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/761c8e29-382a-475c-a37a-7201cc9cd0f5"
           (reference "C13") (unit 1)
-=======
-    (pin "1" (uuid abe8ac2e-7d30-4b10-acc7-3acae4ecd51d))
-    (pin "2" (uuid a8d4a15c-6618-4ad0-8cfa-a4f3390ea863))
-    (instances
-      (project "neptune"
-        (path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/761c8e29-382a-475c-a37a-7201cc9cd0f5"
-          (reference "C?") (unit 1)
->>>>>>> 0e7a4fd (Continued work on pcb)
         )
       )
     )
@@ -3744,11 +3078,7 @@
   (symbol (lib_id "power:VBUS") (at 240.03 31.115 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid d2a988e4-3734-4b36-a333-4fd6c96f76ed)
-<<<<<<< HEAD
     (property "Reference" "#PWR036" (at 240.03 34.925 0)
-=======
-    (property "Reference" "#PWR?" (at 240.03 34.925 0)
->>>>>>> 0e7a4fd (Continued work on pcb)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "VBUS" (at 240.03 27.5392 0)
@@ -3760,19 +3090,11 @@
     (property "Datasheet" "" (at 240.03 31.115 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-<<<<<<< HEAD
     (pin "1" (uuid 94c4f429-abaa-4c21-9797-9e43ec37b36b))
     (instances
       (project "neptune"
         (path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/761c8e29-382a-475c-a37a-7201cc9cd0f5"
           (reference "#PWR036") (unit 1)
-=======
-    (pin "1" (uuid a52c4fe1-7cbb-40ce-8f36-e5551eb16c83))
-    (instances
-      (project "neptune"
-        (path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/761c8e29-382a-475c-a37a-7201cc9cd0f5"
-          (reference "#PWR?") (unit 1)
->>>>>>> 0e7a4fd (Continued work on pcb)
         )
       )
     )
@@ -3781,11 +3103,7 @@
   (symbol (lib_id "Device:C_Small") (at 240.03 44.45 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid d30466b1-5b76-4fdc-8ce2-533b0d5b9d80)
-<<<<<<< HEAD
     (property "Reference" "C19" (at 242.697 43.1862 0)
-=======
-    (property "Reference" "C?" (at 242.697 43.1862 0)
->>>>>>> 0e7a4fd (Continued work on pcb)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "10u" (at 242.697 45.7262 0)
@@ -3800,21 +3118,12 @@
     (property "LCSC" "C19702" (at 240.03 44.45 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-<<<<<<< HEAD
     (pin "1" (uuid a9f6dd6a-da59-4c1a-ac0d-78fc2030d05e))
     (pin "2" (uuid 6228e75b-dd4c-495c-bbf5-e91cf5106324))
     (instances
       (project "neptune"
         (path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/761c8e29-382a-475c-a37a-7201cc9cd0f5"
           (reference "C19") (unit 1)
-=======
-    (pin "1" (uuid 1d36989a-c8da-44bf-a765-3c5c2ffcf16b))
-    (pin "2" (uuid 82114d30-1464-46f6-aeaa-bf78a000c2f8))
-    (instances
-      (project "neptune"
-        (path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/761c8e29-382a-475c-a37a-7201cc9cd0f5"
-          (reference "C?") (unit 1)
->>>>>>> 0e7a4fd (Continued work on pcb)
         )
       )
     )
@@ -3823,11 +3132,7 @@
   (symbol (lib_id "power:GND") (at 181.61 87.63 0) (mirror y) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid d67e616f-fd6e-4c11-87d6-8f241488a74b)
-<<<<<<< HEAD
     (property "Reference" "#PWR028" (at 181.61 93.98 0)
-=======
-    (property "Reference" "#PWR?" (at 181.61 93.98 0)
->>>>>>> 0e7a4fd (Continued work on pcb)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 181.61 92.71 0)
@@ -3839,19 +3144,11 @@
     (property "Datasheet" "" (at 181.61 87.63 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-<<<<<<< HEAD
     (pin "1" (uuid 414e0e7b-d841-4fac-8ecb-c6e35b637fe1))
     (instances
       (project "neptune"
         (path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/761c8e29-382a-475c-a37a-7201cc9cd0f5"
           (reference "#PWR028") (unit 1)
-=======
-    (pin "1" (uuid 419b0235-c47a-4b13-9eee-2315c2e3170a))
-    (instances
-      (project "neptune"
-        (path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/761c8e29-382a-475c-a37a-7201cc9cd0f5"
-          (reference "#PWR?") (unit 1)
->>>>>>> 0e7a4fd (Continued work on pcb)
         )
       )
     )
@@ -3860,41 +3157,24 @@
   (symbol (lib_id "Connector_Generic:Conn_01x02") (at 29.21 39.37 0) (mirror y) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid d8f6b77f-bde2-4824-b9e2-53c92a41d9c6)
-<<<<<<< HEAD
     (property "Reference" "J2" (at 29.21 32.385 0)
-=======
-    (property "Reference" "J?" (at 29.21 32.385 0)
->>>>>>> 0e7a4fd (Continued work on pcb)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "Conn_01x02" (at 29.21 34.925 0)
       (effects (font (size 1.27 1.27)))
     )
-<<<<<<< HEAD
     (property "Footprint" "Local Library:XT30PWM" (at 29.21 39.37 0)
-=======
-    (property "Footprint" "footprints:XT30PWM" (at 29.21 39.37 0)
->>>>>>> 0e7a4fd (Continued work on pcb)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "~" (at 29.21 39.37 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-<<<<<<< HEAD
     (pin "1" (uuid d146ba2a-6dd5-4413-b3c3-bbeeee071c2d))
     (pin "2" (uuid 37227a84-802c-431c-b972-da4f85389ff0))
     (instances
       (project "neptune"
         (path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/761c8e29-382a-475c-a37a-7201cc9cd0f5"
           (reference "J2") (unit 1)
-=======
-    (pin "1" (uuid 014f8295-6d70-452f-ab2a-4d78d17e2492))
-    (pin "2" (uuid 1e091c79-0aaf-47f2-8a21-e6566940edd1))
-    (instances
-      (project "neptune"
-        (path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/761c8e29-382a-475c-a37a-7201cc9cd0f5"
-          (reference "J?") (unit 1)
->>>>>>> 0e7a4fd (Continued work on pcb)
         )
       )
     )
@@ -3903,11 +3183,7 @@
   (symbol (lib_id "Transistor_FET:AO3401A") (at 76.2 91.44 0) (mirror x) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid ef814817-39b1-4f2c-9ca1-8eb371d353c8)
-<<<<<<< HEAD
     (property "Reference" "Q2" (at 82.55 90.1699 0)
-=======
-    (property "Reference" "Q?" (at 82.55 90.1699 0)
->>>>>>> 0e7a4fd (Continued work on pcb)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "AO3401A" (at 82.55 92.7099 0)
@@ -3922,7 +3198,6 @@
     (property "LCSC" "C15127" (at 76.2 91.44 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-<<<<<<< HEAD
     (pin "1" (uuid b4ff1a07-fa20-40b9-b947-7266fdf6880f))
     (pin "2" (uuid 3f746438-82d3-416a-906f-bb4fa0b8aa38))
     (pin "3" (uuid 67b03492-177e-4d96-9793-cd28775de943))
@@ -3930,15 +3205,6 @@
       (project "neptune"
         (path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/761c8e29-382a-475c-a37a-7201cc9cd0f5"
           (reference "Q2") (unit 1)
-=======
-    (pin "1" (uuid 413fa6c8-eab6-4121-8179-60afbdbfd451))
-    (pin "2" (uuid b0ef12b3-0323-43fa-9b14-ad54b3f965fb))
-    (pin "3" (uuid a59d5dac-7b86-4797-b51e-25d2651242a5))
-    (instances
-      (project "neptune"
-        (path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/761c8e29-382a-475c-a37a-7201cc9cd0f5"
-          (reference "Q?") (unit 1)
->>>>>>> 0e7a4fd (Continued work on pcb)
         )
       )
     )
@@ -3947,11 +3213,7 @@
   (symbol (lib_id "power:VCC") (at 87.63 101.6 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid f8009b5e-2814-48af-8478-16f2aae29be6)
-<<<<<<< HEAD
     (property "Reference" "#PWR017" (at 87.63 105.41 0)
-=======
-    (property "Reference" "#PWR?" (at 87.63 105.41 0)
->>>>>>> 0e7a4fd (Continued work on pcb)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "VCC" (at 87.63 97.79 0)
@@ -3963,19 +3225,11 @@
     (property "Datasheet" "" (at 87.63 101.6 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-<<<<<<< HEAD
     (pin "1" (uuid 736fab76-17a5-48cb-9af5-a2b5da7ae1e6))
     (instances
       (project "neptune"
         (path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/761c8e29-382a-475c-a37a-7201cc9cd0f5"
           (reference "#PWR017") (unit 1)
-=======
-    (pin "1" (uuid 5b15f03e-73df-440c-a6ff-1acb5500f047))
-    (instances
-      (project "neptune"
-        (path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/761c8e29-382a-475c-a37a-7201cc9cd0f5"
-          (reference "#PWR?") (unit 1)
->>>>>>> 0e7a4fd (Continued work on pcb)
         )
       )
     )
@@ -3984,11 +3238,7 @@
   (symbol (lib_id "power:GND") (at 186.69 54.61 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid f85307b4-4ed3-48ad-a897-0961ac745e20)
-<<<<<<< HEAD
     (property "Reference" "#PWR029" (at 186.69 60.96 0)
-=======
-    (property "Reference" "#PWR?" (at 186.69 60.96 0)
->>>>>>> 0e7a4fd (Continued work on pcb)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 186.69 59.69 0)
@@ -4000,19 +3250,11 @@
     (property "Datasheet" "" (at 186.69 54.61 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-<<<<<<< HEAD
     (pin "1" (uuid f3168925-d82a-4494-bc87-9c2d8d17abf1))
     (instances
       (project "neptune"
         (path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/761c8e29-382a-475c-a37a-7201cc9cd0f5"
           (reference "#PWR029") (unit 1)
-=======
-    (pin "1" (uuid c5a281f1-2d1a-4bed-9703-b60ad68cd1d1))
-    (instances
-      (project "neptune"
-        (path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/761c8e29-382a-475c-a37a-7201cc9cd0f5"
-          (reference "#PWR?") (unit 1)
->>>>>>> 0e7a4fd (Continued work on pcb)
         )
       )
     )
@@ -4021,11 +3263,7 @@
   (symbol (lib_id "TPS54331D:TPS54331D") (at 135.89 36.83 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid ff40c9e2-4fe9-4dc1-8446-edeeb6dad3c9)
-<<<<<<< HEAD
     (property "Reference" "U3" (at 167.64 27.813 0)
-=======
-    (property "Reference" "U?" (at 167.64 27.813 0)
->>>>>>> 0e7a4fd (Continued work on pcb)
       (effects (font (size 1.524 1.524)))
     )
     (property "Value" "TPS54331D" (at 167.64 31.623 0)
@@ -4040,7 +3278,6 @@
     (property "LCSC" "C9865" (at 135.89 36.83 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-<<<<<<< HEAD
     (pin "1" (uuid 17e292b1-f197-4534-b21f-5ff32a005599))
     (pin "2" (uuid 40a64f10-fc97-4dd4-97ed-4b84cb862522))
     (pin "3" (uuid b2df4977-5533-4c29-89b5-eab0d018e35b))
@@ -4053,20 +3290,6 @@
       (project "neptune"
         (path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/761c8e29-382a-475c-a37a-7201cc9cd0f5"
           (reference "U3") (unit 1)
-=======
-    (pin "1" (uuid 7bca4891-c6c5-464e-87ea-7a9436dabc87))
-    (pin "2" (uuid 119b43d8-92e9-4546-a3b7-fed2dd87da32))
-    (pin "3" (uuid 67903d8d-ce91-48e7-9f7b-5c147898f700))
-    (pin "4" (uuid 8254fe60-2d97-4df5-9d4b-369dd8a2d482))
-    (pin "5" (uuid 13f4a429-0dce-40ec-bfd3-0e5f7b5d0fd3))
-    (pin "6" (uuid 84b41667-d994-4874-9dd3-2678422434ef))
-    (pin "7" (uuid 83d1a5ef-5dcd-4858-8ddd-8ea0fc445031))
-    (pin "8" (uuid 6bcb8e32-8c68-44c1-9a15-5d7c4063d46e))
-    (instances
-      (project "neptune"
-        (path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/761c8e29-382a-475c-a37a-7201cc9cd0f5"
-          (reference "U?") (unit 1)
->>>>>>> 0e7a4fd (Continued work on pcb)
         )
       )
     )
