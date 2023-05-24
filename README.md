@@ -1,1 +1,1 @@
-Storage and collaboration repo for D1 water jet TVC development
+Storage and collaboration repository for MEC2402 water jet TVC development
