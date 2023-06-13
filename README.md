@@ -3,5 +3,4 @@ The purpose of this project was to design and construct a vehicle capable of tes
 
 ![](https://media.giphy.com/media/2V9vB5eAsU8NSTJkN9/giphy.gif)![](https://media.giphy.com/media/GIgA9EUtNizNGvlwWz/giphy.gif)
 
-<img src="https://media.giphy.com/media/2V9vB5eAsU8NSTJkN9/giphy.gif" height="400" />
-<img src="https://media.giphy.com/media/GIgA9EUtNizNGvlwWz/giphy.gif" height="400" />
+<img src="https://media.giphy.com/media/2V9vB5eAsU8NSTJkN9/giphy.gif" height="400" /><img src="https://media.giphy.com/media/GIgA9EUtNizNGvlwWz/giphy.gif" height="400" />
