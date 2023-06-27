@@ -3,7 +3,7 @@ The purpose of this project was to design and construct a vehicle capable of tes
 
 The project features:
 - Neptune, a custom flight computer designed to handle communication with ground station, control our servo motors, read from sensors and more.
-- Neptune's firmware, consisting of a real time operating system that reads from our sensors and executes instructions based on packets sente from ground station.
+- Neptune's firmware, consisting of a real time operating system that reads from our sensors and executes instructions based on packets sent from ground station.
 - Ground station software, which is used to interact with the vehicle via a Jumper T-lite controller.
 - CAD files for the vehicle and the associated testing stand.
 
